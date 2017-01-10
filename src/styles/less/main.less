@@ -1,0 +1,153 @@
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+
+@noteTemplate : ' ------ 注释模板 --- start ------ ';
+
+
+.init{margin:0;padding:0;}
+
+.fl{float:left;}
+
+.fr{float: right;}
+html{
+    /* 默认 16px; 16px == 100% */
+    /* 为了容易计算，我想要修改默认rem就是 10px  10/16就是 1rem */
+    font-size: 62.5%;
+    /*那么目标rem就是 ??px/10px = ? rem*/
+}
+
+/* ------ 颜色变量 --- start ------ */
+@green : #06AE14;
+@lightGray:#F3F3F5;
+
+.bglightGray {background:@lightGray}
+.opa8{opacity: 0.8;}
+/* ------ 颜色变量 ---  end  ------ */
+
+
+
+
+
+/* ------ 布局变量 --- start ------ */
+    /* 目的设置一个固定不能变动的 100%，等同 per(100%) layout(100%,100%)*/
+.full{
+    width:100%;
+    height: 100%;
+}
+    /* 宽高同比例 */
+.per(@per:100%){
+    width:@per;
+    height: @per;
+}
+    /* 宽高自定义布局 */
+.layout(@width:100%,@height:100%){
+    width: @width;
+    height: @height
+}
+
+
+.layoutFlex(@width:100%,@height:100%){
+    display: flex;
+    height: @height;
+    width:@width;
+    .middle{
+        /*垂直水平都居中*/
+        align-items: center;
+    }
+    /* 同级写法 */
+    &.center{
+        /*TODO 可能 iskeyword 能解决我想要的判断存在该class名目的*/
+        /*定义自己居中定位*/
+        justify-content:center;
+    }
+}
+.layoutFlexXY(@direction:row){
+    /*默认 flex 布局设置成 水平布局；
+    因为想着标签就是默认垂直的,用该属性肯定是为了改变*/
+    .layoutFlex;
+    flex-direction:@direction;
+}
+.centerVH{
+    align-items: center;
+}
+.centerH{
+    justify-content:center;
+}
+.centerV{
+
+}
+
+
+/* ------ 布局变量 ---  end  ------ */
+
+
+
+
+
+/* ------ 自定义样式 --- start ------ */
+.App{
+    .layoutFlexXY(column);
+    width: 100%;
+    height: 20rem;
+    
+    
+}
+.bodyCont{
+    .layout(100%,90%);
+    .bglightGray;
+}
+
+
+
+/* ------ 选项卡公共部分 --- start ------ */
+
+.friendMsg,
+.friendList,
+.friendShow,
+.setting{
+    /*.fl;*/
+    width:25%;
+    /*height: 100%;*/
+    .centerVH;
+
+}
+
+.bodyFooter{
+    .layoutFlexXY;
+    .on{
+        background: @green;
+        color:#fff;
+    }
+    .centerV;
+}
+/* ------ 选项卡公共部分 ---  end  ------ */
+
+/* ------ 聊天窗口 --- start ------ */
+.friendMsg{
+    
+}
+/* ------ 聊天窗口 ---  end  ------ */
+
+/* ------ 通讯录 --- start ------ */
+.friendList{
+    
+}
+/* ------ 通讯录 ---  end  ------ */
+
+
+/* ------ 朋友圈 --- start ------ */
+.friendShow{
+    
+}
+/* ------ 朋友圈 ---  end  ------ */
+
+
+
+/* ------ 设置 --- start ------ */
+.setting{
+    
+}
+/* ------ 设置 ---  end  ------ */
+
+
+/* ------ 自定义样式 ---  end  ------ */
