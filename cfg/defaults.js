@@ -21,7 +21,17 @@ function getDefaultModules() {
         test: /\.(js|jsx)$/,
         include: srcPath,
         loader: 'eslint-loader'
-      }
+      },
+      // {
+      //   test: /\.(jsx|js)$/,
+      //   include: srcPath,
+      //   loader: 'babel',
+      //   query: {
+      //       presets: ['es2015', 'react'],
+      //       plugins: [["import", { "libraryName": "antd-mobile" }]]
+      //   }
+      // }
+
     ],
     loaders: [
       {

@@ -8,8 +8,8 @@ let defaultSettings = require('./defaults');
 // let npmBase = path.join(__dirname, '../node_modules');
 // let additionalPaths = [ path.join(npmBase, 'react-bootstrap') ];
 
-let additionalPaths = [path.join(__dirname, '../node_modules')];
-// let additionalPaths = [];
+// let additionalPaths = [path.join(__dirname, '../node_modules')];
+let additionalPaths = [];
 
 module.exports = {
     additionalPaths: additionalPaths,
@@ -30,7 +30,7 @@ module.exports = {
         noInfo: false
     },
     resolve: {
-
+        modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
         extensions: ['', '.web.js', '.js', '.jsx'],
         alias: {
             actions: `${defaultSettings.srcPath}/actions/`,
@@ -39,7 +39,8 @@ module.exports = {
             stores: `${defaultSettings.srcPath}/stores/`,
             styles: `${defaultSettings.srcPath}/styles/`,
             config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV,
-            'react/lib/ReactMount': 'react-dom/lib/ReactMount'
+            'react/lib/ReactMount': 'react-dom/lib/ReactMount',
+            // 'antd-mobile':`${this.modulesDirectories}`,
         }
     },
     module: {}

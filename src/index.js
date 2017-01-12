@@ -2,9 +2,11 @@ import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './components/Main';
-// Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));
 
-import TabMain from './components/TabMain'
+import TabMain from './components/TabMain-comp'
+ReactDOM.render(<TabMain />, document.getElementById('app'));
 
-ReactDOM.reander(<TabMain />,document.getElementById('root'))
+// import AppRouter from './routers/Main'
+// 此处不是组件 是路由对象
+// ReactDOM.render(AppRouter, document.getElementById('app'));

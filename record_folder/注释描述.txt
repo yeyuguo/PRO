@@ -1,0 +1,26 @@
+css 注释模板
+
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+
+
+react 注释模板
+
+{/* 注释模板 */}
+
+
+<------ 组件模板 start ------>
+ 
+import React import 'react'
+const xxx = React.createClass({
+    render:function(){
+        return (
+            <div>
+                信息页
+            </div>
+        )
+    }
+})
+export default xxx
+
+<------ 组件模板 end ------>

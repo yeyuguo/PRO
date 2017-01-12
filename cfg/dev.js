@@ -33,8 +33,9 @@ config.module.loaders.push({
   include: [].concat(
     config.additionalPaths,
     [ path.join(__dirname, '/../src') ]
-  )
+  ),
+  
 });
-// config.babel.plugins.push(['import', { libraryName: 'antd-mobile', style: 'css' }]);
+// config.babel-loader.plugins.push(['import', { libraryName: 'antd-mobile', style: 'css' }]);
 
 module.exports = config;
