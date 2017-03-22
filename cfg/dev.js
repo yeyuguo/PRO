@@ -42,6 +42,17 @@ config.plugins.push(() => {
     // 设置 成功的是：.babelrc文件添加以下配置
     // {"plugins": [["import", { "libraryName": "antd-mobile" }]]}
 
+// 添加代理
+// config.devServer = {  
+//     proxy: { 
+//         hot: true,
+//         inline: true, 
+//         '/aa': {  
+//             target: '10.9.32.71:8000',  
+//             secure: false  
+//         }  
+//     }  
+// }  
 
 
 

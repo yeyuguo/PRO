@@ -1,6 +1,7 @@
 import React from 'react'
-import ListView from 'antd-mobile/lib/list-view';
-import List  from 'antd-mobile/lib/list';
+import {ListView,List} from 'antd-mobile'
+// import ListView from 'antd-mobile/lib/list-view';
+// import List  from 'antd-mobile/lib/list';
 
 const data = [
   {
@@ -127,10 +128,8 @@ const FriendShow = React.createClass({
         renderSeparator={separator}
         className="fortest"
         style={{
-          height: document.body.clientHeight,
+          height: this.props.height,
           overflow: 'auto',
-          border: '1px solid #ddd',
-          margin: '0.1rem 0',
         }}
         pageSize={4}
         scrollRenderAheadDistance={500}

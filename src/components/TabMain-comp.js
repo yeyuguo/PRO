@@ -1,14 +1,14 @@
 
 require('normalize.css/normalize.css');
-require('../styles/less/main.less')
 require('antd-mobile/dist/antd-mobile.css')
+require('../styles/less/main.less')
 
 
 import React from 'react'
 
-// import { Tabs, WhiteSpace } from 'antd-mobile';
-import Tabs from 'antd-mobile/lib/tabs'
-import WhiteSpace from 'antd-mobile/lib/white-space'
+import { Tabs, WhiteSpace } from 'antd-mobile';
+// import Tabs from 'antd-mobile/lib/tabs'
+// import WhiteSpace from 'antd-mobile/lib/white-space'
 
 
 
@@ -29,27 +29,28 @@ const TabMain = React.createClass({
     };
   },
   render() {
+    var height = document.documentElement.clientHeight - 50
     return (
       <div className='main-page'>
         <Tabs defaultActiveKey="2" tabBarPosition={this.state.tabPosition} onChange={callback}>
           <TabPane tab="聊天" key="1">
             <div className='main-content' >
-              <FriendMsg />
+              <FriendMsg height={height}/>
             </div>
           </TabPane>
           <TabPane tab="朋友列表" key="2">
             <div className='main-content' >
-              <FriendList />
+            <FriendList height={height} />
             </div>
           </TabPane>
           <TabPane tab="朋友圈" key="3">
             <div className='main-content' >
-              <FriendShow />
+              <FriendShow height={height}/>
             </div>
           </TabPane>
           <TabPane tab="朋友设置" key="4">
             <div className='main-content' >
-              <FriendSetting />
+              <FriendSetting height={height} />
             </div>
           </TabPane>
         </Tabs>

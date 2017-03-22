@@ -18,18 +18,6 @@ html {
 /* ------ 布局变量 ---  end  ------ */
 /* ------ 自定义样式 --- start ------ */
 /* ------ 选项卡公共部分 --- start ------ */
-.main-page {
-  height: 10rem;
-}
-.main-content {
-  height: 10rem;
-}
-.friendMsg,
-.friendList,
-.friendShow,
-.setting {
-  width: 25%;
-}
 /* ------ 选项卡公共部分 ---  end  ------ */
 /* ------ 聊天窗口 --- start ------ */
 /* ------ 聊天窗口 ---  end  ------ */
@@ -41,4 +29,7 @@ html {
 /* ------ 设置 ---  end  ------ */
 /* ------ 自定义样式 ---  end  ------ */
 /* ------ bug样式覆盖 --- start ------ */
+.am-indexed-list-container {
+  position: relative;
+}
 /* ------ bug样式覆盖 ---  end  ------ */
