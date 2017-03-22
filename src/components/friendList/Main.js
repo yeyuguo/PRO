@@ -4,7 +4,6 @@ import React from 'react'
 // import List  from 'antd-mobile';
 // import SearchBar from 'antd-mobile/lib/search-bar'
 import {SearchBar,List,ListView} from 'antd-mobile'
-
 const provinceData = require('antd-mobile-demo-data/lib/province')
 // console.log(province)
 const { Item } = List;
