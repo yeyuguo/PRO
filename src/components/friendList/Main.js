@@ -1,8 +1,9 @@
 import React from 'react'
 
-import ListView from 'antd-mobile/lib/list-view';
-import List  from 'antd-mobile/lib/list';
-import SearchBar from 'antd-mobile/lib/search-bar'
+// import ListView from 'antd-mobile';
+// import List  from 'antd-mobile';
+// import SearchBar from 'antd-mobile/lib/search-bar'
+import {SearchBar,List,ListView} from 'antd-mobile'
 
 const provinceData = require('antd-mobile-demo-data/lib/province')
 // console.log(province)

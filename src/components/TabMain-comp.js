@@ -3,6 +3,7 @@ require('normalize.css/normalize.css');
 require('../styles/less/main.less')
 require('antd-mobile/dist/antd-mobile.css')
 
+
 import React from 'react'
 
 // import { Tabs, WhiteSpace } from 'antd-mobile';
@@ -30,24 +31,24 @@ const TabMain = React.createClass({
   render() {
     return (
       <div className='main-page'>
-        <Tabs defaultActiveKey="1" tabBarPosition={this.state.tabPosition} onChange={callback}>
+        <Tabs defaultActiveKey="2" tabBarPosition={this.state.tabPosition} onChange={callback}>
           <TabPane tab="聊天" key="1">
-            <div className='main-content' style={{alignItems: 'center',  }}>
+            <div className='main-content' >
               <FriendMsg />
             </div>
           </TabPane>
           <TabPane tab="朋友列表" key="2">
-            <div className='main-content' style={{alignItems: 'center',  }}>
+            <div className='main-content' >
               <FriendList />
             </div>
           </TabPane>
           <TabPane tab="朋友圈" key="3">
-            <div className='main-content' style={{alignItems: 'center',  }}>
+            <div className='main-content' >
               <FriendShow />
             </div>
           </TabPane>
           <TabPane tab="朋友设置" key="4">
-            <div className='main-content' style={{alignItems: 'center', }}>
+            <div className='main-content' >
               <FriendSetting />
             </div>
           </TabPane>

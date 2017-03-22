@@ -113,11 +113,11 @@ const FriendShow = React.createClass({
         </div>
       );
     };
-    return (<div style={{ margin: '0 auto', width: '96%' }}>
+    return (<div style={{ margin: '0 auto'}}>
       <ListView
         dataSource={this.state.dataSource}
         renderHeader={() => <span>header</span>}
-        renderFooter={() => <div style={{ padding: 30, textAlign: 'center' }}>
+        renderFooter={() => <div style={{ textAlign: 'center' }}>
           {this.state.isLoading ? '加载中...' : '加载完毕'}
         </div>}
         renderSectionHeader={(sectionData) => (
@@ -127,7 +127,7 @@ const FriendShow = React.createClass({
         renderSeparator={separator}
         className="fortest"
         style={{
-          height: document.body.clientHeight * 3 / 4,
+          height: document.body.clientHeight,
           overflow: 'auto',
           border: '1px solid #ddd',
           margin: '0.1rem 0',

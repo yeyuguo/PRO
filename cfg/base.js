@@ -31,7 +31,7 @@ module.exports = {
     },
     resolve: {
         modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
-        extensions: ['', '.web.js', '.js', '.jsx'],
+        extensions: ['', '.web.js', '.js', '.jsx', '.json'],
         alias: {
             actions: `${defaultSettings.srcPath}/actions/`,
             components: `${defaultSettings.srcPath}/components/`,
@@ -40,7 +40,7 @@ module.exports = {
             styles: `${defaultSettings.srcPath}/styles/`,
             config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV,
             'react/lib/ReactMount': 'react-dom/lib/ReactMount',
-            // 'antd-mobile':`${this.modulesDirectories}`,
+            // 'antd-mobile': `${this.modulesDirectories}/antd-mobile`
         }
     },
     module: {}

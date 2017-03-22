@@ -3,8 +3,13 @@
         "es2015",
         "stage-0",
         "react"
+    ],
+    //antd-mobile 实现按需加载： https://github.com/ant-design/ant-design-mobile/blob/master/docs/react/introduce.zh-CN.md#%E4%BD%BF%E7%94%A8
+    "plugins": [
+        ["import", { "libraryName": "antd-mobile" }]
     ]
 }
+//antd-mobile 实现按需加载： https://github.com/ant-design/ant-design-mobile/blob/master/docs/react/introduce.zh-CN.md#%E4%BD%BF%E7%94%A8
 // { "plugins": [
 //         ["import", { "style": "css", "libraryName": "antd-mobile" }]
 //     ] }
