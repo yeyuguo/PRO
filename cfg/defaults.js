@@ -21,19 +21,21 @@ function getDefaultModules() {
         test: /\.(js|jsx)$/,
         include: srcPath,
         loader: 'eslint-loader'
-      },
-      // {
-      //   test: /\.(jsx|js)$/,
-      //   include: srcPath,
-      //   loader: 'babel',
-      //   query: {
-      //       presets: ['es2015', 'react'],
-      //       plugins: [["import", { "libraryName": "antd-mobile" }]]
-      //   }
-      // }
+      }
+      
 
     ],
+    
     loaders: [
+      // {
+      //   test: /\.(jsx|js)$/,
+      //   exclude: /(node_modules|bower_components)/,
+      //   loader: 'babel-loader',
+      //   query: {
+      //       presets: ['es2015'],
+      //       plugins: [["import", { "libraryName": "antd-mobile" }]]
+      //   }
+      // },
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'

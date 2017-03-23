@@ -11,7 +11,6 @@ import { Tabs, WhiteSpace } from 'antd-mobile';
 // import WhiteSpace from 'antd-mobile/lib/white-space'
 
 
-
 // 各个 功能模块的组件
 import FriendMsg from './friendMsg/Main'
 import FriendList from './friendList/Main'

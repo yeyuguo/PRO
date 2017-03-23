@@ -1,0 +1,135 @@
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+//  antd-mobile 像素解释： 1rem == 50px    0.1rem =5px
+@black:rgb(22,20,24);
+@grayBlack:rgb(51,46,51);
+@white:rgb(237,236,237);
+@green : #06AE14;
+@whiteLight:#F3F3F5;
+@fontGray:#C0C0C0;
+
+// -----------
+@redLight:#F76059;
+@blueLight:#4F8DFA;
+
+// 下划线
+.lineBottom {
+    position: relative;
+    &:after {
+        display: block;
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        right: auto;
+        top: auto;
+        width: 100%;
+        border-bottom: 1PX solid #ddd;
+    }
+}
+/* ------ 注释模板 ---  分隔符  ------ */
+.userList-section{
+    padding-top:0.2rem;
+    padding-bottom:0.2rem;
+    background-color: @whiteLight;
+}
+
+.userList-content{
+    padding-top:0.05rem;
+    padding-bottom:0.05rem;
+    
+        
+    .userList-sexIsVip{
+        font-size: 0.08rem;
+        // color:@fontGray;
+        color: #fff;
+        
+        &>*{
+            display: inline-block;
+            text-align: center;
+            width: 0.5rem;
+            height: 0.3rem;
+            line-height: 0.3rem;
+            padding:0.02rem 0.08rem;
+            border-radius: 2px;
+        }
+        .sex{
+            background-color:@green;
+        }
+        .boy{
+            background-color:@blueLight;
+        }
+        .girl{
+            background-color:@redLight;
+        }
+        .notVip{
+            display: none;
+        }
+        .isVip{
+            display: inline-block;
+            background-color:@blueLight;
+            margin-left: 0.1rem;
+        }
+    }
+    .userList-desc{
+        font-size: 0.3rem;
+        color:@fontGray;
+    }
+    p{
+        margin:0;
+        padding-left:0.1rem;
+        padding-right:0.1rem;
+        padding-top:0.1rem;
+    }
+    p:first-child{
+        font-size: 0.35rem;
+        color:@black;
+        padding-top:0;
+    }
+    p:last-child{
+        // padding-bottom: 0;
+    }
+    @titleHeight:0.5rem;
+    .IDname{
+        // clear:both;
+        width:67%;
+        padding-right: 3%;
+        height: @titleHeight;
+        line-height: @titleHeight;
+        overflow: hidden;
+        float: left;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        &:hover{
+            color:red;
+        }
+    }
+    .addr{
+        color:@fontGray;
+        font-size: .2rem;
+        float: left;
+        width: 30%;
+        height: @titleHeight;
+        line-height: @titleHeight;
+        *{
+            overflow: hidden;
+        }
+        .prov{
+            width:40%;
+            margin-right: 0.1rem;
+        }
+        .city{
+            width:60%;
+        }
+    }
+    
+}
+.userList-img{
+    margin-left: 0.1rem;
+    height: 1.28rem;
+    margin-right: 0.08rem;
+    width:1.28rem;
+}
+    

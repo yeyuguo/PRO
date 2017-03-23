@@ -3,21 +3,29 @@ import {ListView,List} from 'antd-mobile'
 // import ListView from 'antd-mobile/lib/list-view';
 // import List  from 'antd-mobile/lib/list';
 
+require('./friendShow.less')
+
 const data = [
   {
-    img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
+    img: '../../images/mn1.jpg',
     title: '相约酒店',
     des: '不是所有的兼职汪都需要风吹日晒',
+    sex:'',
+    isVip:true
   },
   {
-    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
+    img: '../../images/mn2.jpg',
     title: '麦当劳邀您过周末',
     des: '不是所有的兼职汪都需要风吹日晒',
+    sex:'girl',
+    isVip:false
   },
   {
-    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
+    img: '../../images/mn4.jpg',
     title: '食惠周',
     des: '不是所有的兼职汪都需要风吹日晒',
+    sex:'boy',
+    isVip:true
   },
 ];
 let index = data.length - 1;
@@ -78,7 +86,9 @@ const FriendShow = React.createClass({
       });
     }, 1000);
   },
-
+  descWindow(){
+    alert(0)
+  },
   render() {
     const separator = (sectionID, rowID) => (
       <div key={`${sectionID}-${rowID}`} style={{
@@ -90,25 +100,43 @@ const FriendShow = React.createClass({
       />
     );
     const row = (rowData, sectionID, rowID) => {
+      console.log({data})
       if (index < 0) {
         index = data.length - 1;
       }
       const obj = data[index--];
+      var en2Ch={
+        'girl':'女',
+        'boy':'男',
+        'sex':'中性'
+      }
       return (
         <div key={rowID}
+          onClick={this.descWindow}
           style={{
-            padding: '0.08rem 0.16rem',
-            backgroundColor: 'white',
+            // padding: '0.08rem 0.16rem'
           }}
         >
+        {/*
           <h3 style={{ padding: 2, marginBottom: '0.08rem', borderBottom: '1px solid #F6F6F6' }}>
             {obj.title}
           </h3>
-          <div style={{ display: '-webkit-box', display: 'flex' }}>
-            <img style={{ height: '1.28rem', marginRight: '0.08rem' }} src={obj.img} />
-            <div style={{ display: 'inline-block' }}>
-              <p>{obj.des}</p>
-              <p><span style={{ fontSize: '1.6em', color: '#FF6E27' }}>35</span>元/任务</p>
+        */}
+          <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
+            <img className='userList-img' src={obj.img} />
+            <div className='userList-content' style={{ display: 'inline-block' }}>
+              <p className='userList-p'>
+                <span className="IDname">{obj.des}</span> 
+                <div className='addr'>
+                  <span className="prov">北京市</span>
+                  <span className="city">大兴区</span>
+                </div>
+              </p>
+              <p className="userList-sexIsVip">
+                <span className={obj.sex ?obj.sex:'sex'}>{obj.sex?en2Ch[obj.sex]:'中性'}</span>
+                <span className={obj.isVip?'isVip':'notVip'}>VIP</span>
+              </p>
+              <p className='userList-desc'>不忘最初的梦想</p>
             </div>
           </div>
         </div>

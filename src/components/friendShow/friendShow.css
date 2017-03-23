@@ -1,0 +1,110 @@
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+.lineBottom {
+  position: relative;
+}
+.lineBottom:after {
+  display: block;
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  width: 100%;
+  border-bottom: 1PX solid #ddd;
+}
+/* ------ 注释模板 ---  分隔符  ------ */
+.userList-section {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  background-color: #F3F3F5;
+}
+.userList-content {
+  padding-top: 0.05rem;
+  padding-bottom: 0.05rem;
+}
+.userList-content .userList-sexIsVip {
+  font-size: 0.08rem;
+  color: #fff;
+}
+.userList-content .userList-sexIsVip > * {
+  display: inline-block;
+  text-align: center;
+  width: 0.5rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  padding: 0.02rem 0.08rem;
+  border-radius: 2px;
+}
+.userList-content .userList-sexIsVip .sex {
+  background-color: #06AE14;
+}
+.userList-content .userList-sexIsVip .boy {
+  background-color: #4F8DFA;
+}
+.userList-content .userList-sexIsVip .girl {
+  background-color: #F76059;
+}
+.userList-content .userList-sexIsVip .notVip {
+  display: none;
+}
+.userList-content .userList-sexIsVip .isVip {
+  display: inline-block;
+  background-color: #4F8DFA;
+  margin-left: 0.1rem;
+}
+.userList-content .userList-desc {
+  font-size: 0.3rem;
+  color: #C0C0C0;
+}
+.userList-content p {
+  margin: 0;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  padding-top: 0.1rem;
+}
+.userList-content p:first-child {
+  font-size: 0.35rem;
+  color: #161418;
+  padding-top: 0;
+}
+.userList-content .IDname {
+  width: 67%;
+  padding-right: 3%;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  overflow: hidden;
+  float: left;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.userList-content .IDname:hover {
+  color: red;
+}
+.userList-content .addr {
+  color: #C0C0C0;
+  font-size: .2rem;
+  float: left;
+  width: 30%;
+  height: 0.5rem;
+  line-height: 0.5rem;
+}
+.userList-content .addr * {
+  overflow: hidden;
+}
+.userList-content .addr .prov {
+  width: 40%;
+  margin-right: 0.1rem;
+}
+.userList-content .addr .city {
+  width: 60%;
+}
+.userList-img {
+  margin-left: 0.1rem;
+  height: 1.28rem;
+  margin-right: 0.08rem;
+  width: 1.28rem;
+}

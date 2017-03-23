@@ -1,26 +1,53 @@
 /* ------ 注释模板 --- start ------ */
 /* ------ 注释模板 ---  end  ------ */
-//  antd-mobile 像素解释： 1rem == 50px
+//  antd-mobile 像素解释： 1rem == 50px    0.1rem =5px
 @noteTemplate : ' ------ 注释模板 --- start ------ ';
-
+/*
+颜色的说明：中国95后年轻人最常穿的服装颜色包括
+中国95后年轻人最喜欢的颜色是RGB值为22/20/24的“黑色
+RGB值为237/236/237的白色、RGB值为51/46/51的灰色。
+*/
 
 // .init{margin:0;padding:0;}
 
 // .fl{float:left;}
 
 // .fr{float: right;}
+/* ------ 颜色变量 --- start ------ */
+@black:rgb(22,20,24);
+@grayBlack:rgb(51,46,51);
+@white:rgb(237,236,237);
+@green : #06AE14;
+@whiteLight:#F3F3F5;
+@fontGray:#C0C0C0;
+
+
 html{
     /* 默认 16px; 16px == 100% */
     /* 为了容易计算，我想要修改默认rem就是 10px  10/16就是 1rem */
     // font-size: 62.5%;
     /*那么目标rem就是 ??px/10px = ? rem*/
+    color:@black;
 }
 
-/* ------ 颜色变量 --- start ------ */
-@green : #06AE14;
-@lightGray:#F3F3F5;
+// 下划线
+.lineBottom{
+    position: relative;
+    &:after{
+        display: block;
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        right: auto;
+        top: auto;
+        width: 100%;
+        border-bottom: 1PX solid #ddd;
+    }
+}
 
-.bglightGray {background:@lightGray}
+
+.bglightGray {background:@whiteLight;}
 .opa8{opacity: 0.8;}
 /* ------ 颜色变量 ---  end  ------ */
 
