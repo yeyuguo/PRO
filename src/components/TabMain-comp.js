@@ -47,7 +47,7 @@ const TabMain = React.createClass({
               <FriendShow height={height}/>
             </div>
           </TabPane>
-          <TabPane tab="朋友设置" key="4">
+          <TabPane tab="个人设置" key="4">
             <div className='main-content' >
               <FriendSetting height={height} />
             </div>
