@@ -9,21 +9,21 @@ const data = [
   {
     img: '../../images/mn1.jpg',
     title: '相约酒店',
-    des: '不是所有的兼职汪都需要风吹日晒',
+    des: '需要风吹日晒',
     sex:'',
     isVip:true
   },
   {
     img: '../../images/mn2.jpg',
     title: '麦当劳邀您过周末',
-    des: '不是所有的兼职汪都需要风吹日晒',
+    des: '日晒',
     sex:'girl',
     isVip:false
   },
   {
     img: '../../images/mn4.jpg',
     title: '食惠周',
-    des: '不是所有的兼职汪都需要风吹日晒',
+    des: '不是',
     sex:'boy',
     isVip:true
   },

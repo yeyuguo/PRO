@@ -12,6 +12,9 @@
 @redLight:#F76059;
 @blueLight:#4F8DFA;
 
+@TBpadding:0.14rem;
+@LRpadding:0.3rem;
+
 // 下划线
 .lineBottom {
     position: relative;
@@ -29,18 +32,21 @@
 }
 /* ------ 注释模板 ---  分隔符  ------ */
 .userList-section{
-    padding-top:0.2rem;
-    padding-bottom:0.2rem;
+    padding-top:@TBpadding;
+    padding-bottom:@TBpadding;
     background-color: @whiteLight;
+    padding-left: @LRpadding;
+    padding-right: @LRpadding;
 }
 
 .userList-content{
-    padding-top:0.05rem;
-    padding-bottom:0.05rem;
+    width: 100%;
+    // padding-top:0.05rem;
+    // padding-bottom:0.05rem;
     
         
     .userList-sexIsVip{
-        font-size: 0.08rem;
+        font-size: 0.05rem;
         // color:@fontGray;
         color: #fff;
         
@@ -72,7 +78,7 @@
         }
     }
     .userList-desc{
-        font-size: 0.3rem;
+        font-size: 0.2rem;
         color:@fontGray;
     }
     p{
@@ -82,7 +88,7 @@
         padding-top:0.1rem;
     }
     p:first-child{
-        font-size: 0.35rem;
+        font-size: 0.3rem;
         color:@black;
         padding-top:0;
     }
@@ -126,10 +132,12 @@
     }
     
 }
-.userList-img{
-    margin-left: 0.1rem;
+img.userList-img{
+    // border-radius: 50%;
+    // margin-left: 0.1rem;
     height: 1.28rem;
     margin-right: 0.08rem;
     width:1.28rem;
+    position: relative;//解决头像排列不整齐原因
 }
     
