@@ -28,7 +28,7 @@ const TabMain = React.createClass({
     };
   },
   render() {
-    var height = document.documentElement.clientHeight - 50
+    var height = document.documentElement.clientHeight - 45
     return (
       <div className='main-page'>
         <Tabs defaultActiveKey="4" tabBarPosition={this.state.tabPosition} onChange={callback}>

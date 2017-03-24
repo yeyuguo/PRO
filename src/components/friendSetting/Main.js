@@ -43,14 +43,15 @@ const FriendSetting = React.createClass({
         // const { getFieldProps } = props.form;
         return (
             <div className='setting' style={{'height':this.props.height}}>
-                <List renderHeader={() => '基本样式'} className="mySimpleInfo">
+                <List renderHeader={() => '1'} className="mySimpleInfo">
                     <Item extra={'资料'}
                     arrow="horizontal"
                     thumb={mySimpleInfo.avator}
                     multipleLine
                     onClick={() => {}}
                     >
-                        {mySimpleInfo.userName} <span className={mySimpleInfo.isVip?'isVip':'notVip'}>VIP月</span>
+                        {mySimpleInfo.userName} 
+                        <span className={mySimpleInfo.isVip?'isVip':'notVip'}>VIP月</span>
                             <Brief>
                                 <span className="sex">男</span>
                                 <span className="age">28岁</span>
@@ -87,7 +88,7 @@ const FriendSetting = React.createClass({
                     </Item>
                 </List>
                 <List renderHeader={() => '3'} className="visitorAndSetting">
-                    <Item arrow="horizontal" extra={React.createElement('span',{className:'numTip'},"20")}>
+                    <Item arrow="horizontal" extra={React.createElement('span',{className:'numVistor'},"20")}>
                     最近的访客
                     </Item>
                     <Item arrow="horizontal">

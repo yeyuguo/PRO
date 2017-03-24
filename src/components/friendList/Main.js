@@ -1,11 +1,6 @@
 import React from 'react'
-
-// import ListView from 'antd-mobile';
-// import List  from 'antd-mobile';
-// import SearchBar from 'antd-mobile/lib/search-bar'
-import {SearchBar} from 'antd-mobile'
-import { province } from 'antd-mobile-demo-data';
-import { ListView, List } from 'antd-mobile';
+import { province as provinceData } from 'antd-mobile-demo-data';
+import { ListView, List, SearchBar } from 'antd-mobile';
 
 const { Item } = List;
 
@@ -22,48 +17,74 @@ class FriendList extends React.Component {
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2,
     });
 
-    const dataBlob = {};
-    const sectionIDs = [];
-    const rowIDs = [];
-    Object.keys(province).forEach((item, index) => {
-      sectionIDs.push(item);
-      dataBlob[item] = item;
-      rowIDs[index] = [];
+    this.createDs = (ds, province) => {
+      const dataBlob = {};
+      const sectionIDs = [];
+      const rowIDs = [];
+      Object.keys(province).forEach((item, index) => {
+        sectionIDs.push(item);
+        dataBlob[item] = item;
+        rowIDs[index] = [];
 
-      province[item].forEach((jj) => {
-        rowIDs[index].push(jj.value);
-        dataBlob[jj.value] = jj.label;
+        province[item].forEach((jj) => {
+          rowIDs[index].push(jj.value);
+          dataBlob[jj.value] = jj.label;
+        });
       });
-    });
+      return ds.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs);
+    };
     this.state = {
-      dataSource: dataSource.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs),
+      inputValue: '',
+      dataSource: this.createDs(dataSource, provinceData),
       headerPressCount: 0,
     };
   }
 
+  onSearch = (val) => {
+    const pd = { ...provinceData };
+    Object.keys(pd).forEach((item) => {
+      pd[item] = pd[item].filter(jj => jj.spell.toLocaleLowerCase().indexOf(val) > -1);
+    });
+    this.setState({
+      inputValue: val,
+      dataSource: this.createDs(this.state.dataSource, pd),
+    });
+  }
+
   render() {
     return (
-      <ListView.IndexedList
-        dataSource={this.state.dataSource}
-        renderHeader={() => <span>头部内容请自定义</span>}
-        renderFooter={() => <span>尾部内容请自定义</span>}
-        renderSectionHeader={sectionData => (<div className="ih">{sectionData}</div>)}
-        renderRow={rowData => (<Item>{rowData}</Item>)}
-        className="fortest"
-        style={{
-          height: this.props.height,
-          overflow: 'auto',
-        }}
-        quickSearchBarStyle={{
-          position: 'absolute',
-          // top: 15,
-        }}
-        delayTime={10}
-        delayActivityIndicator={<div style={{  textAlign: 'center' }}>渲染中...</div>}
-      />
-    );
+      <div style={{height:this.props.height,  position: 'relative' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0,height:'0.88rem' }}>
+          <SearchBar
+            value={this.state.inputValue}
+            placeholder="搜索"
+            onChange={this.onSearch}
+            onClear={() => { console.log('onClear'); }}
+            onCancel={() => { console.log('onCancel'); }}
+          />
+        </div>
+        <ListView.IndexedList
+          dataSource={this.state.dataSource}
+          renderHeader={() => <span>头部内容请自定义</span>}
+          renderFooter={() => <span>尾部内容请自定义</span>}
+          renderSectionHeader={sectionData => (<div className="ih">{sectionData}</div>)}
+          renderRow={rowData => (<Item>{rowData}</Item>)}
+          className="am-list"
+          stickyHeader
+          stickyProps={{
+            stickyStyle: { zIndex: 999 },
+          }}
+          style={{
+            position:'relative'
+          }}
+          quickSearchBarStyle={{
+            top: 85,
+            position:'absolute'
+          }}
+          delayTime={10}
+          delayActivityIndicator={<div style={{ padding: 25, textAlign: 'center' }}>渲染中...</div>}
+        />
+    </div>);
   }
 }
-
-
 export default FriendList
