@@ -5,6 +5,8 @@
 }
 .friendMsg {
   display: flex;
+  /* ------ 废弃css --- start ------ */
+  /* ------ 废弃css ---  end  ------ */
 }
 .friendMsg p {
   padding: 0;

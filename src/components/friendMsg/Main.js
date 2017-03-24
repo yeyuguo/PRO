@@ -9,30 +9,31 @@ require('./friendMsg.less')
 
 const FriendMsg = React.createClass({
     getInitialState(){
+        var exampleTime = (new Date('2017-03-17 14:30:25'))
         return {
             defaultAvator:'../../images/yeoman.png',
             // 倒着渲染
             users:[
                 {
                     avator:'../../images/mn1.jpg',
-                    userName:'玲玲',
+                    userName:'小玲',
                     userID:'001',
                     msgInfo:[{
-                        latestModify:'2017-03-17 14:30:25',
+                        latestModify:new Date('2017-03-17 14:6:25'),
                         latestMsg:'你好，很高兴认识你！'
                     }],
                     isRead:false                
                 },
                 {
                     avator:'../../images/mn2.jpg',
-                    userName:'玲玲',
+                    userName:'马玲',
                     userID:'002',
                     msgInfo:[{
-                        latestModify:'2017-03-16 13:30:25',
+                        latestModify:new Date('2017-03-16 16:30:25'),
                         latestMsg:'你好，很高兴认识你！你好，很高兴认识你！你好，很高兴认识你！'
                     },{
-                        latestModify:'2017-03-17 13:30:25',
-                        latestMsg:'从来没见你回复！'
+                        latestModify:new Date('2017-03-16 12:30:25'),
+                        latestMsg:'你好，很高兴认识你！你好，很高兴认识你！你好，很高兴认识你！'
                     }],
                     isRead:false                
                 },
@@ -41,7 +42,7 @@ const FriendMsg = React.createClass({
                     userName:'玲玲',
                     userID:'003',
                     msgInfo:[{
-                        latestModify:'星期三',
+                        latestModify:new Date('2017-03-15 11:30:25'),
                         latestMsg:'你好，很高兴认识你！'
                     }],
                     isRead:true                
@@ -52,14 +53,31 @@ const FriendMsg = React.createClass({
     chatWindow(){
         alert(0)
     },
+    showLatestTime(){
+        return 'test'
+        return data.msgInfo[data.msgInfo.length-1].latestModify.split(' ').length>1?data.msgInfo[(data.msgInfo.length-1)].latestModify.split(' ')[1].substr(0,5):data.msgInfo[(data.msgInfo.length-1)].latestModify
+        
+    },
     render(){
         var data = this.state.users[0]
-        
+        // 星期 中英文 转换对象
+        var en2ch={
+            '0':'天',
+            '1':'一',
+            '2':'二',
+            '3':'三',
+            '4':'四',
+            '5':'五',
+            '6':'六'
+        }
         return (
             <List renderHeader={() => ''} style={{'height':this.props.height}} className="friendMsg-list">
                 {this.state.users.map(function(item,index){
                     const data = item
                     // console.log({data})
+                    var time = data.msgInfo[data.msgInfo.length-1].latestModify
+                    var nowTime = new Date()
+                    const showTime = (time.getTime()<nowTime.getTime())&&(time.getDay()<nowTime.getDay())?`星期${en2ch[time.getDay()]}`:`${time.getHours()}:${time.getMinutes()<10?'0'+time.getMinutes():time.getMinutes()}`
                     return (
                         <Item
                         arrow="horizontal"
@@ -67,11 +85,13 @@ const FriendMsg = React.createClass({
                         multipleLine
                         onClick={this.chatWindow} 
                         key={index}
-                        extra={data.msgInfo[data.msgInfo.length-1].latestModify.split(' ').length>1?data.msgInfo[(data.msgInfo.length-1)].latestModify.split(' ')[1].substr(0,5):data.msgInfo[(data.msgInfo.length-1)].latestModify}
+                        className='friendMsg'
+                        extra={showTime}
                         >
                             {data.userName}
                             <Brief>{data.msgInfo[data.msgInfo.length-1].latestMsg}</Brief>
                             {/*
+                            extra={(time.getTime()<nowTime.getTime())&&(time.getDay()<nowTime.getDay())?time.getDay():time}
                             <div className='friendMsg'>
                                 <img src={data.avator ? data.avator : this.state.defaultAvator} alt=""/>
                                 <div className="friendMsg-content">
