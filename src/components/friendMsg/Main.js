@@ -63,7 +63,7 @@ const FriendMsg = React.createClass({
                     return (
                         <Item
                         arrow="horizontal"
-                        thumb='../../images/mn1.jpg'
+                        thumb={data.avator ? data.avator : this.state.defaultAvator}
                         multipleLine
                         onClick={this.chatWindow} 
                         key={index}

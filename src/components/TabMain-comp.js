@@ -31,7 +31,7 @@ const TabMain = React.createClass({
     var height = document.documentElement.clientHeight - 50
     return (
       <div className='main-page'>
-        <Tabs defaultActiveKey="1" tabBarPosition={this.state.tabPosition} onChange={callback}>
+        <Tabs defaultActiveKey="4" tabBarPosition={this.state.tabPosition} onChange={callback}>
           <TabPane tab="聊天" key="1">
             <div className='main-content' >
               <FriendMsg height={height}/>

@@ -42,3 +42,18 @@
 .mySetting .mySimpleInfo .notVip {
   display: none;
 }
+.mySetting .usersWithMe .vipType {
+  color: #C0C0C0;
+  font-size: 0.1rem;
+}
+.mySetting .usersWithMe .numTip {
+  display: block;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #F76059;
+}
+.mySetting .visitorAndSetting .numVistor {
+  background-color: #4F8DFA;
+}
