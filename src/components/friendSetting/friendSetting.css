@@ -1,0 +1,44 @@
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+.setting * {
+  font-size: 0.3rem;
+}
+.mySetting {
+  height: 0.8rem;
+  display: flex;
+}
+.mySetting:img {
+  height: inherit;
+  width: inherit;
+  margin-right: 0.08rem;
+  display: block;
+}
+.mySetting .mySimpleInfo p {
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: 50%;
+  line-height: 50%;
+}
+.mySetting .mySimpleInfo p span {
+  margin-left: 0.3rem;
+}
+.mySetting .mySimpleInfo .vip {
+  text-align: center;
+  line-height: 0.3rem;
+  padding: 0.02rem 0.08rem;
+  border-radius: 0.1rem;
+  color: #fff;
+}
+.mySetting .mySimpleInfo .isVip {
+  background: #4F8DFA;
+  display: inline-block;
+  text-align: center;
+  line-height: 0.3rem;
+  padding: 0.02rem 0.08rem;
+  border-radius: 0.1rem;
+  color: #fff;
+}
+.mySetting .mySimpleInfo .notVip {
+  display: none;
+}

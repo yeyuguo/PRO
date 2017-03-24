@@ -1,0 +1,57 @@
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+@black:rgb(22,20,24);
+@grayBlack:rgb(51,46,51);
+@whiteLight:rgb(237,236,237);
+@green : #06AE14;
+@white:#fff;
+@fontGray:#C0C0C0;
+
+// -----------
+@redLight:#F76059;
+@blueLight:#4F8DFA;
+
+
+.setting *{
+    font-size: 0.3rem;
+}
+.mySetting{
+    height: 0.8rem;
+    display: flex;
+    &:img{
+        height: inherit;
+        width:inherit;
+        margin-right: 0.08rem;
+        display: block;
+    }
+    .mySimpleInfo{
+        p{
+            justify-content: center;
+            margin:0;
+            padding:0;
+            height: 50%;
+            line-height: 50%;
+            span{
+                margin-left: 0.3rem;
+            }
+        }
+        // p:last-child{
+        //     color:@grayBlack;
+        // }
+        .vip{
+            text-align: center;
+            line-height: 0.3rem;
+            padding:0.02rem 0.08rem;
+            border-radius: 0.1rem;
+            color:@white;
+        }
+        .isVip{
+            background: @blueLight;
+            display: inline-block;
+            .vip;
+        }
+        .notVip{
+            display: none;
+        }
+    }
+}
