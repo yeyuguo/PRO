@@ -5,14 +5,15 @@ import {Link} from 'react-router'
 require('antd-mobile/dist/antd-mobile.min.css')
 require('./register.less')
 const FItem = Flex.Item
-
+var maoboli
 const Register = React.createClass({
     getInitialState(){
-        
+        maoboli=require('../backaground')(window);
+        const imgNum = maoboli.random()
         return{
             // chunkImg:'../../images/mn1.jpg'
             bgSetting:{
-                chunkImg:'../../images/login/chengshi.jpg',
+                chunkImg:'../../images/login/login_'+imgNum+'.jpg',
                 width:'100%',
                 height:document.documentElement.clientHeight
             }
@@ -43,7 +44,7 @@ const Register = React.createClass({
         // 由于require 有缓存，否则会出现第二次require不加载该文件
         // require('../backaground')(window);
         // window.initWindow(document.getElementById('box'));
-        var maoboli=require('../backaground')(window);
+        
         maoboli.initWindow(document.getElementById('box'));
     },
     componentDidUpdate(){

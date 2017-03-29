@@ -17,7 +17,7 @@ import Email from '../login/register/email'
 require('normalize.css/normalize.css');
 require('../../styles/less/main.less')
 require('antd-mobile/dist/antd-mobile.css')
-
+require('../../js/common')
 const AppRouter = (
     <Router history={browserHistory}>
         <Route path="/linkTest" component={LinkTest}/>{/* 有效 */}

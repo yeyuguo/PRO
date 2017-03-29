@@ -1021,11 +1021,16 @@ const maobaoli = function (window) {
         ], 1000);
     }
 
+    function random(n){
+        var n = n || 16
+        return Math.round(Math.random()*n)
+    }
     // window['initWindow'] = initWindow;
     // window['setDrawPercentCallback'] = setDrawPercentCallback;
     return {
         initWindow:initWindow,
-        setDrawPercentCallback:setDrawPercentCallback
+        setDrawPercentCallback:setDrawPercentCallback,
+        random:random
     }
 };
 // initWindow(document.getElementById('box'));
