@@ -13,6 +13,7 @@ import ForgetPwd from '../login/forget/forgetPwd'
 import Register from '../login/register/register'
 import Phone from '../login/register/phone'
 import Email from '../login/register/email'
+import ImgShow from '../demoComp/3dpic/index'
 
 require('normalize.css/normalize.css');
 require('../../styles/less/main.less')
@@ -35,7 +36,11 @@ const AppRouter = (
                 <IndexRoute component={Phone}/>
                 <Route path='phone' component={Phone} />
                 <Route path='email' component={Email} />
-            </Route>   
+            </Route>
+            {/*
+            TODO 完成把图片展示拆分成组件
+            <Route path='imgShow' component={ImgShow} />
+            */}
         </Route>
         
         
