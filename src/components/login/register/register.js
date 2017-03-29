@@ -4,53 +4,49 @@ import {Link} from 'react-router'
 
 require('antd-mobile/dist/antd-mobile.min.css')
 require('./register.less')
+const FItem = Flex.Item
+
 const Register = React.createClass({
     getInitialState(){
-        return {
-
+        
+        return{
+            // chunkImg:'../../images/mn1.jpg'
+            bgSetting:{
+                chunkImg:'../../images/login/chengshi.jpg',
+                width:'100%',
+                height:document.documentElement.clientHeight
+            }
         }
     },
+    registerSubmit(){
+
+    },
     render(){
+        
+        const bgImgState = this.state.bgSetting
         return (
             <div className="register">
-                
                 <Flex>
                     <FItem>
                         <div id="box" style={{width: bgImgState.width,height:bgImgState.height}} data-image-src={bgImgState.chunkImg}></div>
                     </FItem>
                 </Flex>
                 <div className="register_content">
-                    <List renderHeader={() => '登录界面'}>
-                        <InputItem
-                            clear
-                            placeholder="邮箱或手机号"
-                            autoFocus
-                            labelNumber='3'
-                            className='registerInput upLine'
-                            extra='用户名不对'
-                            error
-                        >
-                            <div className='register-username' style={{ backgroundImage: 'url(../../images/icon/用户.svg)'}} />
-                            用户名
-                            
-                        </InputItem>
-                        <InputItem
-                            clear
-                            type="password"
-                            labelNumber='3'
-                            placeholder="请输入密码"
-                            className='registerInput bottomLine'
-                        >
-                            <div className='register-password' style={{ backgroundImage: 'url(../../images/icon/密码.svg)'}} />
-                            密　码
-                        </InputItem>
-                        <Button onClick={this.registerSubmit} className='login-btn' type="primary" inline size="large" onClick={this.loginSubmit} activeStyle={{backgroundColor:'red'}}>{loginState?'正在登录...':'登录'}</Button>
-                        <div className="lineSpace"></div>
-                        <Link to='/login/forget'>密码忘记?</Link>
-                    </List>
+                {/*此处使用不同路由加载  邮箱/手机 注册 */}
+                    {this.props.children}
                 </div>
             </div>
         )
+    },
+    componentDidMount(){
+        // 毛玻璃触发的效果
+        // 由于require 有缓存，否则会出现第二次require不加载该文件
+        // require('../backaground')(window);
+        // window.initWindow(document.getElementById('box'));
+        var maoboli=require('../backaground')(window);
+        maoboli.initWindow(document.getElementById('box'));
+    },
+    componentDidUpdate(){
     }
 })
 

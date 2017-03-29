@@ -1,6 +1,6 @@
 import React from 'react'
 import {Flex,WhiteSpace,List, InputItem,Button } from 'antd-mobile'
-import {Link} from 'react-router'
+import {Link,browserHistory } from 'react-router'
 
 
 require('antd-mobile/dist/antd-mobile.min.css')
@@ -15,6 +15,7 @@ const LineSpace = ()=>{
 
 const LoginPage = React.createClass({
     getInitialState(){
+        
         return{
             // chunkImg:'../../images/mn1.jpg'
             bgSetting:{
@@ -26,7 +27,14 @@ const LoginPage = React.createClass({
         }
     },
     loginSubmit(){
-        alert(0)
+        this.setState({loginState:true})
+        console.log('暂停 2s 测试')
+        setTimeout(function(){
+            browserHistory.push('/main');
+            this.setState({loginState:false})
+        }.bind(this),2000)
+        // browserHistory.push('/main');
+        // this.setState({loginState:false})
     },
     componentWillMount(){
         
@@ -36,7 +44,6 @@ const LoginPage = React.createClass({
         const bgImgState = this.state.bgSetting
         return (
             <div className="login">
-                
                 <Flex>
                     <FItem>
                         <div id="box" style={{width: bgImgState.width,height:bgImgState.height}} data-image-src={bgImgState.chunkImg}></div>
@@ -68,18 +75,26 @@ const LoginPage = React.createClass({
                             密　码
                         </InputItem>
                         <Button onClick={this.loginSubmit} className='login-btn' type="primary" inline size="large" onClick={this.loginSubmit} activeStyle={{backgroundColor:'red'}}>{loginState?'正在登录...':'登录'}</Button>
-                        <div className="lineSpace"></div>
+                        <div></div>
                         <Link to='/login/forget'>密码忘记?</Link>
+                        <div></div>
+                        <Link to='/register'>账户注册?</Link>
                     </List>
                 </div>
-                {this.props.children}
             </div>
+            
         )
     },
-    
     componentDidMount(){
         // 毛玻璃触发的效果
-        require('./backaground')
+        // 由于require 有缓存，否则会出现第二次require不加载该文件
+        // require('./backaground')(window);
+        // window.initWindow(document.getElementById('box'));
+        var maoboli=require('./backaground')(window);
+        maoboli.initWindow(document.getElementById('box'));
+    },
+    componentDidUpdate(){
+        
     }
 })
 

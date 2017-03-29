@@ -894,7 +894,7 @@ DropItem.prototype.remove = function(drop) {
 /**
 * Created by Grayson Rex on 2015/3/25.
 */
-const maobaoli = function (window) {
+(function (window) {
     var outBox = null, image = null, canvas = null, context = null,
         outPos = {x: 0, y: 0}, outSize = {w: 0, h: 0};
     var drawPercentCallback = null;
@@ -1021,22 +1021,12 @@ const maobaoli = function (window) {
         ], 1000);
     }
 
-    // window['initWindow'] = initWindow;
-    // window['setDrawPercentCallback'] = setDrawPercentCallback;
-    return {
-        initWindow:initWindow,
-        setDrawPercentCallback:setDrawPercentCallback
-    }
-};
+    window['initWindow'] = initWindow;
+    window['setDrawPercentCallback'] = setDrawPercentCallback;
+})(window);
+            
 // initWindow(document.getElementById('box'));
-
-console.log('type:->',typeof(initWindow))
-console.log('window type:->',typeof(window.initWindow))    
-// window.onload=function(){
-//     alert('加载')
-//     initWindow(document.getElementById('box'))
-// }
-
-// 由于require 有缓存，否则会出现第二次require不加载该文件
-module.exports = maobaoli
+window.onload=function(){
+    initWindow(document.getElementById('box'))
+}
     
