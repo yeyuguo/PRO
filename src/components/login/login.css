@@ -1,0 +1,73 @@
+.login {
+  padding: 0;
+  margin: 0;
+  font-size: 0.3rem;
+}
+.clean-window-out {
+  position: relative;
+  padding: 0;
+}
+.clean-window-out .window-image,
+.clean-window-out .window-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.clean-window-out .window-canvas {
+  z-index: 2;
+}
+.login_content {
+  position: absolute;
+  top: 30%;
+  z-index: 100;
+  text-align: center;
+}
+.login_content * {
+  color: #edeced;
+}
+.login_content .am-list-body {
+  background-color: transparent;
+}
+.login_content .am-list-body .am-list-item {
+  background-color: transparent;
+}
+.login_content .am-list-body .am-list-item .am-input-label {
+  display: flex;
+  height: 0.44rem;
+  line-height: 0.44rem;
+}
+.login_content .am-list-body .am-list-item > * {
+  color: #edeced;
+}
+.login_content .am-list-body .am-list-item > * * {
+  color: #edeced;
+}
+.login_content .login-btn {
+  margin: 0.2rem 0;
+  height: 0.64rem;
+  line-height: 0.64rem;
+}
+.login_content .lable {
+  display: inline-block;
+  background-size: cover;
+  height: 0.44rem;
+  width: 0.44rem;
+  margin-right: 0.1rem;
+}
+.login_content .login-username {
+  display: inline-block;
+  background-size: cover;
+  height: 0.44rem;
+  width: 0.44rem;
+  margin-right: 0.1rem;
+}
+.login_content .login-password {
+  display: inline-block;
+  background-size: cover;
+  height: 0.44rem;
+  width: 0.44rem;
+  margin-right: 0.1rem;
+}

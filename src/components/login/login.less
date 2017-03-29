@@ -1,0 +1,77 @@
+@import (reference) "../../styles/less/common.less";
+// @import (inline) "../../styles/less/common.less";
+
+.login{
+    padding:0;
+    margin:0;
+    font-size: 0.3rem;
+}
+.clean-window-out {
+    position: relative;
+    padding: 0;
+}
+
+.clean-window-out .window-image, .clean-window-out .window-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.clean-window-out .window-canvas {
+    z-index: 2;
+}
+
+.login_content{
+    @fontColor:@white;
+    *{
+        color:@fontColor;
+    }
+    position: absolute;
+    top:30%;
+    z-index: 100;
+    text-align: center;
+    @labelHeight:0.44rem;
+    .am-list-body{
+        background-color: transparent;
+        .am-list-item{
+            background-color: transparent;
+            .am-input-label{
+                display: flex;
+                height: @labelHeight;
+                line-height: @labelHeight;
+            }
+            &>*{
+                color:@fontColor;
+                *{
+                    color:@fontColor;
+                }
+            }
+        }
+        
+        .upLine{
+            // border-bottom-right-radius: 50%;
+        }
+    }
+    .login-btn{
+        margin:0.2rem 0;
+        height: 0.64rem;
+        line-height: 0.64rem;
+    }
+    
+    .lable{
+        display: inline-block;
+        background-size: cover;
+        height: @labelHeight;
+        width: @labelHeight;
+        margin-right: 0.1rem;
+    }
+    .login-username{
+        .lable;
+    }
+    .login-password{
+        .lable;
+    }
+}

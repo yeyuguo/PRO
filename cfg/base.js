@@ -40,7 +40,7 @@ module.exports = {
             styles: `${defaultSettings.srcPath}/styles/`,
             config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV,
             'react/lib/ReactMount': 'react-dom/lib/ReactMount',
-            // 'antd-mobile': `${this.modulesDirectories}/antd-mobile`
+            // 'antd-mobile': `../node_modules/antd-mobile`
         }
     },
     module: {}

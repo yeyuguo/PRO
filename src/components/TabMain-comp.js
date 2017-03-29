@@ -1,6 +1,6 @@
 
 require('normalize.css/normalize.css');
-require('antd-mobile/dist/antd-mobile.css')
+require('antd-mobile/dist/antd-mobile.min.css')
 require('../styles/less/main.less')
 
 

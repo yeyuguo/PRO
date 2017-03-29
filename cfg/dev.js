@@ -10,7 +10,7 @@ let BowerWebpackPlugin = require('bower-webpack-plugin');
 
 let config = Object.assign({}, baseConfig, {
     entry: [
-        'webpack-dev-server/client?http://127.0.0.1:' + defaultSettings.port,
+        'webpack-dev-server/client?http://0.0.0.0:' + defaultSettings.port,
         'webpack/hot/only-dev-server',
         './src/index'
     ],
@@ -41,16 +41,24 @@ config.module.loaders.push({
     // {"plugins": [["import", { "libraryName": "antd-mobile" }]]}
 
 // 添加代理
-// config.devServer = {  
-//     proxy: { 
-//         hot: true,
-//         inline: true, 
-//         '/aa': {  
-//             target: '10.9.32.71:8000',  
-//             secure: false  
+// config.devServer = {
+//     proxy: {  
+//         '/test': {  
+//             target: '0.0.0.0',  
+//             secure: false
 //         }  
-//     }  
-// }  
+//     }
+// }
+
+// config.devServer = {  
+//     contentBase: './src/',
+//     publicPath: '/assets/',
+//     historyApiFallback: true,
+//     hot: true,
+//     inline: true,
+//     port: 8000,
+//     host: '0.0.0.0'
+// } 
 
 
 
