@@ -13,7 +13,8 @@ import ForgetPwd from '../login/forget/forgetPwd'
 import Register from '../login/register/register'
 import Phone from '../login/register/phone'
 import Email from '../login/register/email'
-import ImgShow from '../demoComp/3dpic/index'
+
+// import ImgShow from '../demoComp/3dpic/index'
 
 require('normalize.css/normalize.css');
 require('../../styles/less/main.less')
