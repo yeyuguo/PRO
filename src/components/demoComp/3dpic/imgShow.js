@@ -170,6 +170,24 @@ function init() {
         // details.className = 'details';
         // details.innerHTML = table[i + 1] + '<br>' + table[i + 2];
         // element.appendChild(details);
+        element.onclick = function(e) {
+            e.stopPropagation();
+            var showImgObj = document.getElementsByClassName('showImg')[0]
+            console.log({showImgObj})
+            if (showImgObj.style.display == 'block' && showImgObj.style.background == this.style.background) {
+                // 相同图片就不替换了
+                return false;
+            }
+            
+            var thisImg = this.style.background
+            var n = 2
+            var position = (80 / n) * 1
+            showImgObj.style.background = thisImg
+            showImgObj.style.display = 'block';
+            showImgObj.style.top = `${position}%`;
+            showImgObj.style.left = `${position}%`;
+            showImgObj.style.transform = `scale(${n})`;
+        }
 
         var object = new THREE.CSS3DObject(element);
         object.position.x = Math.random() * 4000 - 2000;
@@ -299,6 +317,13 @@ function init() {
     transform(targets.table, 2000);
 
     //
+    // 自己添加的事件  关闭图片展示
+    document.onclick = function() {
+        var showImgObj = document.getElementsByClassName('showImg')[0]
+        if (showImgObj.style.display == 'block') {
+            showImgObj.style.display = 'none'
+        }
+    }
 
     window.addEventListener('resize', onWindowResize, false);
 

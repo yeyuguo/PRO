@@ -17,7 +17,9 @@ const ImgShow = React.createClass({
     render(){
         return (
             <div>
-                <div id="container"></div>
+                <div id="container">
+                    <div className="showImg"></div>
+                </div>
                 <div id="info"><a href="http://threejs.org" target="_blank">three.js css3d</a> - periodic table. <a href="https://plus.google.com/113862800338869870683/posts/QcFk5HrWran" target="_blank">info</a>.</div>
                 <div id="menu">
                     <button id="table">TABLE</button>
