@@ -101,6 +101,19 @@
             color: #000000;
             background-color: rgba(0, 255, 255, 0.75);
         }
+        /*self*/
+        
+        .showImg {
+            display: none;
+            position: absolute;
+            z-index: 3;
+            width: 120px;
+            height: 160px;
+            box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
+            border: 1px solid rgba(127, 255, 255, 0.25);
+            text-align: center;
+            cursor: default;
+        }
     </style>
 </head>
 
@@ -110,7 +123,10 @@
     <script src="js/controls/TrackballControls.js"></script>
     <script src="js/renderers/CSS3DRenderer.js"></script>
 
-    <div id="container"></div>
+    <div id="container">
+        <div class="showImg">
+        </div>
+    </div>
     <div id="info"><a href="http://threejs.org" target="_blank">three.js css3d</a> - periodic table. <a href="https://plus.google.com/113862800338869870683/posts/QcFk5HrWran" target="_blank">info</a>.</div>
     <div id="menu">
         <button id="table">TABLE</button>
@@ -121,6 +137,7 @@
 
     <script>
         var table = [
+            //  字母, 全称  , 半径    , 列位置 ,行位置
             "H", "Hydrogen", "1.00794", 1, 1,
             "He", "Helium", "4.002602", 18, 1,
             "Li", "Lithium", "6.941", 1, 2,
@@ -290,6 +307,30 @@
                 // details.innerHTML = table[i + 1] + '<br>' + table[i + 2];
                 // element.appendChild(details);
 
+                element.onclick = function(e) {
+                    // var newNode = this.cloneNode(true)
+                    // console.log(newNode);
+                    // console.log(document.getElementsByName('body'))
+                    // this.parentNode.appendChild(newNode);
+                    // newNode.style.transform = 'scale(5)';
+
+                    e.stopPropagation();
+                    var showImgObj = document.getElementsByClassName('showImg')[0]
+                    if (showImgObj.style.display == 'block' && showImgObj.style.background == this.style.background) {
+                        // 相同图片就不替换了
+                        return false;
+                    }
+                    
+                    var thisImg = this.style.background
+                    var n = 2
+                    var position = (80 / n) * 1
+                    showImgObj.style.background = thisImg
+                    showImgObj.style.display = 'block';
+                    showImgObj.style.top = `${position}%`;
+                    showImgObj.style.left = `${position}%`;
+                    showImgObj.style.transform = `scale(${n})`;
+                }
+
                 var object = new THREE.CSS3DObject(element);
                 object.position.x = Math.random() * 4000 - 2000;
                 object.position.y = Math.random() * 4000 - 2000;
@@ -301,9 +342,14 @@
                 //
 
                 var object = new THREE.Object3D();
-                object.position.x = (table[i + 3] * 140) - 1330;
-                object.position.y = -(table[i + 4] * 180) + 990;
 
+                object.position.x = (table[i + 3] * 140) - 1330; // 列的位置
+                object.position.y = -(table[i + 4] * 180) + 990; // 行的位置
+                // console.log({
+                //         object
+                //     })
+                // console.log('table[i + 3]:', i, table[i + 3])
+                // console.log('object.x:', object.position.x);
                 targets.table.push(object);
 
             }
@@ -365,6 +411,7 @@
                 var object = new THREE.Object3D();
 
                 object.position.x = ((i % 5) * 400) - 800;
+                // object.position.x = ((i % 5) * 400) - 800;
                 object.position.y = (-(Math.floor(i / 5) % 5) * 400) + 800;
                 object.position.z = (Math.floor(i / 25)) * 1000 - 2000;
 
@@ -382,9 +429,12 @@
             //
 
             controls = new THREE.TrackballControls(camera, renderer.domElement);
+            // controls.rotateSpeed = 0.5;
+            // controls.minDistance = 500;
+            // controls.maxDistance = 6000;
             controls.rotateSpeed = 0.5;
-            controls.minDistance = 500;
-            controls.maxDistance = 6000;
+            controls.minDistance = 50;
+            controls.maxDistance = 22000;
             controls.addEventListener('change', render);
 
             var button = document.getElementById('table');
@@ -457,6 +507,16 @@
                 .onUpdate(render)
                 .start();
 
+
+
+
+            // 自己添加的事件
+            document.onclick = function() {
+                var showImgObj = document.getElementsByClassName('showImg')[0]
+                if (showImgObj.style.display == 'block') {
+                    showImgObj.style.display = 'none'
+                }
+            }
         }
 
         function onWindowResize() {
