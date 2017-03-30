@@ -150,9 +150,7 @@ function init() {
         var element = document.createElement('div');
         element.className = 'element';
         element.style.backgroundColor = 'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')';
-        // imgUrl = '../../../images/login_' + picNum + '.jpg'
         var img = '../../../images/login/login_' + picNum + '.jpg'
-        console.log({img})
         element.style.background = 'url('+img+')'
         element.style.backgroundSize = 'cover'
 
@@ -173,7 +171,6 @@ function init() {
         element.onclick = function(e) {
             e.stopPropagation();
             var showImgObj = document.getElementsByClassName('showImg')[0]
-            console.log({showImgObj})
             if (showImgObj.style.display == 'block' && showImgObj.style.background == this.style.background) {
                 // 相同图片就不替换了
                 return false;
@@ -330,7 +327,6 @@ function init() {
 }
 
 function transform(targets, duration) {
-    console.log({TWEEN});
     TWEEN.removeAll();
 
     for (var i = 0; i < objects.length; i++) {

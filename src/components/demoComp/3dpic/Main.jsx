@@ -2,9 +2,9 @@ import React from 'react'
 
 require('./Main.less')
 window.THREE = require('../../../js/build/three.js')
-console.log({THREE})
+// console.log({THREE})
 window.TWEEN = require('tween')
-// var TWEEN = require('../../../js/libs/tween.min')
+// window.TWEEN = require('../../../js/libs/tween.min') // 引入会报错，找不到 TWEEN
 require('../../../js/controls/TrackballControls')
 require('../../../js/renderers/CSS3DRenderer')
 
@@ -32,7 +32,6 @@ const ImgShow = React.createClass({
     },
     componentDidMount(){
         var imgShow = require('./imgShow');
-        console.log({imgShow})
         imgShow.init()
         imgShow.animate()
     }
