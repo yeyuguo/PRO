@@ -10,7 +10,9 @@ html {
   /* 默认 16px; 16px == 100% */
   /* 为了容易计算，我想要修改默认rem就是 10px  10/16就是 1rem */
   /*那么目标rem就是 ??px/10px = ? rem*/
-  color: #161418;
+}
+body {
+  background-color: #edeced;
 }
 .lineBottom {
   position: relative;
