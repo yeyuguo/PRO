@@ -14,6 +14,9 @@ html {
 body {
   background-color: #edeced;
 }
+li {
+  text-decoration: none;
+}
 .lineBottom {
   position: relative;
 }
@@ -27,6 +30,18 @@ body {
   top: auto;
   width: 100%;
   border-bottom: 1PX solid #ddd;
+}
+.bright:hover {
+  -webkit-filter: brightness(1.2);
+}
+.blur {
+  -webkit-filter: blur(10px);
+  /* Chrome, Opera */
+  -moz-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+  /* IE6~IE9 */
 }
 .bglightGray {
   background: #F3F3F5;

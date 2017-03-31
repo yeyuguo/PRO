@@ -1,0 +1,69 @@
+.person {
+  width: 100%;
+  color: #edeced;
+}
+.person .person-body {
+  position: relative;
+  height: 80%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.person .person-body .fl {
+  float: left;
+  position: absolute;
+  bottom: 0;
+}
+.person .person-body .simpleDes {
+  float: left;
+  position: absolute;
+  bottom: 0;
+}
+.person .person-body .descript {
+  width: 100%;
+  height: 3rem;
+  float: left;
+  position: absolute;
+  bottom: 0;
+  -webkit-filter: blur(10px);
+  /* Chrome, Opera */
+  -moz-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+  /* IE6~IE9 */
+}
+.person .person-footer {
+  width: 100%;
+  height: 2rem;
+}
+.person .person-footer ul {
+  width: inherit;
+  height: inherit;
+  padding: 0;
+  margin: 0;
+}
+.person .person-footer li {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
+  list-style: none;
+}
+.person .person-footer li:hover {
+  transition: -webkit-filter 0.2s ease-out;
+  -webkit-filter: brightness(1.5);
+}
+.person .person-footer li.f1 {
+  background: #854EC5;
+}
+.person .person-footer li.f2 {
+  background: #A760D8;
+}
+.person .person-footer li.f3 {
+  background: #DD6CA2;
+}
+.person .person-footer li.f4 {
+  background: #FFD372;
+}

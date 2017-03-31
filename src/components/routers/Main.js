@@ -15,7 +15,7 @@ import Phone from '../login/register/phone'
 import Email from '../login/register/email'
 import ImgShow from '../demoComp/3dpic/Main'
 
-import ViewOther from '../personInfo/Main'
+import PersonPage from '../personInfo/Main'
 
 
 require('normalize.css/normalize.css');
@@ -44,7 +44,7 @@ const AppRouter = (
             TODO 完成把图片展示拆分成组件
             */}
             <Route path='imgShow' component={ImgShow} />
-            <Route path='other/:id' component={ViewOther} />
+            <Route path='person/:userId' component={PersonPage} />
         </Route>
     </Router>
 )

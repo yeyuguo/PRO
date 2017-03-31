@@ -1,5 +1,5 @@
 import React from 'react'
-import {ListView,List} from 'antd-mobile'
+import {ListView} from 'antd-mobile'
 // import ListView from 'antd-mobile/lib/list-view';
 // import List  from 'antd-mobile/lib/list';
 

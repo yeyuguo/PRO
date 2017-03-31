@@ -1,8 +1,9 @@
 import React from 'react'
-
 require('antd-mobile/dist/antd-mobile.min.css')
 
-const ViewOther = React.createClass({
+
+
+const Demo = React.createClass({
     getInitialState(){
         return {
             test:'访问成功!'
@@ -16,4 +17,9 @@ const ViewOther = React.createClass({
 })
 
 
-export default ViewOther;
+export default Demo;
+
+// 常用函数备注
+
+// 获取 路由参数
+{this.props.params.xxx}

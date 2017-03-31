@@ -1,1 +1,71 @@
 @import (reference) "../../styles/less/common.less";
+
+@f1:#854EC5;
+@f2:#A760D8;
+@f3:#DD6CA2;
+@f4:#FFD372;
+
+.person{
+    width:100%;
+    color:@white;
+    .person-body{
+        position: relative;
+        height: 80%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+        .fl{
+            float: left;
+            position: absolute;
+            bottom: 0;
+        }
+        .simpleDes{
+            .fl;
+        }
+        .descript{
+            width:100%;
+            height: 3rem;
+            .fl;
+            .blur;
+            // 毛玻璃
+            
+        }
+    }
+    .person-footer{
+        width: 100%;
+        height: 2rem;
+        ul{
+            width: inherit;
+            height: inherit;
+            padding:0;
+            margin:0;
+        }
+        li{
+            // 闪光效果
+            &:hover{
+                transition: -webkit-filter .2s ease-out;
+                -webkit-filter:brightness(1.5);
+            }
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width:25%;
+            height: 100%;
+            list-style: none;
+            
+            &.f1{
+                background: @f1;
+            }
+            &.f2{
+                background: @f2;
+            }
+            &.f3{
+                background: @f3;
+            }
+            &.f4{
+                background: @f4;
+            }
+        }
+    }
+}
