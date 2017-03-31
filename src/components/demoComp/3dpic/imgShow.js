@@ -118,6 +118,22 @@ var table = [
     "Uus", "Ununseptium", "(294)", 17, 7,
     "Uuo", "Ununoctium", "(294)", 18, 7
 ];
+var table = [
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+            [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+            [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ]
 
 var camera, scene, renderer;
 var controls;
@@ -145,64 +161,125 @@ function init() {
         var n = n || 16;
         return Math.round(Math.random() * n);
     }
-    for (var i = 0; i < table.length; i += 5) {
-        var picNum = random()
-        var element = document.createElement('div');
-        element.className = 'element';
-        element.style.backgroundColor = 'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')';
-        var img = '../../../images/login/login_' + picNum + '.jpg'
-        element.style.background = 'url('+img+')'
-        element.style.backgroundSize = 'cover'
-
-        // var number = document.createElement('div');
-        // number.className = 'number';
-        // number.textContent = (i / 5) + 1;
-        // element.appendChild(number);
-
-        // var symbol = document.createElement('div');
-        // symbol.className = 'symbol';
-        // symbol.textContent = table[i];
-        // element.appendChild(symbol);
-
-        // var details = document.createElement('div');
-        // details.className = 'details';
-        // details.innerHTML = table[i + 1] + '<br>' + table[i + 2];
-        // element.appendChild(details);
-        element.onclick = function(e) {
-            e.stopPropagation();
-            var showImgObj = document.getElementsByClassName('showImg')[0]
-            if (showImgObj.style.display == 'block' && showImgObj.style.background == this.style.background) {
-                // 相同图片就不替换了
-                return false;
+    // 二维数组的计算 start
+    for (var i = 0; i < table.length; i++) {
+        console.log(i);
+        for (var j = 0; j < table[i].length; j++) {
+            if (table[i][j] != 0) {
+                continue;
             }
-            
-            var thisImg = this.style.background
-            var n = 2
-            var position = (80 / n) * 1
-            showImgObj.style.background = thisImg
-            showImgObj.style.display = 'block';
-            showImgObj.style.top = `${position}%`;
-            showImgObj.style.left = `${position}%`;
-            showImgObj.style.transform = `scale(${n})`;
+            console.log(table[i][j])
+            var picNum = random()
+            var element = document.createElement('div');
+            element.className = 'element';
+            element.style.backgroundColor = 'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')';
+            var img = '../../../images/login/login_' + picNum + '.jpg'
+            element.style.background = 'url('+img+')'
+            element.style.backgroundSize = 'cover'
+                // element.textContent = `x:${table[i+3]},y:${table[i+4]}`
+                // element.style.fontSize = '2em';
+
+            element.onclick = function(e) {
+                e.stopPropagation();
+                var showImgObj = document.getElementsByClassName('showImg')[0]
+                if (showImgObj.style.display == 'block' && showImgObj.style.background == this.style.background) {
+                    // 相同图片就不替换了
+                    return false;
+                }
+
+                var thisImg = this.style.background
+                var n = 2
+                var position = (80 / n) * 1
+                showImgObj.style.background = thisImg
+                showImgObj.style.display = 'block';
+                showImgObj.style.top = `${position}%`;
+                showImgObj.style.left = `${position}%`;
+                showImgObj.style.transform = `scale(${n})`;
+            }
+
+            var object = new THREE.CSS3DObject(element);
+            object.position.x = Math.random() * 4000 - 2000;
+            object.position.y = Math.random() * 4000 - 2000;
+            object.position.z = Math.random() * 4000 - 2000;
+            scene.add(object);
+
+            objects.push(object);
+
+            //
+
+            var object = new THREE.Object3D();
+
+            object.position.x = (j * 140) - 1330; // 列的位置
+            object.position.y = -(i * 180) + 990; // 行的位置
+            // object.position.x = (table[i] * 140) - 1330; // 列的位置
+            // object.position.y = -(table[i + 1] * 180) + 990; // 行的位置
+            // console.log({
+            //         object
+            //     })
+            // console.log('table[i + 3]:', i, table[i + 3])
+            // console.log('object.x:', object.position.x);
+            targets.table.push(object);
         }
-
-        var object = new THREE.CSS3DObject(element);
-        object.position.x = Math.random() * 4000 - 2000;
-        object.position.y = Math.random() * 4000 - 2000;
-        object.position.z = Math.random() * 4000 - 2000;
-        scene.add(object);
-
-        objects.push(object);
-
-        //
-
-        var object = new THREE.Object3D();
-        object.position.x = (table[i + 3] * 140) - 1330;
-        object.position.y = -(table[i + 4] * 180) + 990;
-
-        targets.table.push(object);
-
     }
+    // for (var i = 0; i < table.length; i += 5) {
+    //     var picNum = random()
+    //     var element = document.createElement('div');
+    //     element.className = 'element';
+    //     element.style.backgroundColor = 'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')';
+    //     var img = '../../../images/login/login_' + picNum + '.jpg'
+    //     element.style.background = 'url('+img+')'
+    //     element.style.backgroundSize = 'cover'
+
+    //     // var number = document.createElement('div');
+    //     // number.className = 'number';
+    //     // number.textContent = (i / 5) + 1;
+    //     // element.appendChild(number);
+
+    //     // var symbol = document.createElement('div');
+    //     // symbol.className = 'symbol';
+    //     // symbol.textContent = table[i];
+    //     // element.appendChild(symbol);
+
+    //     // var details = document.createElement('div');
+    //     // details.className = 'details';
+    //     // details.innerHTML = table[i + 1] + '<br>' + table[i + 2];
+    //     // element.appendChild(details);
+    //     element.onclick = function(e) {
+    //         e.stopPropagation();
+    //         var showImgObj = document.getElementsByClassName('showImg')[0]
+    //         if (showImgObj.style.display == 'block' && showImgObj.style.background == this.style.background) {
+    //             // 相同图片就不替换了
+    //             return false;
+    //         }
+            
+    //         var thisImg = this.style.background
+    //         var n = 2
+    //         var position = (80 / n) * 1
+    //         showImgObj.style.background = thisImg
+    //         showImgObj.style.display = 'block';
+    //         showImgObj.style.top = `${position}%`;
+    //         showImgObj.style.left = `${position}%`;
+    //         showImgObj.style.transform = `scale(${n})`;
+    //     }
+
+    //     var object = new THREE.CSS3DObject(element);
+    //     object.position.x = Math.random() * 4000 - 2000;
+    //     object.position.y = Math.random() * 4000 - 2000;
+    //     object.position.z = Math.random() * 4000 - 2000;
+    //     scene.add(object);
+
+    //     objects.push(object);
+
+    //     //
+
+    //     var object = new THREE.Object3D();
+    //     object.position.x = (table[i + 3] * 140) - 1330;
+    //     object.position.y = -(table[i + 4] * 180) + 990;
+
+    //     targets.table.push(object);
+
+
+    // }
 
     // sphere
 

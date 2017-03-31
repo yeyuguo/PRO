@@ -43,9 +43,6 @@ const AppRouter = (
             */}
             <Route path='imgShow' component={ImgShow} />
         </Route>
-        
-        
-        
     </Router>
 )
 
