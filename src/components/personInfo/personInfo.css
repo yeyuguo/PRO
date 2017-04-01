@@ -7,6 +7,7 @@
   height: 80%;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .person .person-body .fl {
   float: left;
@@ -17,13 +18,35 @@
   float: left;
   position: absolute;
   bottom: 0;
+  bottom: 3rem;
+  font-size: 0.5rem;
+  height: 1rem;
+  line-height: 1rem;
+  width: 100%;
 }
-.person .person-body .descript {
+.person .person-body .simpleDes > span {
+  display: inline-block;
+  text-align: center;
+}
+.person .person-body .simpleDes .userName {
+  width: 50%;
+  color: #94979d;
+}
+.person .person-body .simpleDes .userSex {
+  width: 10%;
+  color: #06AE14;
+}
+.person .person-body .simpleDes .userAge {
+  width: 30%;
+  color: #FFD372;
+}
+.person .person-body .blurBg {
   width: 100%;
   height: 3rem;
   float: left;
   position: absolute;
   bottom: 0;
+  background: inherit;
   -webkit-filter: blur(10px);
   /* Chrome, Opera */
   -moz-filter: blur(10px);
@@ -31,6 +54,61 @@
   filter: blur(10px);
   filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
   /* IE6~IE9 */
+}
+.person .person-body .descript {
+  width: 100%;
+  height: 3rem;
+  float: left;
+  position: absolute;
+  bottom: 0;
+}
+.person .person-body .descript > div {
+  display: flex;
+  align-items: center;
+  height: 33%;
+  width: inherit;
+}
+.person .person-body .descript .f1 > div {
+  float: left;
+  width: 50%;
+  text-align: center;
+  font-size: 0.4rem;
+  height: 0.35rem;
+  line-height: 0.35rem;
+}
+.person .person-body .descript .f1 .icon {
+  display: inline-block;
+  width: .35rem;
+  height: .35rem;
+  margin-top: 0.1rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.person .person-body .descript .f1 .address .icon {
+  background-image: url('../../images/icon/地址.svg');
+}
+.person .person-body .descript .f1 .distance .icon {
+  background-image: url('../../images/icon/距离.svg');
+}
+.person .person-body .descript .f2 {
+  width: 100%;
+  text-indent: 0.7rem;
+  display: block;
+  overflow: auto;
+}
+.person .person-body .descript .f3 {
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  color: #edeced;
+}
+.person .person-body .descript .f3 span {
+  display: inline-block;
+  height: inherit;
+  padding: 0 0.15rem;
+  border-right: 1px solid #fff;
+}
+.person .person-body .descript .f3 span:last-child {
+  border-right: none;
 }
 .person .person-footer {
   width: 100%;
@@ -55,15 +133,34 @@
   transition: -webkit-filter 0.2s ease-out;
   -webkit-filter: brightness(1.5);
 }
+.person .person-footer li > div {
+  height: inherit;
+  width: 100%;
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
+  background-position: 30% 30%;
+}
 .person .person-footer li.f1 {
   background: #854EC5;
+}
+.person .person-footer li.f1 > div {
+  background-image: url('../../images/icon/个人.svg');
 }
 .person .person-footer li.f2 {
   background: #A760D8;
 }
+.person .person-footer li.f2 > div {
+  background-image: url('../../images/icon/相册.svg');
+}
 .person .person-footer li.f3 {
   background: #DD6CA2;
 }
+.person .person-footer li.f3 > div {
+  background-image: url('../../images/icon/关注.svg');
+}
 .person .person-footer li.f4 {
   background: #FFD372;
+}
+.person .person-footer li.f4 > div {
+  background-image: url('../../images/icon/信息.svg');
 }

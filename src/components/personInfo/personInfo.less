@@ -13,22 +13,112 @@
         height: 80%;
         background-size: cover;
         background-repeat: no-repeat;
-        
+        background-attachment: fixed;
+        @miaoshuHeight:3rem;
         .fl{
             float: left;
             position: absolute;
             bottom: 0;
         }
+        // username 和 性别样式
         .simpleDes{
             .fl;
+            @height:1rem;
+            bottom:@miaoshuHeight;
+            font-size: 0.5rem;
+            height: @height;
+            line-height: @height;
+            width: 100%;
+            &>span{
+                display: inline-block;
+                text-align: center;
+            }
+            .userName{
+                width: 50%;
+                color:#94979d;
+            }
+            .userSex{
+                width:10%;
+                color: @green;
+            }
+            .userAge{
+                width: 30%;
+                color:@f4;
+            }
         }
+        
+        .blurBg{
+            width:100%;
+            height: @miaoshuHeight;
+            .fl;
+            // 毛玻璃
+            background: inherit;
+            .blur;
+            
+        }
+        // 简易描述
         .descript{
             width:100%;
-            height: 3rem;
+            height: @miaoshuHeight;
+            // background-color: @black;
+            // opacity: 0.2;
             .fl;
-            .blur;
-            // 毛玻璃
-            
+            &>div{
+                display: flex;
+                align-items: center;
+                height: 33%;
+                width:inherit;
+            }
+            .f1{
+                &>div{
+                    float: left;
+                    width:50%;
+                    text-align: center;
+                    font-size: 0.4rem;
+                    height: 0.35rem;
+                    line-height: 0.35rem;
+                }
+                .icon{
+                    display: inline-block;
+                    width: .35rem;
+                    height: .35rem;
+                    margin-top:0.1rem;
+                    background-size: 100% 100%;
+                    background-repeat:no-repeat;
+                    // background-size: cover;
+                }
+                .address{
+                    .icon{
+                        background-image: url('../../images/icon/地址.svg');
+                    }
+                }
+                .distance{
+                    .icon{
+                        background-image: url('../../images/icon/距离.svg');
+                    }
+                }
+            }
+            .f2{
+                width: 100%;
+                text-indent:0.7rem;
+                display: block;
+                overflow: auto;
+            }
+            .f3{
+                padding-left: 0.6rem;
+                padding-right: 0.6rem;
+                // background: mediumaquamarine;
+                color:@white;
+                span{
+                    display: inline-block;
+                    height: inherit;
+                    padding: 0 0.15rem;
+                    border-right: 1px solid #fff;
+                    &:last-child{
+                        border-right: none;
+                    }
+                }
+            }
         }
     }
     .person-footer{
@@ -54,17 +144,36 @@
             height: 100%;
             list-style: none;
             
+            &>div{
+                height: inherit;
+                width: 100%;
+                background-size: 80% 80%;
+                background-repeat: no-repeat;
+                background-position: 30% 30%;
+            }
             &.f1{
                 background: @f1;
+                &>div{
+                    background-image: url('../../images/icon/个人.svg')
+                }
             }
             &.f2{
                 background: @f2;
+                &>div{
+                    background-image: url('../../images/icon/相册.svg')
+                }
             }
             &.f3{
                 background: @f3;
+                &>div{
+                    background-image: url('../../images/icon/关注.svg')
+                }
             }
             &.f4{
                 background: @f4;
+                &>div{
+                    background-image: url('../../images/icon/信息.svg')
+                }
             }
         }
     }

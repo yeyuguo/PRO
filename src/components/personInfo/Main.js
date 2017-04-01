@@ -9,7 +9,7 @@ const PersonPage = React.createClass({
         return {
             test:true,
             personInfo:{
-                bgImg:'../../images/mn2.jpg',
+                bgImg:'../../images/mn1.jpg',
 
             }
         }
@@ -22,18 +22,36 @@ const PersonPage = React.createClass({
                 {this.state.test?'访问成功':'访问错误'},路由参数{this.props.params.userId}
                 <div className="person-body" style={{backgroundImage:'url('+personInfo.bgImg+')'}}>
                     <div className="simpleDes">
-                        马玲玲 o | 21
+                        <span className="userName">马玲玲</span>
+                        <span className="userSex">女</span>
+                        <span className="userAge">22</span>
                     </div>
-                    <div className="descript">
-                        中间文字描述
+                    <div className="blurBg"></div>
+                    <div className='descript'>
+                        <div className="f1">
+                            <div className="address">
+                                <span className="icon"></span>
+                                <span className="content">北京</span>
+                            </div>
+                            <div className="distance">
+                                <span className="icon"></span>
+                                <span className="content">距离</span>
+                            </div>
+                        </div>
+                        <div className="f2">个人人描述个人描述个人描述个人描述个人描述个人描述个人描述个人描述个人描述</div>
+                        <div className="f3">
+                            <span>aaa</span>
+                            <span>bbbbbbbbbbbbbbb</span>
+                            <span>ccccc</span>
+                        </div>
                     </div>
                 </div>
                 <div className="person-footer">
                     <ul>
-                        <li className='f1'>更多信息</li>
-                        <li className='f2'>相片</li>
-                        <li className='f3'>关注的人</li>
-                        <li className='f4'>发送信息</li>
+                        <li className='f1'><div></div></li>
+                        <li className='f2'><div></div></li>
+                        <li className='f3'><div></div></li>
+                        <li className='f4'><div></div></li>
                     </ul>
                 </div>         
             </div>

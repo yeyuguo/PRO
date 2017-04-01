@@ -35,11 +35,11 @@ li {
   -webkit-filter: brightness(1.2);
 }
 .blur {
-  -webkit-filter: blur(10px);
+  -webkit-filter: blur(0.3rem);
   /* Chrome, Opera */
-  -moz-filter: blur(10px);
-  -ms-filter: blur(10px);
-  filter: blur(10px);
+  -moz-filter: blur(0.3rem);
+  -ms-filter: blur(0.3rem);
+  filter: blur(0.3rem);
   filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
   /* IE6~IE9 */
 }

@@ -42,9 +42,12 @@ const AppRouter = (
             </Route>
             {/*
             TODO 完成把图片展示拆分成组件
+            <Route path='personal' component={Personal}>
+                <Route path='personal/:userId' component={PersonPage} />
+            </Route>
             */}
             <Route path='imgShow' component={ImgShow} />
-            <Route path='person/:userId' component={PersonPage} />
+            <Route path='personal/:userId' component={PersonPage} />
         </Route>
     </Router>
 )
