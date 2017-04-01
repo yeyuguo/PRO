@@ -13,9 +13,10 @@ const open = require('open');
 let isInitialCompilation = true;
 
 const compiler = webpack(config);
+const host = '0.0.0.0'
 
 new WebpackDevServer(compiler, config.devServer)
-.listen(config.port, 'localhost', (err) => {
+.listen(config.port, host, (err) => {
   if (err) {
     console.log(err);
   }

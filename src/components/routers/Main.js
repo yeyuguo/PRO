@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route,IndexRoute, browserHistory } from 'react-router';
 
-import Home from '../Home'
+
 import TabMain from '../TabMain-comp'
 import FriendMsg from '../friendMsg/Main'
 import FriendList from '../friendList/Main'
@@ -22,6 +22,16 @@ require('normalize.css/normalize.css');
 require('../../styles/less/main.less')
 require('antd-mobile/dist/antd-mobile.css')
 require('../../js/common')
+
+const Home = React.createClass({
+    render(){
+        return (
+            <div>
+                {this.props.children}
+            </div>
+        )
+    }
+})
 const AppRouter = (
     <Router history={browserHistory}>
         <Route path="/linkTest" component={LinkTest}/>{/* 有效 */}
