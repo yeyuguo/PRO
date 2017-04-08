@@ -2,6 +2,8 @@ import React from 'react'
 import {Flex,WhiteSpace,List, InputItem,Button } from 'antd-mobile'
 import {Link,browserHistory } from 'react-router'
 import { is, fromJS} from 'immutable';
+import { createForm } from 'rc-form';
+
 // <<<--------->>>
 import {connect} from 'react-redux'
 import {testAction} from '../../redux/actions/Main'
@@ -24,17 +26,12 @@ const LoginPage = React.createClass({
         const imgNum = maoboli.random()
         // alert(imgNum)
         return{
-            // chunkImg:'../../images/mn1.jpg'
-            // bgSetting:{
-            //     // chunkImg:'../../images/login/login_1.jpg',
-            //     chunkImg:'../../images/login/login_'+imgNum+'.jpg',
-            //     height:document.documentElement.clientHeight
-            // },
             imgNum,
             loginState:false
         }
     },
-    loginSubmit(){
+    loginSubmit(e){
+        e.preventDefault();  
         // this.setState({loginState:true})
         // console.log('暂停 2s 测试')
         // setTimeout(function(){
@@ -44,15 +41,6 @@ const LoginPage = React.createClass({
 
     },
     componentWillMount(){
-        // test redux
-        // this.props.testAction()
-         // 仅仅执行 reducer里定义的方法
-        console.log('this.props.store:',this.props.store);
-        console.log('yes')
-        console.log('this.props:',this.props)
-        console.log('this.context:',this.context)
-        console.log('this.context key:',Object.keys(this.context))
-
     },
     shouldComponentUpdate(nextProps, nextState) {
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
@@ -76,41 +64,9 @@ const LoginPage = React.createClass({
                         <div id="box" style={{width: '100%',height:bgImgState.height}} data-image-src={bgImgState.chunkImg}></div>
                     </FItem>
                 </Flex>
-                <div className="login_content">
-                    <List renderHeader={() => '登录界面'}>
-                        <InputItem
-                            clear
-                            placeholder="邮箱或手机号"
-                            autoFocus
-                            labelNumber='3'
-                            className='loginInput upLine'
-                            extra='用户名不对'
-                            error
-                        >
-                            <div className='login-username' style={{ backgroundImage: 'url(../../images/icon/用户.svg)'}} />
-                            用户名
-                            
-                        </InputItem>
-                        <InputItem
-                            clear
-                            type="password"
-                            labelNumber='3'
-                            placeholder="请输入密码"
-                            className='loginInput bottomLine'
-                        >
-                            <div className='login-password' style={{ backgroundImage: 'url(../../images/icon/密码.svg)'}} />
-                            密　码
-                        </InputItem>
-                        {/*<Button onClick={this.loginSubmit} className='login-btn' type="primary" inline size="large" activeStyle={{backgroundColor:'red'}}>{loginState?'正在登录...':'登录'}</Button>*/}
-                        <Button onClick={testClickAction} className='login-btn' type="primary" inline size="large" activeStyle={{backgroundColor:'red'}}>{loginState?'正在登录...':'登录'}</Button>
-                        <div></div>
-                        <Link to='/login/forget'>密码忘记?</Link>
-                        <div></div>
-                        <Link to='/register'>账户注册?</Link>
-                    </List>
-                </div>
+                {/*{...this.props} 向下传递 action 的值 */}
+                <LoginForm {...this.props} loginState={this.state.loginState} />
             </div>
-            
         )
     },
     componentDidMount(){
@@ -124,6 +80,82 @@ const LoginPage = React.createClass({
         
     }
 })
+
+const LoginComp = React.createClass({
+    getInitialState(){
+        return {
+            loginState:false
+        }
+    },
+    loginSubmit(e){
+        e.preventDefault();  
+        // 注意 getFieldsValue 和 getFieldValue 的区别
+        console.log('data of form:',this.props.form.getFieldsValue());  
+        let account = this.props.form.getFieldValue('account');
+        let password = this.props.form.getFieldValue('password');
+        console.log(typeof(account))
+        if(account=='1' && password=='1'){
+            browserHistory.push('/main');
+        }else{
+            this.setState({loginState:true});
+            setTimeout(function(){
+                this.setState({loginState:false})
+            }.bind(this),2000)            
+            
+        }
+    },
+    render(){
+        // console.log('2--->this.props.context:',this.props)
+        const loginState = this.state.loginState;
+        const testClickAction = this.props.testClickAction
+        const { getFieldProps } = this.props.form;
+        return (
+            <div className="login_content">
+                <form onSubmit={this.loginSubmit}>
+                    <List renderHeader={() => '登录界面'}>
+                        <InputItem
+                            clear
+                            placeholder="邮箱或手机号"
+                            autoFocus
+                            labelNumber='3'
+                            className='loginInput upLine'
+                            extra='用户名不对'
+                            error
+                            {...getFieldProps('account')}
+                            
+                        >
+                            <div className='login-username' style={{ backgroundImage: 'url(../../images/icon/用户.svg)'}} />
+                            用户名
+                            
+                        </InputItem>
+                        <InputItem
+                            clear
+                            type="password"
+                            labelNumber='3'
+                            placeholder="请输入密码"
+                            className='loginInput bottomLine'
+                            {...getFieldProps('password')}
+                            onClick={this.context =='aaa'}
+                        >
+                            <div className='login-password' style={{ backgroundImage: 'url(../../images/icon/密码.svg)'}} />
+                            密　码
+                        </InputItem>
+                        {/*
+                        <Button onClick={this.loginSubmit} className='login-btn' type="primary" inline size="large" activeStyle={{backgroundColor:'red'}}>{loginState?'正在登录...':'登录'}</Button>
+                        <Button onClick={testClickAction} className='login-btn' type="primary" inline size="large" activeStyle={{backgroundColor:'red'}}>{loginState?'正在登录...':'登录'}</Button>
+                        */}
+                        <Button htmlType="submit" className='login-btn' type="primary" inline size="large" activeStyle={{backgroundColor:'red'}}>{loginState?'正在登录...':'登录'}</Button>
+                        <div></div>
+                        <Link to='/login/forget'>密码忘记?</Link>
+                        <div></div>
+                        <Link to='/register'>账户注册?</Link>
+                    </List>
+                </form>
+            </div>
+        )
+    }
+})
+const LoginForm = createForm()(LoginComp)
 
 // connect 里的内容全部都放到了 props 里
 /*

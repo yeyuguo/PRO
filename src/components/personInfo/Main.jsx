@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link,browserHistory } from 'react-router'
 require('./personInfo.less')
 require('antd-mobile/dist/antd-mobile.min.css')
 // 获取 路由参数
@@ -51,7 +51,7 @@ const PersonPage = React.createClass({
                         <li className='f1'><div></div></li>
                         <li className='f2'><div></div></li>
                         <li className='f3'><div></div></li>
-                        <li className='f4'><div></div></li>
+                        <li className='f4'><div><Link to='/main'></Link></div></li>
                     </ul>
                 </div>         
             </div>

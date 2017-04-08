@@ -16,6 +16,7 @@ export const testReducer = (state = {}, action = {}) => {
             // const newOjb = Object.assign({}, state, { 'testAction': '经历 action  后变化的值' + changeValue })
             return newObj(state, { 'testAction': '经历 action  后变化的值: ' + changeValue })
         default:
+            // return state['default'] = '这是默认...' // 错误的写法
             return newObj(state, { 'defaultType': '这是默认的reducer值' })
     }
 }
