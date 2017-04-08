@@ -11,12 +11,10 @@ export const testReducer = (state = {}, action = {}) => {
         case 'testAction':
             // console.log('reducer testAction.testValue:', testAction)
             console.log('testAction action is :', action)
-            console.log('testAction state:', state)
             var changeValue = action.testValue.sort();
-            console.log('action name', action.name);
             // const newOjb = Object.assign({}, state, { testAction: (testAction) => { return testAction.testVal.sort() } })
-            const newOjb = Object.assign({}, state, { 'testAction': '经历 action  后变化的值' + changeValue })
-            return newOjb
+            // const newOjb = Object.assign({}, state, { 'testAction': '经历 action  后变化的值' + changeValue })
+            return newObj(state, { 'testAction': '经历 action  后变化的值: ' + changeValue })
         default:
             return newObj(state, { 'defaultType': '这是默认的reducer值' })
     }
