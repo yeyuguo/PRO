@@ -1,7 +1,7 @@
 import React from 'react'
 import {Flex,WhiteSpace,List, InputItem,Button } from 'antd-mobile'
 import {Link,browserHistory } from 'react-router'
-
+import { is, fromJS} from 'immutable';
 // <<<--------->>>
 import {connect} from 'react-redux'
 import {testAction} from '../../redux/actions/Main'
@@ -25,38 +25,33 @@ const LoginPage = React.createClass({
         // alert(imgNum)
         return{
             // chunkImg:'../../images/mn1.jpg'
-            bgSetting:{
-                // chunkImg:'../../images/login/login_1.jpg',
-                chunkImg:'../../images/login/login_'+imgNum+'.jpg',
-                width:'100%',
-                height:document.documentElement.clientHeight
-            },
+            // bgSetting:{
+            //     // chunkImg:'../../images/login/login_1.jpg',
+            //     chunkImg:'../../images/login/login_'+imgNum+'.jpg',
+            //     height:document.documentElement.clientHeight
+            // },
+            imgNum,
             loginState:false
         }
     },
     loginSubmit(){
-        // this.props.testAction()
-        this.setState({loginState:true})
-        console.log('暂停 2s 测试')
-        setTimeout(function(){
-            browserHistory.push('/main');
-            this.setState({loginState:false})
-        }.bind(this),2000)
-        // browserHistory.push('/main');
-        // this.setState({loginState:false})
+        // this.setState({loginState:true})
+        // console.log('暂停 2s 测试')
+        // setTimeout(function(){
+        //     browserHistory.push('/main');
+        //     this.setState({loginState:false})
+        // }.bind(this),2000)
+
     },
     componentWillMount(){
         // test redux
         // this.props.testAction()
          // 仅仅执行 reducer里定义的方法
-        // 
+        console.log('this.props.store:',this.props.store);
         console.log('yes')
         console.log('this.props:',this.props)
         console.log('this.context:',this.context)
         console.log('this.context key:',Object.keys(this.context))
-        this.props.testReducer
-
-
 
     },
     shouldComponentUpdate(nextProps, nextState) {
@@ -66,14 +61,19 @@ const LoginPage = React.createClass({
         countNum+=1
         console.log('重新渲染第 '+(countNum) +' 次')
         const loginState = this.state.loginState
-        const bgImgState = this.state.bgSetting
+        const bgImgState = {
+            chunkImg:'../../images/login/login_'+this.state.imgNum+'.jpg',
+            height:document.documentElement.clientHeight
+        }
         // 从 props 里获取到 action 的内容，react 和 action 没有任何关系，靠对象来建立联系
         const testClickAction = this.props.testClickAction
+
+
         return (
             <div className="login">
                 <Flex>
                     <FItem>
-                        <div id="box" style={{width: bgImgState.width,height:bgImgState.height}} data-image-src={bgImgState.chunkImg}></div>
+                        <div id="box" style={{width: '100%',height:bgImgState.height}} data-image-src={bgImgState.chunkImg}></div>
                     </FItem>
                 </Flex>
                 <div className="login_content">
@@ -138,13 +138,13 @@ const result = connect(
     console.log('connect state:',state)
     return{
         // state,
-        testReducer
+        testReducer // reducer 默认的state
     }
 },
 //  mapDispatchToProps
 (dispatch)=>{
     return{
-        testClickAction:()=>dispatch({type:'testAction'})
+        testClickAction:()=>dispatch(testAction([4,3,2,1])) // 触发更新reducer的state 
     }
 })(LoginPage)
 export default result;

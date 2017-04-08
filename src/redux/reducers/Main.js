@@ -1,14 +1,40 @@
 import Immutable from 'immutable';
-import { testAction } from '../actions/Main';
+
+
+const newObj = (oldV, newV) => {
+    return Object.assign({}, oldV, newV)
+}
+
 // console.log({ testAction })
 export const testReducer = (state = {}, action = {}) => {
     switch (action.type) {
         case 'testAction':
-            console.log('reducer testAction.testValue:', testAction)
-                // const newOjb = Object.assign({}, state, { testAction: (testAction) => { return testAction.testVal.sort() } })
-            const newOjb = Object.assign({}, state, { testAction: '经历 action  后变化的值' })
+            // console.log('reducer testAction.testValue:', testAction)
+            console.log('testAction action is :', action)
+            console.log('testAction state:', state)
+            var changeValue = action.testValue.sort();
+            console.log('action name', action.name);
+            // const newOjb = Object.assign({}, state, { testAction: (testAction) => { return testAction.testVal.sort() } })
+            const newOjb = Object.assign({}, state, { 'testAction': '经历 action  后变化的值' + changeValue })
             return newOjb
         default:
-            return state['default'] = '这是默认的 reducer 值'
+            return newObj(state, { 'defaultType': '这是默认的reducer值' })
+    }
+}
+
+
+
+export const login = (state = {}, action = {}) => {
+    switch (action.type) {
+        case 'first_login':
+            state
+        case 'isLogin':
+            state.loginState = true;
+
+        case 'notLogin':
+            state.loginState = false;
+        default:
+            state.loginState = false;
+            return state;
     }
 }
