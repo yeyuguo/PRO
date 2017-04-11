@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {Link,browserHistory } from 'react-router'
 require('./personInfo.less')
 require('antd-mobile/dist/antd-mobile.min.css')
@@ -48,10 +49,10 @@ const PersonPage = React.createClass({
                 </div>
                 <div className="person-footer">
                     <ul>
-                        <li className='f1'><div></div></li>
-                        <li className='f2'><div></div></li>
-                        <li className='f3'><div></div></li>
-                        <li className='f4'><div><Link to='/main'></Link></div></li>
+                        <li className='f1'><div><Link to='/' /></div></li>
+                        <li className='f2'><div><Link to='/' /></div></li>
+                        <li className='f3'><div><Link to='/' /></div></li>
+                        <li className='f4'><div><Link to='/main' /></div></li>
                     </ul>
                 </div>         
             </div>

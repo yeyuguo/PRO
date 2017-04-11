@@ -1,3 +1,7 @@
+// action 命名规则： xxx_action
+// reducer 命名规则： xxx_reducer
+
+
 import Immutable from 'immutable';
 
 

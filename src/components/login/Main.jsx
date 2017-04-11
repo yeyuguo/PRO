@@ -176,6 +176,7 @@ const result = connect(
 //  mapDispatchToProps
 (dispatch)=>{
     return{
+        testAction,
         testClickAction:()=>dispatch(testAction([4,3,2,1])) // 触发更新reducer的state 
     }
 })(LoginPage)

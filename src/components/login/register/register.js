@@ -1,6 +1,6 @@
 import React from 'react'
-import {Flex,WhiteSpace,List, InputItem,Button } from 'antd-mobile'
-import {Link} from 'react-router'
+import {Flex } from 'antd-mobile'
+import Temp from '../../common/dataTemp/index'
 
 require('antd-mobile/dist/antd-mobile.min.css')
 require('./register.less')
@@ -23,7 +23,6 @@ const Register = React.createClass({
 
     },
     render(){
-        
         const bgImgState = this.state.bgSetting
         return (
             <div className="register">
@@ -50,5 +49,15 @@ const Register = React.createClass({
     componentDidUpdate(){
     }
 })
+// export default Register
 
-export default Register
+export default Temp({
+    url:'/register',
+    path:'/test_register',
+    params:{
+        username:'1',
+        password:'1'
+    },
+    component:Register
+})
+

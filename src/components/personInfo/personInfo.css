@@ -142,6 +142,11 @@
   background-repeat: no-repeat;
   background-position: 30% 30%;
 }
+.person .person-footer li > div > a {
+  display: block;
+  width: inherit;
+  height: inherit;
+}
 .person .person-footer li.f1 {
   background: #854EC5;
 }
