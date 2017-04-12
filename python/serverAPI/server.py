@@ -59,7 +59,7 @@ def responseto(msg=None, error=None, data=None, **kwargs):
 #     return 'test success'
 
 def main():
-    print u'命令行参数: %s'%sys.argv
+    # print u'命令行参数: %s'%sys.argv
     # if sys.argv[1] == '-h':
     #     host = sys.argv[2];
     # if sys.argv[3] == '-h':
