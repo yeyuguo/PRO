@@ -53,11 +53,8 @@ const Register = React.createClass({
 
 export default Temp({
     url:'/register',
-    path:'/test_register',
-    params:{
-        username:'1',
-        password:'1'
-    },
+    path:'/chat/test',
+    params:{},
     component:Register
 })
 

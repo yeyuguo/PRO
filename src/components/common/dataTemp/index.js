@@ -47,7 +47,7 @@ const Temp = (tempObj)=> {
             return <this.props.templateProps.component {...this.props} />
         },
         componentDidMount() {//获取数据
-            if (this.props.templateProps.url) {
+            if (this.props.templateProps.path) {
                 this.props.fetchPosts(this.props.templateProps.path,this.props.templateProps.params);
             }
         }

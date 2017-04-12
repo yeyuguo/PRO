@@ -27,7 +27,19 @@ module.exports = {
         hot: true,
         port: defaultSettings.port,
         publicPath: defaultSettings.publicPath,
-        noInfo: false
+        noInfo: false,
+        proxy: {
+            '/api/*': {
+                target: 'http://127.0.0.1:9999'
+                // pathRewrite: {"^/api" : ""}
+                // ip:8000/api/xxx
+            },
+            '/chat/*': {
+                target: 'http://127.0.0.1:9999'
+                // pathRewrite: {"^/api" : ""}
+                // ip:8000/api/xxx
+            }
+        }
     },
     resolve: {
         modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],

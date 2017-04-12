@@ -26,6 +26,15 @@ def allow_cross_domain(fun):
         return rst
     return wrapper_fun
 
+# def newApp(func):
+#     def innerFuc(*args,**kwargs):
+#         return newFuc
+#     return innerFuc
+
+# @app.route('/test')
+# def test():
+#     return 'test result'
+
 # 原文地址：http://www.tuicool.com/articles/vqYZBbj
 def responseto(msg=None, error=None, data=None, **kwargs):
     '''
@@ -57,6 +66,10 @@ def responseto(msg=None, error=None, data=None, **kwargs):
 # @allow_cross_domain
 # def test1():
 #     return 'test success'
+
+@app.route('/api/test')
+def test():
+    return "yes"
 
 def main():
     # print u'命令行参数: %s'%sys.argv

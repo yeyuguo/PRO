@@ -2,8 +2,19 @@
 // reducer 命名规则： xxx_reducer
 import fetch from 'isomorphic-fetch'
 
+function paramType(data){
+    let paramArr = []; 
+    let paramStr = ''; 
+    for (let attr in data) {
+        paramArr.push(attr + '=' + data[attr]);
+    }
+    paramStr = paramArr.join('&');
+    paramStr = '?' + paramStr;
+    return paramStr
+}
 
-const target = '127.0.0.1:6666'
+// const target = 'http://127.0.0.1:9999'
+const target = 'http://127.0.0.1:8000'
 
 export const testAction = (data) => {
     return {
@@ -32,25 +43,29 @@ const isFetching_action = (statue=false)=>{
         statue
     }
 }
-const success_action=(statue,data)=>{
+const success_action=(statue,data,isTip)=>{
     return {
         type:'success',
         statue,
-        data
+        data,
+        isTip
     }
 }
 
-const exception_action =(statue,msg)=>{
+const exception_action =(statue,msg,isTip)=>{
     return {
         type:'exception',
         statue,
-        msg
+        msg,
+        isTip
     }
 }
 
 
 export const fetchPosts = (path, params) => {
-    let url = target + path + Tool.paramType(params);
+    let url = target + path + paramType(params);
+    // let url = target + path
+    console.log({url})
     return dispatch => {
         dispatch(isFetching_action(true));
         return fetch(url,{
@@ -59,12 +74,12 @@ export const fetchPosts = (path, params) => {
         })
         .then(response => {
             if (response.status == 200) {
-                response.json().then(data => dispatch(success_action(statue, data)))
+                response.json().then(data => dispatch(success_action(200, data)))
             } else {
-                response.json().then(msg => dispatch(exception_action(statue, msg)))
+                response.json().then(msg => dispatch(exception_action(201, msg)))
                 console.log("status", response.status);
             }
         })
-        .catch(error => console.log(error))
+        .catch(error => console.log(`获取数据异常 --> ${error}`))
     }
 }

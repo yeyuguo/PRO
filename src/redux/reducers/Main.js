@@ -45,19 +45,24 @@ export const login_reducer = (state = {}, action = {}) => {
 }
 const dataState = Immutable.fromJS({data: {}, isFetching: false,isTip:false})
 
-export const getData_reducer = (state=dataState,action={}) =>{
+export const fetch_reducer = (state=dataState,action={}) =>{
     // state.isFetching = false;
     // state.statue = 200;
     switch (action.type) {
         case 'isFetching':
-            return state.set('isFetching',action.statue);
+            // return state.set('isFetching',action.statue);
+            return newState(state,{
+                isFetching:action.statue != undefined ? action.statue : state.isFetching
+            })
         case 'success':
+            console.log('data:',action.data)
             state = newState(state,{
                 statue:action.statue,
                 data:action.data,
                 isFetching:false,
                 isTip:action.isTip != undefined ? action.isTip : state.isTip
             })
+            // state = Object
             // action.isTip ? state.set('isTip',action.isTip): state.set('isTip',false)
             return state;
         case 'exception':
@@ -69,9 +74,7 @@ export const getData_reducer = (state=dataState,action={}) =>{
             })
             return state
         default:
-            state = {
-                statue:404
-            }
+            state = newState(state,{statue:404})
             return state;
     }
 }
