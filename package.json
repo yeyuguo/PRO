@@ -74,6 +74,7 @@
     "babel-preset-react": "^6.16.0",
     "core-js": "^2.0.0",
     "immutable": "^3.8.1",
+    "isomorphic-fetch": "^2.2.1",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "normalize.css": "^4.0.0",

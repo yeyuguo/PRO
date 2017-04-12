@@ -45,6 +45,11 @@ const Temp = (tempObj)=> {
         render(){
             console.log('templateProps props:',this.props)
             return <this.props.templateProps.component {...this.props} />
+        },
+        componentDidMount() {//获取数据
+            if (this.props.templateProps.url) {
+                this.props.fetchPosts(this.props.templateProps.path,this.props.templateProps.params);
+            }
         }
     })
     // TempComp.defaultProps = {template}
@@ -52,11 +57,8 @@ const Temp = (tempObj)=> {
     return connect(state=>{
         console.log('template reducer state:',state)
         return state
-    },action)(TempComp);
-    
+    },action)(TempComp);   
 }
-
-
 
 
 export default Temp;
