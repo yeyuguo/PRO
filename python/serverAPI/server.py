@@ -5,6 +5,7 @@ from chat.index import chat
 from friendList.index import friendList
 from friendShow.index import friendShow
 from personal.index import personal
+from test.index import test   # API 测试模块
 
 app = Flask(__name__)
 
@@ -12,6 +13,7 @@ app.register_blueprint(chat,url_prefix='/chat')
 app.register_blueprint(friendList,url_prefix='/friendList')
 app.register_blueprint(friendShow,url_prefix='/friendShow')
 app.register_blueprint(personal,url_prefix='/personal')
+app.register_blueprint(test,url_prefix='/test')
 
 from functools import wraps
 

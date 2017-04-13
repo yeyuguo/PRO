@@ -44,7 +44,7 @@ const Temp = (tempObj)=> {
         },
         render(){
             console.log('templateProps props:',this.props)
-            return <this.props.templateProps.component {...this.props} />
+            return <this.props.templateProps.component {...this.props}  state={this.props.state}/>
         },
         componentDidMount() {//获取数据
             if (this.props.templateProps.path) {

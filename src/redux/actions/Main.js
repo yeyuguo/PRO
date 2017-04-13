@@ -37,29 +37,38 @@ export const login_action = (username, password, pwdIsVisible) => {
 
 // 请求数据状态,设置true或false 控制请求的状态
 // 默认的触发
-const isFetching_action = (statue=false)=>{
+const isFetching_action = (status=false)=>{
     return {
         type:'isFetching',
-        statue
+        status
     }
 }
-const success_action=(statue,data,isTip)=>{
+const success_action=(status,data,isTip=false)=>{
     return {
         type:'success',
-        statue,
+        status,
         data,
         isTip
     }
 }
 
-const exception_action =(statue,msg,isTip)=>{
+const exception_action =(status,msg,isTip=true)=>{
     return {
         type:'exception',
-        statue,
+        status,
         msg,
         isTip
     }
 }
+const error_action =(status,error,isTip=false)=>{
+    return {
+        type:'error',
+        status,
+        error,
+        isTip
+    }
+}
+
 
 
 export const fetchPosts = (path, params) => {
@@ -68,16 +77,24 @@ export const fetchPosts = (path, params) => {
     console.log({url})
     return dispatch => {
         dispatch(isFetching_action(true));
+        // dispatch(exception_action(202,'test aaaaaa'))
         return fetch(url,{
             mode: 'cors',
             "Content-Type": "application/json",
         })
         .then(response => {
+            // 该处如果设置了后，下面的代码旧获取不到 data 值了
+            // response.json().then(data=>console.log('得到数据的第一步：',data))
+            console.log('API 状态信息 response :',response)
+            // 服务器自动返回的状态信息
             if (response.status == 200) {
-                response.json().then(data => dispatch(success_action(200, data)))
+                // 自己定义的API数据里的状态信息
+                response.json().then(data =>{data.status == 200 ?dispatch(success_action(data.status, data.data)):dispatch(exception_action(data.status, data.msg))})
+                
             } else {
-                response.json().then(msg => dispatch(exception_action(201, msg)))
-                console.log("status", response.status);
+                // 服务器自动获取的API错误状态
+                dispatch(error_action(response.status,response.statusText))
+                console.log("error status", response.status);
             }
         })
         .catch(error => console.log(`获取数据异常 --> ${error}`))

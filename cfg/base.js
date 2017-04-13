@@ -29,15 +29,9 @@ module.exports = {
         publicPath: defaultSettings.publicPath,
         noInfo: false,
         proxy: {
-            '/api/*': {
-                target: 'http://127.0.0.1:9999'
-                // pathRewrite: {"^/api" : ""}
-                // ip:8000/api/xxx
-            },
-            '/chat/*': {
-                target: 'http://127.0.0.1:9999'
-                // pathRewrite: {"^/api" : ""}
-                // ip:8000/api/xxx
+            '/api/*':{
+                target: 'http://127.0.0.1:9999',
+                pathRewrite: {"^/api" : ""}
             }
         }
     },

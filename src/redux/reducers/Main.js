@@ -47,17 +47,17 @@ const dataState = Immutable.fromJS({data: {}, isFetching: false,isTip:false})
 
 export const fetch_reducer = (state=dataState,action={}) =>{
     // state.isFetching = false;
-    // state.statue = 200;
+    // state.status = 200;
     switch (action.type) {
         case 'isFetching':
-            // return state.set('isFetching',action.statue);
+            // return state.set('isFetching',action.status);
             return newState(state,{
-                isFetching:action.statue != undefined ? action.statue : state.isFetching
+                isFetching:action.status != undefined ? action.status : state.isFetching
             })
         case 'success':
             console.log('data:',action.data)
             state = newState(state,{
-                statue:action.statue,
+                status:action.status,
                 data:action.data,
                 isFetching:false,
                 isTip:action.isTip != undefined ? action.isTip : state.isTip
@@ -67,14 +67,22 @@ export const fetch_reducer = (state=dataState,action={}) =>{
             return state;
         case 'exception':
             state = newState(state,{
-                statue:action.statue,
+                status:action.status,
                 msg:action.msg,
                 isFetching:false,
                 isTip:action.isTip != undefined ? action.isTip : true
             })
             return state
+        case 'error':
+            state = newState(state,{
+                status:action.status,
+                error:action.error,
+                isFetching:false,
+                isTip:action.isTip != undefined ? action.isTip : true
+            })
+            return state
         default:
-            state = newState(state,{statue:404})
+            state = newState(state,{status:404})
             return state;
     }
 }

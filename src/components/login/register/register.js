@@ -53,7 +53,7 @@ const Register = React.createClass({
 
 export default Temp({
     url:'/register',
-    path:'/chat/test',
+    path:'/api/test/error',
     params:{},
     component:Register
 })
