@@ -45,7 +45,7 @@ export const login_reducer = (state = {}, action = {}) => {
 }
 const dataState = Immutable.fromJS({data: {}, isFetching: false,isTip:false})
 
-export const fetch_reducer = (state=dataState,action={}) =>{
+export const fetchState = (state=dataState,action={}) =>{
     // state.isFetching = false;
     // state.status = 200;
     switch (action.type) {

@@ -71,7 +71,7 @@ const error_action =(status,error,isTip=false)=>{
 
 
 
-export const fetchPosts = (path, params) => {
+export const fetchAction = (path, params) => {
     let url = target + path + paramType(params);
     // let url = target + path
     console.log({url})

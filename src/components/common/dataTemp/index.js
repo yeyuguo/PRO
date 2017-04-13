@@ -48,19 +48,35 @@ const Temp = (tempObj)=> {
         },
         componentDidMount() {//获取数据
             if (this.props.templateProps.path) {
-                this.props.fetchPosts(this.props.templateProps.path,this.props.templateProps.params);
+                this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
             }
         }
     })
     // TempComp.defaultProps = {template}
 
-    return connect(state=>{
+    return connect(state=>{   
         console.log('template reducer state:',state)
-        return state
-    },action)(TempComp);   
+        return state   // 包含所有export的 reducer 的state
+    },
+    action   //包含所有export的 action 
+    )(TempComp);   
 }
 
 
 export default Temp;
+
+
+/*
+如何使用
+
+export default Temp({
+    url:'/register',   // app 的路由
+    path:'/api/xxxx',  // API 的路由,此处的api不能漏掉。否则就会报错
+    params:{},  // API 的参数
+    component:Register // 组件的名称
+})
+
+
+*/
 
 
