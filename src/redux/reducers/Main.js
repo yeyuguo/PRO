@@ -55,7 +55,7 @@ export const fetchState = (state=dataState,action={}) =>{
                 isFetching:action.status != undefined ? action.status : state.isFetching
             })
         case 'success':
-            console.log('data:',action.data)
+            console.log('fetchState data:',action.data)
             state = newState(state,{
                 status:action.status,
                 data:action.data,

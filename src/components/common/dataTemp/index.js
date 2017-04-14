@@ -44,7 +44,7 @@ const Temp = (tempObj)=> {
         },
         render(){
             console.log('templateProps props:',this.props)
-            return <this.props.templateProps.component {...this.props}  state={this.props.state}/>
+            return <this.props.templateProps.component {...this.props}  state={this.props.fetchState}/>
         },
         componentDidMount() {//获取数据
             if (this.props.templateProps.path) {
@@ -58,7 +58,7 @@ const Temp = (tempObj)=> {
         console.log('template reducer state:',state)
         return state   // 包含所有export的 reducer 的state
     },
-    action   //包含所有export的 action 
+    action  //包含所有export的 action 
     )(TempComp);   
 }
 

@@ -14,6 +14,10 @@
   height: 0.64rem;
   line-height: 0.64rem;
 }
+.friendMsg .am-list-thumb img {
+  width: 1rem;
+  height: 1rem;
+}
 .friendMsg .friendMsg-content {
   width: 100%;
   position: relative;
