@@ -3,7 +3,7 @@ import { List } from 'antd-mobile'
 import { Link, browserHistory } from 'react-router'
 import {is,fromJS} from 'immutable'
 import Temp from '../common/dataTemp/index'
-
+import Loading from '../common/loading/index'
 const Item = List.Item;
 const Brief = Item.Brief;
 
@@ -73,7 +73,9 @@ const FriendMsg = React.createClass({
                 style = {{ 'height': this.props.height }}
                 className = "friendMsg-list" 
             >
-                <div className='loading' style={{'display':this.props.fetchState.isFetching?'block':'none',width:'100%',height:this.props.height || '100%',color:'#fff','backgroundColor':'black'}}>{this.props.fetchState.isFetching?'正在加载...':'数据加载完成'}</div>
+                {/* <div className='loading' style={{'display':this.props.fetchState.isFetching?'block':'none',width:'100%',height:this.props.height || '100%',color:'#fff','backgroundColor':'black'}}>{this.props.fetchState.isFetching?'正在加载...':'数据加载完成'}</div>*/}
+               
+                <Loading height={this.props.height} isFetching={this.props.fetchState.isFetching} />
 
             {
                 !userDatas ? false :userDatas.map(function(item, index) {

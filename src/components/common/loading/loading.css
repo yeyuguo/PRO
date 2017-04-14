@@ -1,0 +1,232 @@
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+/*
+颜色的说明：中国95后年轻人最常穿的服装颜色包括
+中国95后年轻人最喜欢的颜色是RGB值为22/20/24的“黑色
+RGB值为237/236/237的白色、RGB值为51/46/51的灰色。
+*/
+/* ------ 颜色变量 --- start ------ */
+html {
+  /* 默认 16px; 16px == 100% */
+  /* 为了容易计算，我想要修改默认rem就是 10px  10/16就是 1rem */
+  /*那么目标rem就是 ??px/10px = ? rem*/
+}
+body {
+  background-color: #edeced;
+}
+li {
+  text-decoration: none;
+}
+.lineBottom {
+  position: relative;
+}
+.lineBottom:after {
+  display: block;
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  width: 100%;
+  border-bottom: 1PX solid #ddd;
+}
+.bright:hover {
+  -webkit-filter: brightness(1.2);
+}
+.blur {
+  -webkit-filter: blur(0.3rem);
+  /* Chrome, Opera */
+  -moz-filter: blur(0.3rem);
+  -ms-filter: blur(0.3rem);
+  filter: blur(0.3rem);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+  /* IE6~IE9 */
+}
+.bglightGray {
+  background: #F3F3F5;
+}
+.opa8 {
+  opacity: 0.8;
+}
+/* ------ 颜色变量 ---  end  ------ */
+.lineSpace {
+  height: 0.1rem;
+  width: inherit;
+}
+.inlineSpace {
+  height: 100%;
+  margin: 0 0.1rem;
+}
+.loading {
+  width: 100%;
+  height: 100%;
+  background: #161418;
+  overflow: hidden;
+  position: absolute;
+  z-index: 99;
+  display: block;
+}
+.loading .tipMsg {
+  text-align: center;
+  width: 100%;
+  color: #edeced;
+}
+.loading .firefly,
+.loading .firefly div {
+  position: relative;
+}
+.loading .firefly {
+  width: 20px;
+  height: 20px;
+  border-radius: 70px 70px 0 0;
+  margin: 50% auto;
+  z-index: 1;
+  animation: move 5s ease infinite;
+  -moz-animation: move 5s ease infinite;
+  -webkit-animation: move 5s ease infinite;
+  -o-animation: move 20s ease infinite;
+}
+.loading .head {
+  background: #1A1515;
+  height: 10px;
+  width: 20px;
+  border-radius: 90px 90px 0 0;
+  -moz-border-radius: 90px 90px 0 0;
+  -webkit-border-radius: 90px 90px 0 0;
+  top: 35px;
+  z-index: 4;
+}
+.loading .wing {
+  background: #FFFFF9;
+  width: 20px;
+  height: 20px;
+  border-radius: 40px;
+  transform: rotate(110deg) skew(40deg);
+  -o-transform: rotate(110deg) skew(40deg);
+  -moz-transform: rotate(110deg) skew(40deg);
+  -webkit-transform: rotate(80deg) skew(40deg);
+  z-index: 3;
+}
+.loading .wing.left {
+  top: 30px;
+  left: -5px;
+}
+.loading .wing.right {
+  top: 10px;
+  left: 5px;
+  transform: rotate(30deg) skew(40deg);
+  -o-transform: rotate(30deg) skew(40deg);
+  -moz-transform: rotate(30deg) skew(40deg);
+  -webkit-transform: rotate(30deg) skew(40deg);
+}
+.loading .glow {
+  border-radius: 0 0 70px 70px;
+  width: 60%;
+  height: 70%;
+  background: #FBFF7A;
+  margin: 0 auto;
+  z-index: 2;
+  animation: glowing 1s linear infinite alternate;
+  -webkit-animation: glowing 1s linear infinite alternate;
+  transition: 1s all;
+}
+.loading .shadow {
+  background: #1A1515;
+  width: 100%;
+  height: 25%;
+  border-radius: 200%;
+  margin-top: -10%;
+}
+@keyframes glowing {
+  from {
+    box-shadow: inset 0 0 20px 20px #E8D500, 0 0 50px 10px #E8D500, inset 0 0 80px 80px #FFED24;
+  }
+  to {
+    box-shadow: inset 0 0 20px 20px #E8D500, 0 0 100px 10px #E8D500, inset 0 0 50px 50px #FFED24;
+  }
+}
+@-webkit-keyframes glowing {
+  from {
+    box-shadow: inset 0 0 20px 20px #E8D500, 0 0 50px 10px #E8D500, inset 0 0 80px 80px #FFED24;
+  }
+  to {
+    box-shadow: inset 0 0 20px 20px #E8D500, 0 0 130px 10px #E8D500, inset 0 0 50px 50px #FFED24;
+  }
+}
+@-moz-keyframes glowing {
+  from {
+    box-shadow: inset 0 0 20px 20px #E8D500, 0 0 50px 10px #E8D500, inset 0 0 80px 80px #FFED24;
+  }
+  to {
+    box-shadow: inset 0 0 20px 20px #E8D500, 0 0 130px 10px #E8D500, inset 0 0 50px 50px #FFED24;
+  }
+}
+@keyframes move {
+  0% {
+    left: 0px;
+    top: 0px;
+    transform: rotate(45deg);
+  }
+  50% {
+    left: 0px;
+    top: 0px;
+    transform: rotate(-45deg);
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+    transform: rotate(45deg);
+  }
+}
+@-webkit-keyframes move {
+  0% {
+    left: 0px;
+    top: 0px;
+    -webkit-transform: rotate(45deg);
+  }
+  50% {
+    left: 0px;
+    top: 0px;
+    -webkit-transform: rotate(-45deg);
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+    -webkit-transform: rotate(45deg);
+  }
+}
+@-moz-keyframes move {
+  0% {
+    left: 0px;
+    top: 0px;
+    -moz-transform: rotate(45deg);
+  }
+  50% {
+    left: 0px;
+    top: 0px;
+    -moz-transform: rotate(-45deg);
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+    -moz-transform: rotate(45deg);
+  }
+}
+@-o-keyframes move {
+  0% {
+    left: 0px;
+    top: 0px;
+    -webkit-transform: rotate(45deg);
+  }
+  50% {
+    left: 0px;
+    top: 0px;
+    -webkit-transform: rotate(-45deg);
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+    -webkit-transform: rotate(45deg);
+  }
+}
