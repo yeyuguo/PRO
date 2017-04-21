@@ -3,47 +3,6 @@
 .setting * {
   font-size: 0.3rem;
 }
-.mySetting {
-  height: 0.8rem;
-  display: flex;
-}
-.mySetting:img {
-  height: inherit;
-  width: inherit;
-  margin-right: 0.08rem;
-  display: block;
-}
-.mySetting .mySimpleInfo .vip {
-  text-align: center;
-  line-height: 0.3rem;
-  padding: 0.02rem 0.08rem;
-  border-radius: 0.1rem;
-  color: #fff;
-}
-.mySetting .mySimpleInfo .isVip {
-  background: #4F8DFA;
-  display: inline-block;
-  text-align: center;
-  line-height: 0.3rem;
-  padding: 0.02rem 0.08rem;
-  border-radius: 0.1rem;
-  color: #fff;
-}
-.mySetting .mySimpleInfo .notVip {
-  display: none;
-}
-.mySetting .usersWithMe .vipType {
-  color: #C0C0C0;
-  font-size: 0.1rem;
-}
-.mySetting .usersWithMe .numTip {
-  display: block;
-  width: 0.2rem;
-  height: 0.2rem;
-  border-radius: 50%;
-  color: #fff;
-  background-color: #F76059;
-}
-.mySetting .visitorAndSetting .numVistor {
-  background-color: #4F8DFA;
+.setting * .am-badge-text {
+  line-height: 0.36rem;
 }

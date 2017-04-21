@@ -1,5 +1,5 @@
 import React from 'react'
-import { List } from 'antd-mobile'
+import { List,Badge } from 'antd-mobile'
 import { Link, browserHistory } from 'react-router'
 import {is,fromJS} from 'immutable'
 import Temp from '../common/dataTemp/index'
@@ -11,6 +11,18 @@ require('antd-mobile/dist/antd-mobile.css')
     // 此处再次引入 antd-mobile.css 是为了解决 antd-mobile 会在最后加载的情况
 require('./friendMsg.less')
 let countNum = 0
+
+const AvatorTip = React.createClass({
+    render(){
+                // <Badge text={20} overflowCount={10} corner />
+        return(
+            <div>
+                <img src={this.props.selfAvator.avator!=''?this.props.selfAvator.avator:this.props.defaultAvator} alt=""/>
+            </div>
+        )
+    }
+})
+
 const FriendMsg = React.createClass({
     getInitialState() {
         var exampleTime = (new Date('2017-03-17 14:30:25'))
@@ -37,10 +49,7 @@ const FriendMsg = React.createClass({
     },
     componentWillUpdate(nextProps, nextState){
         if(this.props == nextProps) return false;
-        console.log({nextProps})
-        // console.log({nextState})
         if(nextProps.fetchState.data){
-            console.log('nextProps.fetchState.data:',nextProps.fetchState.data)
             this.setState({
                 userDatas:nextProps.fetchState.data
             })
@@ -49,8 +58,6 @@ const FriendMsg = React.createClass({
     
     
     render() {
-        console.log('bb fetchState:',this.props.fetchState)
-        console.log('aa userDatas:',this.state.userDatas)
         let userDatas
         let defaultAvator
         if(this.state.userDatas){
@@ -91,7 +98,8 @@ const FriendMsg = React.createClass({
                     const showTime = (time.getTime() < nowTime.getTime()) && (time.getDay() < nowTime.getDay()) ? `星期${en2ch[time.getDay()]}` : `${time.getHours()}:${time.getMinutes()<10?'0'+time.getMinutes():time.getMinutes()}`
                     return ( 
                         <Item arrow = "horizontal"
-                            thumb = { data.avator ? data.avator : defaultAvator }
+                            // thumb = { data.avator ? data.avator : defaultAvator }
+                            thumb = {<AvatorTip selfAvator={data} defaultAvator={defaultAvator}/>}
                             multipleLine onClick = { this.chatWindow }
                             key = { index }
                             className = 'friendMsg'

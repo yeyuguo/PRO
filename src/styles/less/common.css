@@ -15,7 +15,7 @@ body {
   background-color: #edeced;
 }
 li {
-  text-decoration: none;
+  list-style: none;
 }
 .lineBottom {
   position: relative;

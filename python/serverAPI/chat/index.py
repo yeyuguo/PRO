@@ -4,12 +4,13 @@ from flask import jsonify,abort
 from . import chat
 import time
 
+# xxxx:9999/chat/test
 @chat.route('/test',methods=['GET'])
 def test():
     # return jsonify({'msg':'test error','status':200})
     return 'chat success'
 
-
+# xxxx:9999/chat/
 @chat.route('/',methods=['GET'])
 def main():
     data = {}

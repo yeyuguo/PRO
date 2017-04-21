@@ -1,7 +1,8 @@
 import React from 'react'
 import { province as provinceData } from 'antd-mobile-demo-data';
 import { ListView, List, SearchBar } from 'antd-mobile';
-
+import Temp from '../common/dataTemp/index'
+console.log('provinces data:',provinceData)
 const { Item } = List;
 
 class FriendList extends React.Component {
@@ -36,7 +37,9 @@ class FriendList extends React.Component {
     this.state = {
       inputValue: '',
       dataSource: this.createDs(dataSource, provinceData),
+      // dataSource: dataSource.cloneWithRowsAndSections(this.provinceData, sectionIDs, rowIDs),
       headerPressCount: 0,
+      provinceData:null
     };
   }
 
@@ -50,7 +53,14 @@ class FriendList extends React.Component {
       dataSource: this.createDs(this.state.dataSource, pd),
     });
   }
-
+  componentWillUpdate(nextProps, nextState){
+      if(this.props == nextProps) return false;
+      if(nextProps.fetchState.data){
+          this.setState({
+              provinceData:nextProps.fetchState.data
+          })
+      }
+  }
   render() {
     return (
       <div style={{height:this.props.height,  position: 'relative' }}>
@@ -87,4 +97,12 @@ class FriendList extends React.Component {
     </div>);
   }
 }
-export default FriendList
+
+
+export default Temp({
+    url:'/friendList',   // app 的路由
+    path:'/api/friendList/list',  // API 的路由,此处的api不能漏掉。否则就会报错
+    params:{},  // API 的参数
+    component:FriendList // 组件的名称
+})
+// export default FriendList

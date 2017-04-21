@@ -43,7 +43,7 @@ const isFetching_action = (status=false)=>{
         status
     }
 }
-const success_action=(status,data,isTip=false)=>{
+export const success_action=(status,data,isTip=false)=>{
     return {
         type:'success',
         status,
@@ -52,7 +52,7 @@ const success_action=(status,data,isTip=false)=>{
     }
 }
 
-const exception_action =(status,msg,isTip=true)=>{
+export const exception_action =(status,msg,isTip=true)=>{
     return {
         type:'exception',
         status,
@@ -60,7 +60,7 @@ const exception_action =(status,msg,isTip=true)=>{
         isTip
     }
 }
-const error_action =(status,error,isTip=false)=>{
+export const error_action =(status,error,isTip=false)=>{
     return {
         type:'error',
         status,

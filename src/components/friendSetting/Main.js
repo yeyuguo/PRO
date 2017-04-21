@@ -1,5 +1,5 @@
 import React from 'react'
-import {List,Switch} from 'antd-mobile'
+import {List,Switch,Badge } from 'antd-mobile'
 const Item=List.Item;
 const Brief = Item.Brief;
 require('antd-mobile/dist/antd-mobile.css')
@@ -80,7 +80,10 @@ const FriendSetting = React.createClass({
                     <Item arrow="horizontal" extra={React.createElement('span',{className:'vipType'},"VIP月用户")}>
                     用户级别
                     </Item>
-                    <Item arrow="horizontal" extra={React.createElement('span',{className:'numTip'},"2")}>
+                    <Item arrow="horizontal" 
+                        //extra={React.createElement('span',{className:'numTip'},"2")}
+                        extra={<Badge text={77} overflowCount={30} />}
+                    >
                     我的粉丝
                     </Item>
                     <Item arrow="horizontal" >
@@ -88,7 +91,10 @@ const FriendSetting = React.createClass({
                     </Item>
                 </List>
                 <List renderHeader={() => '3'} className="visitorAndSetting">
-                    <Item arrow="horizontal" extra={React.createElement('span',{className:'numVistor'},"20")}>
+                    <Item arrow="horizontal" 
+                        //extra={React.createElement('span',{className:'numVistor'},"20")}
+                        extra={<Badge text={7979} overflowCount={100}/>}
+                    >
                     最近的访客
                     </Item>
                     <Item arrow="horizontal">

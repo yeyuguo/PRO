@@ -19,7 +19,7 @@ const Loading = React.createClass({
         }
     },
     render(){
-        console.log('loading props:',this.props)
+        // console.log('loading props:',this.props)
         // console.log('loading state:',this.state)
         return (
             <div className='loading' style={{height:this.props.height,display:this.props.isFetching?'block':'none'}}>

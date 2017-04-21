@@ -17,6 +17,18 @@ app.register_blueprint(test,url_prefix='/test')
 
 from functools import wraps
 
+
+'''
+demo data:\|||||/
+data ={
+        'status':200,
+        'data':None
+    }
+    data_demo={}
+    data['data'] = data_demo
+    return jsonify(data)
+'''
+
 def allow_cross_domain(fun):
     @wraps(fun)
     def wrapper_fun(*args, **kwargs):

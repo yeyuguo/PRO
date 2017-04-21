@@ -1,0 +1,2 @@
+个人用户请求的参数：
+new Profile({memberId:'99834308',isCanSendMail:'0',hasDefaultPhoto:'1',isZhenxin:'false',isLogin:'1',testCityFlag:'0'});

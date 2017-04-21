@@ -39,12 +39,17 @@ const Temp = (tempObj)=> {
                 templateProps
             }
         },
+        // componentWillMount(){
+        //     if (this.props.templateProps.path) {
+        //         this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
+        //     }
+        // },
         shouldComponentUpdate(nextProps, nextState) {
             return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
         },
         render(){
             console.log('templateProps props:',this.props)
-            return <this.props.templateProps.component {...this.props}  state={this.props.fetchState}/>
+            return <this.props.templateProps.component {...this.props}  rootData={this.props.fetchState}/>
         },
         componentDidMount() {//获取数据
             if (this.props.templateProps.path) {

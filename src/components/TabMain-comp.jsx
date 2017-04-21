@@ -1,10 +1,11 @@
 
-require('normalize.css/normalize.css');
-require('antd-mobile/dist/antd-mobile.min.css')
-require('../styles/less/main.less')
+// require('normalize.css/normalize.css');
+// require('antd-mobile/dist/antd-mobile.min.css')
+// require('../styles/main.less')
 
 
 import React from 'react'
+import {Link} from 'react-router'
 
 import { Tabs, WhiteSpace } from 'antd-mobile';
 // import Tabs from 'antd-mobile/lib/tabs'
@@ -30,6 +31,7 @@ const TabMain = React.createClass({
   render() {
     var height = document.documentElement.clientHeight - 45
     return (
+      /*
       <div className='main-page'>
         <Tabs defaultActiveKey="1" tabBarPosition={this.state.tabPosition} onChange={callback}>
           <TabPane tab="聊天" key="1">
@@ -54,6 +56,20 @@ const TabMain = React.createClass({
           </TabPane>
         </Tabs>
         <WhiteSpace />
+      </div>
+      */
+      <div className="main-page">
+        <div className="tab_body">
+          {this.props.children}
+        </div>
+        <div className="tab_footer">
+          <ul>
+            <li><Link to='/main/friendMsg'>聊天</Link></li>
+            <li><Link to='/main/friendList'>朋友列表</Link></li>
+            <li><Link to='/main/friendShow'>朋友圈</Link></li>
+            <li><Link to='/main/friendSetting'>个人设置</Link></li>
+          </ul>
+        </div>
       </div>
     );
   },

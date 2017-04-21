@@ -21,8 +21,8 @@ import PersonPage from '../personInfo/Main'
 
 
 require('normalize.css/normalize.css');
-require('../../styles/less/main.less')
-require('antd-mobile/dist/antd-mobile.css')
+require('antd-mobile/dist/antd-mobile.min.css')
+require('../../styles/main.less')
 require('../../js/common')
 
 const Home = React.createClass({
@@ -41,7 +41,13 @@ const AppRouter = (
             <IndexRoute component={LoginPage}/>
             
             <Route path="linkTest" component={LinkTest}/>
-            <Route path="main" component={TabMain}/>
+            <Route path="main" component={TabMain} >
+                <IndexRoute component={FriendMsg}/>
+                <Route path="friendMsg" component={FriendMsg}/>
+                <Route path="friendList" component={FriendList}/>
+                <Route path="friendShow" component={FriendShow}/>
+                <Route path="friendSetting" component={FriendSetting}/>
+            </Route>
             <Route path='login' component={LoginPage}>
                 {/*
                 <Route path='forget' component={ForgetPwd} />

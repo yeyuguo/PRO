@@ -1,0 +1,81 @@
+@import (reference) "./less/common.less";
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+//  antd-mobile 像素解释： 1rem == 50px    0.1rem =5px
+@noteTemplate : ' ------ 注释模板 --- start ------ ';
+/*
+颜色的说明：中国95后年轻人最常穿的服装颜色包括
+中国95后年轻人最喜欢的颜色是RGB值为22/20/24的“黑色
+RGB值为237/236/237的白色、RGB值为51/46/51的灰色。
+*/
+
+
+
+html{
+    /* 默认 16px; 16px == 100% */
+    /* 为了容易计算，我想要修改默认rem就是 10px  10/16就是 1rem */
+    // font-size: 62.5%;
+    /*那么目标rem就是 ??px/10px = ? rem*/
+    // color:@black;
+    
+}
+
+
+
+
+/* ------ 布局变量 --- start ------ */
+    /* 目的设置一个固定不能变动的 100%，等同 per(100%) layout(100%,100%)*/
+
+
+
+/* ------ 布局变量 ---  end  ------ */
+
+
+
+
+
+/* ------ 自定义样式 --- start ------ */
+
+.main-page{
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    .tab_body{
+        flex: 1;
+    }
+    .tab_footer{
+        @height: 0.5rem;
+
+        ul{
+            width: 100%;
+        }
+        li{
+            width: 25%;
+            float: left;
+            height: @height;
+            line-height: @height;
+            text-align: center;
+            a{
+                display: block;
+            }
+            .on{
+                background: @black;
+                color:@white;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/* ------ bug样式覆盖 --- start ------ */
+.am-indexed-list-container{
+    position: relative;
+}
+
+/* ------ bug样式覆盖 ---  end  ------ */
+
+

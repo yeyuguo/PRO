@@ -1,0 +1,46 @@
+/* ------ 注释模板 --- start ------ */
+/* ------ 注释模板 ---  end  ------ */
+/*
+颜色的说明：中国95后年轻人最常穿的服装颜色包括
+中国95后年轻人最喜欢的颜色是RGB值为22/20/24的“黑色
+RGB值为237/236/237的白色、RGB值为51/46/51的灰色。
+*/
+html {
+  /* 默认 16px; 16px == 100% */
+  /* 为了容易计算，我想要修改默认rem就是 10px  10/16就是 1rem */
+  /*那么目标rem就是 ??px/10px = ? rem*/
+}
+/* ------ 布局变量 --- start ------ */
+/* 目的设置一个固定不能变动的 100%，等同 per(100%) layout(100%,100%)*/
+/* ------ 布局变量 ---  end  ------ */
+/* ------ 自定义样式 --- start ------ */
+.main-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-page .tab_body {
+  flex: 1;
+}
+.main-page .tab_footer ul {
+  width: 100%;
+}
+.main-page .tab_footer li {
+  width: 25%;
+  float: left;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  text-align: center;
+}
+.main-page .tab_footer li a {
+  display: block;
+}
+.main-page .tab_footer li .on {
+  background: #161418;
+  color: #edeced;
+}
+/* ------ bug样式覆盖 --- start ------ */
+.am-indexed-list-container {
+  position: relative;
+}
+/* ------ bug样式覆盖 ---  end  ------ */

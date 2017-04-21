@@ -52,7 +52,7 @@ const PersonPage = React.createClass({
                         <li className='f1'><div><Link to='/' /></div></li>
                         <li className='f2'><div><Link to='/' /></div></li>
                         <li className='f3'><div><Link to='/' /></div></li>
-                        <li className='f4'><div><Link to='/main' /></div></li>
+                        <li className='f4'><div><Link to='/main/friendMsg' /></div></li>
                     </ul>
                 </div>         
             </div>

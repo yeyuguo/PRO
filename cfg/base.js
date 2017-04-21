@@ -32,7 +32,12 @@ module.exports = {
             '/api/*':{
                 target: 'http://127.0.0.1:9999',
                 pathRewrite: {"^/api" : ""}
-            }
+            },
+            '/zhenai/*':{
+                // target: 'http://m.zhenai.com/v2/personal/getRecommandUserInfos.do?pageNo=3&pageSize=10',
+                target: 'http://m.zhenai.com',
+                pathRewrite: {"^/zhenai" : ""}
+            },
         }
     },
     resolve: {
