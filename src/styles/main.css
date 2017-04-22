@@ -27,14 +27,24 @@ html {
   width: 100%;
 }
 .main-page .tab_footer li {
+  font-size: 0.4rem;
   width: 25%;
   float: left;
-  height: 0.5rem;
-  line-height: 0.5rem;
+  height: 1rem;
+  line-height: 1rem;
   text-align: center;
+  border-right: 1px solid #fff;
+  color: #161418;
+}
+.main-page .tab_footer li:last-child {
+  border-right: none;
+}
+.main-page .tab_footer li:first-child {
+  margin-left: -3px;
 }
 .main-page .tab_footer li a {
   display: block;
+  color: #161418;
 }
 .main-page .tab_footer li .on {
   background: #161418;

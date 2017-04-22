@@ -1,10 +1,13 @@
 .person {
   width: 100%;
+  height: 100vh;
   color: #edeced;
+  display: flex;
+  flex-direction: column;
 }
 .person .person-body {
   position: relative;
-  height: 80%;
+  flex: 1;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

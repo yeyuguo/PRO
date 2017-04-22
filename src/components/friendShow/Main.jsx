@@ -6,7 +6,7 @@ import Temp from '../common/dataTemp/index.js'
 
 require('./friendShow.less')
 
-// const data = [
+// let data = [
 //   {
 //     img: '../../images/mn1.jpg',
 //     title: '相约酒店',
@@ -31,15 +31,16 @@ require('./friendShow.less')
 // ];
 // let index = data.length - 1;
 
-let data =[]
+let data = null
 let index
 
-const NUM_SECTIONS = 5;
-const NUM_ROWS_PER_SECTION = 5;
+const NUM_SECTIONS = 1;
+const NUM_ROWS_PER_SECTION = 10;
 let pageIndex = 0;
 
 const FriendShow = React.createClass({
   getInitialState() {
+    console.log('friendsss first:',this.props.fetchState)
     const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
     const getRowData = (dataBlob, sectionID, rowID) => dataBlob[rowID];
 
@@ -83,13 +84,14 @@ const FriendShow = React.createClass({
     // load new data
     console.log('reach end', event);
     this.setState({ isLoading: true });
-    // setTimeout(() => {
-    //   this.genData(++pageIndex);
-    //   this.setState({
-    //     dataSource: this.state.dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
-    //     isLoading: false,
-    //   });
-    // }, 1000);
+    setTimeout(() => {
+      this.genData(++pageIndex);
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
+        isLoading: false,
+        latestUser:this.props.fetchState.data
+      });
+    }, 1000);
   },
   descWindow(){
     alert(0)
@@ -98,15 +100,12 @@ const FriendShow = React.createClass({
       
   },
   componentWillUpdate(nextProps, nextState){
-      console.log('friendsss this props:',this.props)
-      console.log("friendsss next props:",nextProps.fetchState.data)
-      console.log('friendsss ----->',this.props == nextProps)
+      // console.log('friendsss this props:',this.props)
+      // console.log("friendsss next props:",nextProps.fetchState.data)
+      // console.log('friendsss ----->',this.props == nextProps)
       if(this.props == nextProps) return false;
       
       if(nextProps.fetchState.data){
-          this.setState({
-            latestUser:[]
-          })
           this.setState({
               latestUser:nextProps.fetchState.data
           })
@@ -122,26 +121,21 @@ const FriendShow = React.createClass({
       }}
       />
     );
+    console.log('friendsss data',data)
+    data = this.state.latestUser
+    if(!data){
+      return (<div>数据为空</div>)
+    }
+    index = data.length -1    
     const row = (rowData, sectionID, rowID) => {
-      // if(!this.state.data){
-      //   return false
-      // }
-      // if(!this.state.latestUser){
-      //   // return <div></div>;
-      //   return false
-      // }
-      // if(!rowData){
-      //   return false
-      // }
-      // console.log('is this.state.latestUsers:',!this.state.latestUser)
-      // console.log('row data:',this.state.latestUser)
-      data = this.state.latestUser
-      console.log('friendsss data',data)
-      index = data.length -1
-      if (index < 0) {
-        index = data.length - 1;
+      if(index<0){
+        index = data.length -1;
       }
       const obj = data[index--];
+      if(!obj){
+        return (<div>数据获取异常</div>)
+      }
+      
       var en2Ch={
         'girl':'女',
         'boy':'男',
@@ -177,9 +171,9 @@ const FriendShow = React.createClass({
                 <p className='userList-desc'>不忘最初的梦想</p>
               </div>
             </div>
-        */}
         {obj==undefined?<div>数据为空</div>:
-          <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
+        */}
+            <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
               <img className='userList-img' src={obj.img} />
               <div className='userList-content' style={{ display: 'inline-block' }}>
                 <p className='userList-p'>
@@ -196,7 +190,7 @@ const FriendShow = React.createClass({
                 <p className='userList-desc'>不忘最初的梦想</p>
               </div>
             </div>
-        }
+        
         </div>
       );
     };
@@ -228,7 +222,7 @@ const FriendShow = React.createClass({
 });
 
 export default Temp({
-    url:'/friendShow',   // app 的路由
+    url:'/main/friendShow',   // app 的路由
     path:'/api/friendShow/latest',  // API 的路由,此处的api不能漏掉。否则就会报错
     params:{},  // API 的参数
     component:FriendShow // 组件的名称

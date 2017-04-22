@@ -16,10 +16,10 @@ const PersonPage = React.createClass({
         }
     },
     render(){
-        const height = document.documentElement.clientHeight-40
+        // const height = document.documentElement.clientHeight-40
         const personInfo = this.state.personInfo;
         return (
-            <div className='person' style={{height:height}}>
+            <div className='person' >
                 {this.state.test?'访问成功':'访问错误'},路由参数{this.props.params.userId}
                 <div className="person-body" style={{backgroundImage:'url('+personInfo.bgImg+')'}}>
                     <div className="simpleDes">

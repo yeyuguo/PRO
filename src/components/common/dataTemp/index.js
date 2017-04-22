@@ -40,9 +40,9 @@ const Temp = (tempObj)=> {
             }
         },
         componentWillMount(){
-            if (this.props.templateProps.path) {
-                this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
-            }
+            // if (this.props.templateProps.path) {
+            //     this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
+            // }
         },
         shouldComponentUpdate(nextProps, nextState) {
             return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
@@ -51,11 +51,11 @@ const Temp = (tempObj)=> {
             console.log('templateProps props:',this.props)
             return <this.props.templateProps.component {...this.props}  rootData={this.props.fetchState}/>
         },
-        // componentDidMount() {//获取数据
-        //     if (this.props.templateProps.path) {
-        //         this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
-        //     }
-        // }
+        componentDidMount() {//获取数据
+            if (this.props.templateProps.path) {
+                this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
+            }
+        }
     })
     // TempComp.defaultProps = {template}
 

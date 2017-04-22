@@ -45,19 +45,29 @@ html{
         overflow: auto;
     }
     .tab_footer{
-        @height: 0.5rem;
+        @height: 1rem;
 
         ul{
             width: 100%;
         }
         li{
+            font-size: 0.4rem;
             width: 25%;
             float: left;
             height: @height;
             line-height: @height;
             text-align: center;
+            border-right:1px solid #fff;
+            color:@black;
+            &:last-child{
+                border-right: none;
+            }
+            &:first-child{
+                margin-left: -3px;
+            }
             a{
                 display: block;
+                color:@black;
             }
             .on{
                 background: @black;
