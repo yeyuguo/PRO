@@ -6,3 +6,7 @@
 .setting * .am-badge-text {
   line-height: 0.36rem;
 }
+.setting * .am-list-item img {
+  width: 1rem;
+  height: 1rem;
+}

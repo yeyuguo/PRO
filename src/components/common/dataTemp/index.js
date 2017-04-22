@@ -39,11 +39,11 @@ const Temp = (tempObj)=> {
                 templateProps
             }
         },
-        // componentWillMount(){
-        //     if (this.props.templateProps.path) {
-        //         this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
-        //     }
-        // },
+        componentWillMount(){
+            if (this.props.templateProps.path) {
+                this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
+            }
+        },
         shouldComponentUpdate(nextProps, nextState) {
             return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
         },
@@ -51,20 +51,20 @@ const Temp = (tempObj)=> {
             console.log('templateProps props:',this.props)
             return <this.props.templateProps.component {...this.props}  rootData={this.props.fetchState}/>
         },
-        componentDidMount() {//获取数据
-            if (this.props.templateProps.path) {
-                this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
-            }
-        }
+        // componentDidMount() {//获取数据
+        //     if (this.props.templateProps.path) {
+        //         this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
+        //     }
+        // }
     })
     // TempComp.defaultProps = {template}
 
-    return connect(state=>{   
+    return connect(state=>{
         console.log('template reducer state:',state)
         return state   // 包含所有export的 reducer 的state
     },
     action  //包含所有export的 action 
-    )(TempComp);   
+    )(TempComp);
 }
 
 

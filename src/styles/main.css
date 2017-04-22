@@ -21,6 +21,7 @@ html {
 }
 .main-page .tab_body {
   flex: 1;
+  overflow: auto;
 }
 .main-page .tab_footer ul {
   width: 100%;

@@ -213,11 +213,10 @@ const FriendShow = React.createClass({
         renderRow={!this.state.latestUser ? ()=>false : row}
         renderSeparator={separator}
         className="fortest"
-        style={{
-          height: this.props.height,
-          overflow: 'auto',
-        }}
         pageSize={4}
+        style={{
+          overflow:'inherit'
+        }}
         scrollRenderAheadDistance={500}
         scrollEventThrottle={20}
         onScroll={() => { console.log('scroll'); }}
@@ -225,7 +224,7 @@ const FriendShow = React.createClass({
         onEndReachedThreshold={10}
       />
     </div>);
-  },
+  }
 });
 
 export default Temp({
