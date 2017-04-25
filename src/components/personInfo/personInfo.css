@@ -26,6 +26,7 @@
   height: 1rem;
   line-height: 1rem;
   width: 100%;
+  font-weight: bold;
 }
 .person .person-body .simpleDes > span {
   display: inline-block;

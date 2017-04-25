@@ -17,7 +17,7 @@ import ImgShow from '../demoComp/3dpic/Main'
 
 import PersonPage from '../personInfo/Main'
 
-
+import ListViewTest from '../test/ListView'
 
 
 require('normalize.css/normalize.css');
@@ -67,6 +67,10 @@ const AppRouter = (
             */}
             <Route path='imgShow' component={ImgShow} />
             <Route path='personal/:userId' component={PersonPage} />
+            {/*组件 test */}
+            <Route path='test'>
+                <Route path='listView' component={ListViewTest}/>
+            </Route>
         </Route>
     </Router>
 )

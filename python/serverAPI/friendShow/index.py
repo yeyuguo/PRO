@@ -1,6 +1,6 @@
 #coding:utf-8
 from . import friendShow
-from flask import jsonify
+from flask import jsonify,request
 
 @friendShow.route('/',methods=['GET'])
 def test():
@@ -9,6 +9,11 @@ def test():
 @friendShow.route('/latest',methods=['GET'])
 def latest():
     data ={}
+    # section_num = request.args['section']
+    # row_num = request.args['row']
+    # if section_num is not None or row_num is not None:
+    #     print 'section:%s;row:%s'%(section_num,row_num)
+    
     data_demo = [{
             'img': '../../images/mn1.jpg',
             'title': '相约酒店',

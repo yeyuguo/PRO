@@ -18,6 +18,7 @@ const ShouldUpdate = {
     componentWillUpdate(nextProps, nextState){
         // props 更新时候，才会被调用;
         // 在此处，把 props 里的属性值给设置到 state 里;
+        // !is(fromJS(this.props), fromJS(nextProps)) == true
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     }
 }

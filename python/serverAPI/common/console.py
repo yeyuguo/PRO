@@ -1,0 +1,5 @@
+
+
+def console(data):
+    
+    pass

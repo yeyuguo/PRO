@@ -39,6 +39,9 @@ const Temp = (tempObj)=> {
                 templateProps
             }
         },
+        componentWillReceivePorps(nextProps){
+            // 只在接受新的props时更新该函数
+        },
         componentWillMount(){
             // if (this.props.templateProps.path) {
             //     this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);

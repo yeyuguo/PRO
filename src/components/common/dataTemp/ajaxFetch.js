@@ -1,12 +1,12 @@
 import React from 'react'
 import {is,fromJS} from 'immutable'
 import fetch from 'isomorphic-fetch'
-require('antd-mobile/dist/antd-mobile.min.css')
+// require('antd-mobile/dist/antd-mobile.min.css')
 
-import {success_action,exception_action,error_action} from '../../../redux/actions'
+import {success_action,exception_action,error_action} from '../../../redux/actions/Main'
     
 
-const Ajax = {
+export const Ajax = {
     target:'http://127.0.0.1:8000',
     urls:function(req){
         /*
@@ -38,7 +38,7 @@ const Ajax = {
         }
         return url
     },
-    ajax:function(req){
+    ajax:function(req,dispatch){
         let requestUrl = {
             host:req.host||this.target,
             path:req.path,
@@ -52,7 +52,7 @@ const Ajax = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body:JSON.stringify({'data':json})
+            // body:JSON.stringify({'data':json})
         })
         .then(function(response) {
             if (response.status >= 400) {
@@ -60,16 +60,22 @@ const Ajax = {
                 dispatch(error_action(response.status,response.statusText))
             }
             console.log('end request ajax data...')
-            return response.json().then(data =>{data.status == 200 ?dispatch(success_action(data.status, data.data)):dispatch(exception_action(data.status, data.msg))})
-            // return response.json();
+            // return response.json().then(data =>{data.status == 200 ?dispatch(success_action(data.status, data.data)):dispatch(exception_action(data.status, data.msg))})
+            // return response.json().then(data=>{
+            //     success_action(data.status, data.data)
+            // })
+            return response.json();
         })
         .then(req.fn)
         
     }
 }
 
+export const mixins_test={
+    key:'123'
+}
 
-export default Ajax;
+// export default Ajax;
 
 // 常用函数备注
 

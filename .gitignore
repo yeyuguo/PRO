@@ -19,3 +19,6 @@ npm-debug.log
 
 record_folder
 *.pyc
+
+# 人脸魔性太大 忽略上传
+python/faceAuth
