@@ -4,7 +4,7 @@ import {ListView,Button } from 'antd-mobile'
 import Temp from '../common/dataTemp/'
 import {Ajax,mixins_test} from '../common/dataTemp/ajaxFetch'
 
-require('./style.less')
+// require('./style.less')
 /*
 {
   "data": [
@@ -62,7 +62,6 @@ const ListViewTest = React.createClass({
                 }
             }
         }
-    
         // return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     },
     
@@ -91,11 +90,11 @@ const ListViewTest = React.createClass({
             path:'/api/friendShow/latest',
             fn:function(data){
                 // var that = this
-                console.log('--->',data)
+                // console.log('--->',data)
                 if(data.status == 200){
                     this.dictAppend(data.data)
                 }
-                console.log('====>',{sectionData})
+                // console.log('====>',{sectionData})
             }.bind(this)
         })
     },

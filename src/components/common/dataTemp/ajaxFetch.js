@@ -1,6 +1,7 @@
 import React from 'react'
 import {is,fromJS} from 'immutable'
 import fetch from 'isomorphic-fetch'
+
 // require('antd-mobile/dist/antd-mobile.min.css')
 
 import {success_action,exception_action,error_action} from '../../../redux/actions/Main'
@@ -77,6 +78,21 @@ export const Ajax = {
 export const mixins_test={
     key:'123'
 }
+
+
+
+const ShouldUpdate = {
+    shouldComponentUpdate(nextProps, nextState) {
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+    },
+    componentWillUpdate(nextProps, nextState){
+        // props 更新时候，才会被调用;
+        // 在此处，把 props 里的属性值给设置到 state 里;
+        // !is(fromJS(this.props), fromJS(nextProps)) == true
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+    }
+}
+export default ShouldUpdate;
 
 // export default Ajax;
 

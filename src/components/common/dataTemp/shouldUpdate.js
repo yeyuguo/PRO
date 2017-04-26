@@ -1,6 +1,6 @@
 import React from 'react'
 import {is,fromJS} from 'immutable'
-
+export {is,fromJS}
 
 
 const ShouldUpdate = {

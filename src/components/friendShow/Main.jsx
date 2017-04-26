@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link, browserHistory } from 'react-router'
 import {ListView} from 'antd-mobile'
-// import ListView from 'antd-mobile/lib/list-view';
-// import List  from 'antd-mobile/lib/list';
+import {is,fromJS} from 'immutable'
 import Temp from '../common/dataTemp/index.js'
+import {Ajax} from '../common/dataTemp/ajaxFetch.js'
 
 require('./friendShow.less')
 
@@ -31,195 +32,166 @@ require('./friendShow.less')
 // ];
 // let index = data.length - 1;
 
-let data = null
-let index
-
-const NUM_SECTIONS = 1;
-const NUM_ROWS_PER_SECTION = 10;
-let pageIndex = 0;
+let sectionData = {}
+let section_num = 0
 
 const FriendShow = React.createClass({
-  getInitialState() {
-    console.log('friendsss first:',this.props.fetchState)
-    const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
-    const getRowData = (dataBlob, sectionID, rowID) => dataBlob[rowID];
+    mixins: [Ajax],
+    getInitialState(){
+        let ds = new ListView.DataSource({
+            rowHasChanged:(r1,r2)=>r1!=r2,
+            sectionHeaderHasChanged:(s1,s2)=>s1!==s2
+        })
 
-    const dataSource = new ListView.DataSource({
-      getRowData,
-      getSectionHeaderData: getSectionData,
-      rowHasChanged: (row1, row2) => row1 !== row2,
-      sectionHeaderHasChanged: (s1, s2) => s1 !== s2,
-    });
-
-    this.dataBlob = {};
-    this.sectionIDs = [];
-    this.rowIDs = [];
-    this.genData = (pIndex = 0) => {
-      for (let i = 0; i < NUM_SECTIONS; i++) {
-        const ii = (pIndex * NUM_SECTIONS) + i;
-        const sectionName = `Section ${ii}`;
-        this.sectionIDs.push(sectionName);
-        this.dataBlob[sectionName] = sectionName;
-        this.rowIDs[ii] = [];
-
-        for (let jj = 0; jj < NUM_ROWS_PER_SECTION; jj++) {
-          const rowName = `S${ii}, R${jj}`;
-          this.rowIDs[ii].push(rowName);
-          this.dataBlob[rowName] = rowName;
+        return {
+            test:'访问成功!',
+            dataSource:ds,
+            isFetching:false,
+            data:{}
         }
-      }
-      // new object ref
-      this.sectionIDs = [].concat(this.sectionIDs);
-      this.rowIDs = [].concat(this.rowIDs);
-    };
-    this.genData();
-    return {
-      dataSource: dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
-      isLoading: false,
-      latestUser:null
-    };
-  },
-
-  onEndReached(event) {
-    // load new data
-    console.log('reach end', event);
-    this.setState({ isLoading: true });
-    setTimeout(() => {
-      this.genData(++pageIndex);
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
-        isLoading: false,
-        latestUser:this.props.fetchState.data
-      });
-    }, 1000);
-  },
-  descWindow(){
-    alert(0)
-  },
-  componentWillMount(){
-      
-  },
-  componentWillUpdate(nextProps, nextState){
-      // console.log('friendsss this props:',this.props)
-      // console.log("friendsss next props:",nextProps.fetchState.data)
-      // console.log('friendsss ----->',this.props == nextProps)
-      if(this.props == nextProps) return false;
-      
-      if(nextProps.fetchState.data){
-          this.setState({
-              latestUser:nextProps.fetchState.data
-          })
-      }
-  },
-  render() {
-    const separator = (sectionID, rowID) => (
-      <div key={`${sectionID}-${rowID}`} style={{
-        backgroundColor: '#F5F5F9',
-        height: 8,
-        borderTop: '1px solid #ECECED',
-        borderBottom: '1px solid #ECECED',
-      }}
-      />
-    );
-    console.log('friendsss data',data)
-    data = this.state.latestUser
-    if(!data){
-      return (<div>数据为空</div>)
-    }
-    index = data.length -1    
-    const row = (rowData, sectionID, rowID) => {
-      if(index<0){
-        index = data.length -1;
-      }
-      const obj = data[index--];
-      if(!obj){
-        return (<div>数据获取异常</div>)
-      }
-      
-      var en2Ch={
-        'girl':'女',
-        'boy':'男',
-        'sex':'中性'
-      }
-      return (
-        <div key={rowID}
-          onClick={this.descWindow}
-          style={{
-            // padding: '0.08rem 0.16rem'
-          }}
-        >
-        {/*
-          <h3 style={{ padding: 2, marginBottom: '0.08rem', borderBottom: '1px solid #F6F6F6' }}>
-            {obj.title}
-          </h3>
-        */}
-        {/*
-        <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
-              <img className='userList-img' src={obj.img} />
-              <div className='userList-content' style={{ display: 'inline-block' }}>
-                <p className='userList-p'>
-                  <span className="IDname">{obj.des}</span> 
-                  <div className='addr'>
-                    <span className="prov">北京市</span>
-                    <span className="city">大兴区</span>
-                  </div>
-                </p>
-                <p className="userList-sexIsVip">
-                  <span className={obj.sex ?obj.sex:'sex'}>{obj.sex?en2Ch[obj.sex]:'中性'}</span>
-                  <span className={obj.isVip?'isVip':'notVip'}>VIP</span>
-                </p>
-                <p className='userList-desc'>不忘最初的梦想</p>
+    },
+    shouldComponentUpdate(nextProps, nextState) {
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+    },
+    componentWillUpdate(nextProps, nextState){
+        // props 更新时候，才会被调用;
+        // this.dictAppend(nextProps.fetchState.data)
+        if(!is(fromJS(this.props), fromJS(nextProps))){
+            if(nextProps.fetchState.data){
+                if(nextProps.fetchState.data){
+                    this.dictAppend(nextProps.fetchState.data)
+                }
+            }
+        }
+        // return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+    },
+    
+    dictAppend(arrayData){
+        var section_id = `section_${section_num++}`
+        sectionData[section_id] = arrayData
+        this.setState({
+            data:sectionData,
+            isFetching:false
+        })
+        console.log({section_id})
+        // return sectionData
+    },
+    // routeJumple(rowData){
+    //   console.log('routeJumple rowData',rowData)
+    //   browserHistory.push('personal/'+)
+    // //   alert(rowData.des)
+    // },
+    renderSection(rowData,rowId,sectionId){
+        // return (
+        //     <div>
+        //         {`rowID:${rowId},rowData:${rowData},sectionId:${sectionId}`}
+                
+        //     </div>
+        // )
+        if(!rowData){
+          return <div>数据为空</div>
+        }
+        var rowData
+        function routeJumple(){
+            console.log('routeJumple rowData',rowData)
+            // alert(rowData.memberid)
+            browserHistory.push('personal/'+rowData.memberid)
+        }
+        console.log(`rowID:${rowId},rowData:${rowData},sectionId:${sectionId}`)
+        var obj = rowData
+        console.log('routeJumple obj:',obj)
+        var en2Ch={
+          'girl':'女',
+          'boy':'男',
+          'sex':'中性'
+        }
+        return (
+          <div key={rowId}
+            onClick={routeJumple}
+            style={{
+              // padding: '0.08rem 0.16rem'
+            }}
+          >
+          {/*
+              <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
+                <img className='userList-img' src={obj.img} />
+                <div className='userList-content' style={{ display: 'inline-block' }}>
+                  <p className='userList-p'>
+                    <span className="IDname">{obj.des}</span> 
+                    <span className='addr'>
+                      <span className="prov">北京市</span>
+                      <span className="city">大兴区</span>
+                    </span>
+                  </p>
+                  <p className="userList-sexIsVip">
+                    <span className={obj.sex ?obj.sex:'sex'}>{obj.sex?en2Ch[obj.sex]:'中性'}</span>
+                    <span className={obj.isVip?'isVip':'notVip'}>VIP</span>
+                  </p>
+                  <p className='userList-desc'>{obj.des}</p>
+                </div>
               </div>
-            </div>
-        {obj==undefined?<div>数据为空</div>:
-        */}
+          */}
             <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
-              <img className='userList-img' src={obj.img} />
-              <div className='userList-content' style={{ display: 'inline-block' }}>
-                <p className='userList-p'>
-                  <span className="IDname">{obj.des}</span> 
-                  <span className='addr'>
-                    <span className="prov">北京市</span>
-                    <span className="city">大兴区</span>
-                  </span>
-                </p>
-                <p className="userList-sexIsVip">
-                  <span className={obj.sex ?obj.sex:'sex'}>{obj.sex?en2Ch[obj.sex]:'中性'}</span>
-                  <span className={obj.isVip?'isVip':'notVip'}>VIP</span>
-                </p>
-                <p className='userList-desc'>不忘最初的梦想</p>
+                <img className='userList-img' src={obj.defaultPhoto} />
+                <div className='userList-content' style={{ display: 'inline-block' }}>
+                  <p className='userList-p'>
+                    <span className="IDname">{obj.nickName}</span> 
+                    <span className='addr'>
+                      {/*<span className="prov">北京市</span>*/}
+                      <span className="city">{obj.workCity}</span>
+                    </span>
+                  </p>
+                  <p className="userList-sexIsVip">
+                    <span className={obj.sex ?obj.sex:'sex'}>{obj.sex?en2Ch[obj.sex]:'中性'}</span>
+                    <span className={obj.isVip?'isVip':'notVip'}>VIP</span>
+                  </p>
+                  <p className='userList-desc'>{obj.otherMsg}</p>
+                </div>
               </div>
+          </div>
+        );
+    },
+    request(){
+        this.setState({
+            isFetching:true
+        })
+        this.ajax({
+            path:'/api/friendShow/latest',
+            fn:function(data){
+                // var that = this
+                console.log('--->',data)
+                if(data.status == 200){
+                    this.dictAppend(data.data)
+                }
+                console.log('====>',{sectionData})
+            }.bind(this)
+        })
+    },
+    render(){
+        return (
+            <div style={{width:'100%',margin:'0 auto',height:'100%'}}>
+                {
+                    // !this.state.data ? <div>数据为空，添加加载条</div> :
+                    !this.state.data ? <div>数据为空 {this.props.fetchState.error?'fetch error is :'+this.props.fetchState.error:'添加加载条'}</div> :
+                    <ListView
+                    style={{width:'100%',height:'100%'}}
+                    dataSource={this.state.dataSource.cloneWithRowsAndSections(this.state.data)}
+                    renderRow={(rowData,sectionId,rowId)=>this.renderSection(rowData,rowId,sectionId)}
+                    // onEndReached={this.onEndReached}
+                    // onEndReachedThreshold={20}
+                    // initialListSize={20}
+                    onEndReached={this.request}
+                    onEndReachedThreshold={200}
+                    renderFooter={() => <div style={{ textAlign: 'center' }}>
+                            {this.state.isFetching ? '加载中...' : '加载完毕'}
+                        </div>}
+                    removeClippedSubviews={false}
+                    ></ListView>
+                }
             </div>
-        
-        </div>
-      );
-    };
-    return (<div style={{ margin: '0 auto'}}>
-      <ListView
-        dataSource={this.state.dataSource}
-        renderHeader={() => <span>header</span>}
-        renderFooter={() => <div style={{ textAlign: 'center' }}>
-          {this.state.isLoading ? '加载中...' : '加载完毕'}
-        </div>}
-        renderSectionHeader={(sectionData) => (
-          <div>{`任务 ${sectionData.split(' ')[1]}`}</div>
-        )}
-        renderRow={!this.state.latestUser ? ()=>false : row}
-        renderSeparator={separator}
-        className="fortest"
-        pageSize={4}
-        style={{
-          overflow:'inherit'
-        }}
-        scrollRenderAheadDistance={500}
-        scrollEventThrottle={20}
-        onScroll={() => { console.log('scroll'); }}
-        onEndReached={this.onEndReached}
-        onEndReachedThreshold={10}
-      />
-    </div>);
-  }
-});
+        )
+    }
+})
 
 export default Temp({
     url:'/main/friendShow',   // app 的路由
@@ -229,3 +201,49 @@ export default Temp({
 })
 
 // export default FriendShow
+
+
+
+
+// const row = (rowData, sectionID, rowID) => {
+//       if(index<0){
+//         index = data.length -1;
+//       }
+//       const obj = data[index--];
+//       if(!obj){
+//         return (<div>数据获取异常</div>)
+//       }
+      
+//       var en2Ch={
+//         'girl':'女',
+//         'boy':'男',
+//         'sex':'中性'
+//       }
+//       return (
+//         <div key={rowID}
+//           onClick={this.descWindow}
+//           style={{
+//             // padding: '0.08rem 0.16rem'
+//           }}
+//         >
+//             <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
+//               <img className='userList-img' src={obj.img} />
+//               <div className='userList-content' style={{ display: 'inline-block' }}>
+//                 <p className='userList-p'>
+//                   <span className="IDname">{obj.des}</span> 
+//                   <span className='addr'>
+//                     <span className="prov">北京市</span>
+//                     <span className="city">大兴区</span>
+//                   </span>
+//                 </p>
+//                 <p className="userList-sexIsVip">
+//                   <span className={obj.sex ?obj.sex:'sex'}>{obj.sex?en2Ch[obj.sex]:'中性'}</span>
+//                   <span className={obj.isVip?'isVip':'notVip'}>VIP</span>
+//                 </p>
+//                 <p className='userList-desc'>不忘最初的梦想</p>
+//               </div>
+//             </div>
+        
+//         </div>
+//       );
+//     };
