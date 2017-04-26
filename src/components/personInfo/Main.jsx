@@ -1,14 +1,13 @@
 import React from 'react'
 import {Link,browserHistory } from 'react-router'
-import {is,fromJS} from 'immutable'
 import Temp from '../common/dataTemp/index'
-import {Ajax} from '../common/dataTemp/ajaxFetch'
+import {Ajax,ShouldUpdate} from '../common/dataTemp/ajaxFetch'
 require('./personInfo.less')
 require('antd-mobile/dist/antd-mobile.min.css')
 // 获取 路由参数
 // {this.props.params.paramName}
 const PersonPage = React.createClass({
-    mixins:[Ajax],
+    mixins:[Ajax,ShouldUpdate],
     getInitialState(){
         return {
             test:true,
@@ -16,11 +15,6 @@ const PersonPage = React.createClass({
                 bgImg:'../../images/mn1.jpg',
             }
         }
-    },
-    shouldComponentUpdate(nextProps, nextState) {
-        // countNum +=1
-        // console.log('aa count num:',countNum)
-        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     },
     request(){
         this.ajax({

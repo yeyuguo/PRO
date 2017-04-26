@@ -35,7 +35,7 @@ const FriendMsg = React.createClass({
         console.log('componentWillMount:',nextProps == this.props)
     },
     chatWindow() {
-        browserHistory.push('/personal/5');
+        browserHistory.push('/personal/98627548');
     },
     showLatestTime() {
         return 'test'

@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
 import {ListView} from 'antd-mobile'
-import {is,fromJS} from 'immutable'
 import Temp from '../common/dataTemp/index.js'
-import {Ajax} from '../common/dataTemp/ajaxFetch.js'
+import {Ajax,ShouldUpdate,is,fromJS} from '../common/dataTemp/ajaxFetch.js'
 
 require('./friendShow.less')
 
@@ -36,7 +35,7 @@ let sectionData = {}
 let section_num = 0
 
 const FriendShow = React.createClass({
-    mixins: [Ajax],
+    mixins: [Ajax,ShouldUpdate],
     getInitialState(){
         let ds = new ListView.DataSource({
             rowHasChanged:(r1,r2)=>r1!=r2,
@@ -49,9 +48,6 @@ const FriendShow = React.createClass({
             isFetching:false,
             data:{}
         }
-    },
-    shouldComponentUpdate(nextProps, nextState) {
-        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     },
     componentWillUpdate(nextProps, nextState){
         // props 更新时候，才会被调用;
