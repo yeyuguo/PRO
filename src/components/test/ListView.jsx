@@ -4,7 +4,7 @@ import {ListView,Button } from 'antd-mobile'
 import Temp from '../common/dataTemp/'
 import {Ajax,mixins_test} from '../common/dataTemp/ajaxFetch'
 
-
+require('./style.less')
 /*
 {
   "data": [
@@ -36,7 +36,7 @@ import {Ajax,mixins_test} from '../common/dataTemp/ajaxFetch'
 let sectionData = {}
 let section_num = 0
 const ListViewTest = React.createClass({
-    mixins: [Ajax,mixins_test],
+    mixins: [Ajax],
     getInitialState(){
         let ds = new ListView.DataSource({
             rowHasChanged:(r1,r2)=>r1!=r2,
@@ -54,14 +54,10 @@ const ListViewTest = React.createClass({
     componentWillUpdate(nextProps, nextState){
         // props 更新时候，才会被调用;
         // this.dictAppend(nextProps.fetchState.data)
-        
         if(!is(fromJS(this.props), fromJS(nextProps))){
             if(nextProps.fetchState.data){
                 if(nextProps.fetchState.data){
                     this.dictAppend(nextProps.fetchState.data)
-                    // this.setState({
-                    //     data:sectionData
-                    // })
                 }
             }
         }
@@ -75,25 +71,17 @@ const ListViewTest = React.createClass({
         this.setState({
             data:sectionData
         })
+        console.log({section_id})
         // return sectionData
     },
     renderSection(rowData,rowId,sectionId){
-        console.log('sectionData:',sectionData)
         return (
             <div>
                 {`rowID:${rowId},rowData:${rowData},sectionId:${sectionId}`}
             </div>
         )
     },
-    onEndReached(){
-        console.log('达到底部')
-        // TODO 数据请求
-        // this.props.fetchState
-        
-    },
     request(){
-        // alert(11)
-        // console.log('this.mixins_test:',this.key)
         this.ajax({
             path:'/api/friendShow/latest',
             fn:function(data){
@@ -113,10 +101,15 @@ const ListViewTest = React.createClass({
                 {
                     !this.state.data ? <div>数据为空，添加加载条</div> :
                     <ListView
-                    style={{width:'100%',height:'10rem'}}
+                    style={{width:'100%',height:'80vh'}}
                     dataSource={this.state.dataSource.cloneWithRowsAndSections(this.state.data)}
                     renderRow={(rowData,sectionId,rowId)=>this.renderSection(rowData,rowId,sectionId)}
-                    onEndReached={this.onEndReached}
+                    // onEndReached={this.onEndReached}
+                    // onEndReachedThreshold={20}
+                    initialListSize={20}
+                    onEndReached={this.request}
+                    onEndReachedThreshold={200}
+                    removeClippedSubviews={false}
                     ></ListView>
                 }
                 <Button onClick={this.request}>按钮</Button>

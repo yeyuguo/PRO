@@ -56,8 +56,8 @@ export const Ajax = {
         })
         .then(function(response) {
             if (response.status >= 400) {
-                // throw new Error("Bad response from server");
-                dispatch(error_action(response.status,response.statusText))
+                throw new Error("Bad response from server");
+                // dispatch(error_action(response.status,response.statusText))
             }
             console.log('end request ajax data...')
             // return response.json().then(data =>{data.status == 200 ?dispatch(success_action(data.status, data.data)):dispatch(exception_action(data.status, data.msg))})
@@ -67,6 +67,9 @@ export const Ajax = {
             return response.json();
         })
         .then(req.fn)
+        .catch(function(error){
+            console.log('ajax error is :',error);
+        })
         
     }
 }
