@@ -45,12 +45,13 @@ const ListViewTest = React.createClass({
 
         return {
             test:'访问成功!',
-            dataSource:ds
+            dataSource:ds,
+            isFetching:false
         }
     },
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
-    // },
+    shouldComponentUpdate(nextProps, nextState) {
+        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+    },
     componentWillUpdate(nextProps, nextState){
         // props 更新时候，才会被调用;
         // this.dictAppend(nextProps.fetchState.data)
@@ -69,7 +70,8 @@ const ListViewTest = React.createClass({
         var section_id = `section_${section_num++}`
         sectionData[section_id] = arrayData
         this.setState({
-            data:sectionData
+            data:sectionData,
+            isFetching:false
         })
         console.log({section_id})
         // return sectionData
@@ -82,6 +84,9 @@ const ListViewTest = React.createClass({
         )
     },
     request(){
+        this.setState({
+            isFetching:true
+        })
         this.ajax({
             path:'/api/friendShow/latest',
             fn:function(data){
@@ -109,6 +114,9 @@ const ListViewTest = React.createClass({
                     initialListSize={20}
                     onEndReached={this.request}
                     onEndReachedThreshold={200}
+                    renderFooter={() => <div style={{ textAlign: 'center' }}>
+                            {this.state.isFetching ? '加载中...' : '加载完毕'}
+                        </div>}
                     removeClippedSubviews={false}
                     ></ListView>
                 }
