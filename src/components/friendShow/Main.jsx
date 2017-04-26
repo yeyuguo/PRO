@@ -52,13 +52,13 @@ const FriendShow = React.createClass({
     componentWillUpdate(nextProps, nextState){
         // props 更新时候，才会被调用;
         // this.dictAppend(nextProps.fetchState.data)
-        if(!is(fromJS(this.props), fromJS(nextProps))){
-            if(nextProps.fetchState.data){
-                if(nextProps.fetchState.data){
-                    this.dictAppend(nextProps.fetchState.data)
-                }
-            }
-        }
+        // if(!is(fromJS(this.props), fromJS(nextProps))){
+        //     if(nextProps.fetchState.data){
+        //         if(nextProps.fetchState.data){
+        //             this.dictAppend(nextProps.fetchState.data)
+        //         }
+        //     }
+        // }
         // return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     },
     
