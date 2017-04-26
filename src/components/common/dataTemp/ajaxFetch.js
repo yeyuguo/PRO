@@ -5,7 +5,7 @@ export {is,fromJS}
 
 // require('antd-mobile/dist/antd-mobile.min.css')
 
-import {success_action,exception_action,error_action} from '../../../redux/actions/Main'
+// import {success_action,exception_action,error_action} from '../../../redux/actions/Main'
     
 
 export const Ajax = {
