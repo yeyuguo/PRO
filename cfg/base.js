@@ -29,14 +29,14 @@ module.exports = {
         publicPath: defaultSettings.publicPath,
         noInfo: false,
         proxy: {
-            '/api/*':{
+            '/api/*': {
                 target: 'http://127.0.0.1:9999',
-                pathRewrite: {"^/api" : ""}
+                pathRewrite: { "^/api": "" }
             },
-            '/zhenai/*':{
+            '/zhenai/*': {
                 // target: 'http://m.zhenai.com/v2/personal/getRecommandUserInfos.do?pageNo=3&pageSize=10',
                 target: 'http://m.zhenai.com',
-                pathRewrite: {"^/zhenai" : ""}
+                pathRewrite: { "^/zhenai": "" }
             },
         }
     },
@@ -54,5 +54,18 @@ module.exports = {
             // 'antd-mobile': `../node_modules/antd-mobile`
         }
     },
-    module: {}
+    module: {
+        // TODO 增加为了识别 jsx|js
+        // rules: [{
+        //         test: /\.jsx?$/,
+        //         use: ['babel-loader'],
+        //         include: resolve(__dirname, 'src')
+        //     },
+        //     {
+        //         test: /\.(jsx|js)$/,
+        //         enforce: 'pre',
+        //         loader: 'eslint-loader'
+        //     }
+        // ]
+    }
 };

@@ -89,6 +89,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "three": "^0.84.0",
-    "tween": "^0.9.0"
+    "tween": "^0.9.0",
+    "webpack": "^1.15.0"
   }
 }

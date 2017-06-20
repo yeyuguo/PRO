@@ -23,7 +23,12 @@ let config = Object.assign({}, baseConfig, {
             searchResolveModulesDirectories: false
         })
     ],
-    module: defaultSettings.getDefaultModules()
+    module: defaultSettings.getDefaultModules(),
+    // TODO :  添加全局变量的设置
+    // externals:{
+    //     react:'React',
+    // ...
+    // }
 });
 
 // Add needed loaders to the defaults here
@@ -37,8 +42,8 @@ config.module.loaders.push({
 });
 // 设置 antd-mobile 按需加载--->没有成功
 // config.babel.plugins.push(["import", { "libraryName": "antd-mobile" }])
-    // 设置 成功的是：.babelrc文件添加以下配置
-    // {"plugins": [["import", { "libraryName": "antd-mobile" }]]}
+// 设置 成功的是：.babelrc文件添加以下配置
+// {"plugins": [["import", { "libraryName": "antd-mobile" }]]}
 
 // 添加代理
 // config.devServer = {
