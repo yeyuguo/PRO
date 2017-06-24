@@ -3,8 +3,8 @@ import { Router, Route,IndexRoute, browserHistory } from 'react-router';
 
 // require('normalize.css/normalize.css');
 // require('antd-mobile/dist/antd-mobile.min.css')
-// require('../../styles/main.less')
-// require('../../js/common.less')
+// require('../../styles/less/common.less')
+require('../../styles/main.less')
 
 
 // import TabMain from '../TabMain-comp'
