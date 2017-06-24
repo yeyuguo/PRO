@@ -1,5 +1,6 @@
 import React from 'react'
-import {List,Switch,Badge } from 'antd-mobile'
+import { browserHistory } from 'react-router'
+import {List,Switch,Badge,Modal } from 'antd-mobile'
 const Item=List.Item;
 const Brief = Item.Brief;
 require('antd-mobile/dist/antd-mobile.css')
@@ -110,6 +111,18 @@ const FriendSetting = React.createClass({
                     </Item>
                     <Item arrow="horizontal" >
                     帮助
+                    </Item>
+                </List>
+                <List renderHeader={() => '5'} className="isQuite">
+                    <Item 
+                        onClick={() => Modal.alert('退出账号', '确定退出吗？', [
+                            { text: '取消', onPress: () => console.log('cancel') },
+                            { text: '确定', onPress: () => browserHistory.push('/login'), style: { fontWeight: 'bold' } },
+                        ])}
+                    >  
+                    {/*onClick={()=>{browserHistory.push('/login')})}*/}
+                        退出
+
                     </Item>
                 </List>
             </div>

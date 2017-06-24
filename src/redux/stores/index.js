@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import * as reduers from '../reducers/Main'
+import * as reduers from '../reducers/index'
 
 // reduers 是一个对象集合
 const store = createStore(

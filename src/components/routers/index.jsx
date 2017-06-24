@@ -1,6 +1,11 @@
 import React from 'react'
 import { Router, Route,IndexRoute, browserHistory } from 'react-router';
 
+// require('normalize.css/normalize.css');
+// require('antd-mobile/dist/antd-mobile.min.css')
+// require('../../styles/less/common.less')
+require('../../styles/main.less')
+
 
 // import TabMain from '../TabMain-comp'
 // import FriendMsg from '../friendMsg/Main'
@@ -21,25 +26,22 @@ import { Router, Route,IndexRoute, browserHistory } from 'react-router';
 
 // 按需加载路由
 const TabMain = (location,fn) =>{  require.ensure([], require => {fn(null, require('../TabMain-comp').default)},'TabMain')}
-const FriendMsg = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendMsg/Main').default)},'FriendMsg')}
-const FriendList = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendList/Main').default)},'FriendList')}
-const FriendShow = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendShow/Main').default)},'FriendShow')}
-const FriendSetting = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendSetting/Main').default)},'FriendSetting')}
+const FriendMsg = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendMsg/index').default)},'FriendMsg')}
+const FriendList = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendList/index').default)},'FriendList')}
+const FriendShow = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendShow/index').default)},'FriendShow')}
+const FriendSetting = (location,fn) =>{  require.ensure([], require => {fn(null, require('../friendSetting/index').default)},'FriendSetting')}
 const LinkTest = (location,fn) =>{  require.ensure([], require => {fn(null, require('../test/testLink').default)},'LinkTest')}
-const LoginPage = (location,fn) =>{  require.ensure([], require => {fn(null, require('../login/Main').default)},'LoginPage')}
+const LoginPage = (location,fn) =>{  require.ensure([], require => {fn(null, require('../login/index').default)},'LoginPage')}
 const ForgetPwd = (location,fn) =>{  require.ensure([], require => {fn(null, require('../login/forget/forgetPwd').default)},'ForgetPwd')}
 const Register = (location,fn) =>{  require.ensure([], require => {fn(null, require('../login/register/register').default)},'Register')}
 const Phone = (location,fn) =>{  require.ensure([], require => {fn(null, require('../login/register/phone').default)},'Phone')}
 const Email = (location,fn) =>{  require.ensure([], require => {fn(null, require('../login/register/email').default)},'Email')}
 const ImgShow = (location,fn) =>{  require.ensure([], require => {fn(null, require('../demoComp/3dpic/Main').default)},'ImgShow')}
-const PersonPage = (location,fn) =>{  require.ensure([], require => {fn(null, require('../personInfo/Main').default)},'PersonPage')}
+const PersonPage = (location,fn) =>{  require.ensure([], require => {fn(null, require('../personInfo/index').default)},'PersonPage')}
 const ListViewTest = (location,fn) =>{  require.ensure([], require => {fn(null, require('../test/ListView').default)},'ListViewTest')}
 
 
-require('normalize.css/normalize.css');
-require('antd-mobile/dist/antd-mobile.min.css')
-require('../../styles/main.less')
-require('../../js/common')
+
 
 const Home = React.createClass({
     render(){

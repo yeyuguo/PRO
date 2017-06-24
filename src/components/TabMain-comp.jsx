@@ -13,10 +13,10 @@ import { Tabs, WhiteSpace } from 'antd-mobile';
 
 
 // 各个 功能模块的组件
-import FriendMsg from './friendMsg/Main'
-import FriendList from './friendList/Main'
-import FriendShow from './friendShow/Main'
-import FriendSetting from './friendSetting/Main'
+import FriendMsg from './friendMsg/index'
+import FriendList from './friendList/index'
+import FriendShow from './friendShow/index'
+import FriendSetting from './friendSetting/index'
 const TabPane = Tabs.TabPane;
 
 function callback(key) {

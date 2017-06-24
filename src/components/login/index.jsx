@@ -122,7 +122,6 @@ const LoginComp = React.createClass({
                             extra='用户名不对'
                             error
                             {...getFieldProps('account')}
-                            
                         >
                             <div className='login-username' style={{ backgroundImage: 'url(../../images/icon/用户.svg)'}} />
                             用户名
