@@ -3,8 +3,6 @@
 // require('antd-mobile/dist/antd-mobile.min.css')
 // require('../styles/main.less')
 
-
-import React from 'react'
 import {Link} from 'react-router'
 
 import { Tabs, WhiteSpace } from 'antd-mobile';

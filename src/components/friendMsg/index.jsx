@@ -1,4 +1,3 @@
-import React from 'react'
 import { List,Badge } from 'antd-mobile'
 import { Link, browserHistory } from 'react-router'
 import {is,fromJS} from 'immutable'

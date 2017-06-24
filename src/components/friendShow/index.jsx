@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, browserHistory } from 'react-router'
 import {ListView} from 'antd-mobile'
 import Temp from '../common/dataTemp/index.js'

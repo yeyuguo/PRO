@@ -21,14 +21,17 @@ let config = Object.assign({}, baseConfig, {
         new webpack.NoErrorsPlugin(),
         new BowerWebpackPlugin({
             searchResolveModulesDirectories: false
+        }),
+        // 添加全局变量:变量未被赋值的话，就会自动加载该设置的模块来赋值到变量
+        new webpack.ProvidePlugin({
+            React: 'react',
+            ReactDOM: 'react-dom',
+            Map: 'immutable',
+            // browserHistory: 'react-router' //不能使用包内的对象
         })
     ],
     module: defaultSettings.getDefaultModules(),
-    // TODO :  添加全局变量的设置
-    // externals:{
-    //     react:'React',
-    // ...
-    // }
+
 });
 
 // Add needed loaders to the defaults here

@@ -1,10 +1,9 @@
-import React from 'react'
 import {Flex,WhiteSpace,List, InputItem,Button } from 'antd-mobile'
 import {Link,browserHistory } from 'react-router'
 import { is, fromJS} from 'immutable';
 import { createForm } from 'rc-form';
 
-// <<<--------->>>
+
 import {connect} from 'react-redux'
 import {testAction} from '../../redux/actions/Main'
 

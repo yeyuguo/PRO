@@ -54,18 +54,10 @@ module.exports = {
             // 'antd-mobile': `../node_modules/antd-mobile`
         }
     },
-    module: {
-        // TODO 增加为了识别 jsx|js
-        // rules: [{
-        //         test: /\.jsx?$/,
-        //         use: ['babel-loader'],
-        //         include: resolve(__dirname, 'src')
-        //     },
-        //     {
-        //         test: /\.(jsx|js)$/,
-        //         enforce: 'pre',
-        //         loader: 'eslint-loader'
-        //     }
-        // ]
-    }
+    module: {},
+    // 从外部引入JS <script>。。。</script> 后，为该外部库设置变量；
+    // externals: {
+    //     'react': 'React',
+    //     'react-dom': 'ReactDOM'
+    // },
 };

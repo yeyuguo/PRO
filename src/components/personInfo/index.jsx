@@ -1,4 +1,3 @@
-import React from 'react'
 import {Link,browserHistory } from 'react-router'
 import Temp from '../common/dataTemp/index'
 import {Ajax,ShouldUpdate} from '../common/dataTemp/ajaxFetch'
