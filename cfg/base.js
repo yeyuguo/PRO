@@ -2,6 +2,8 @@
 let path = require('path');
 let defaultSettings = require('./defaults');
 
+require('react')
+
 // Additional npm or bower modules to include in builds
 // Add all foreign plugins you may need into this array
 // @example:
@@ -58,6 +60,15 @@ module.exports = {
     // 从外部引入JS <script>。。。</script> 后，为该外部库设置变量；
     // externals: {
     //     'react': 'React',
-    //     'react-dom': 'ReactDOM'
+    // 'react-dom': 'ReactDOM',
+    // 'three': 'THREE' //TODO 解决 公共的库作为外部库引入 来读取一次
     // },
+    // externals: [{
+    //     react: 'React'
+    // }]
+    externals: {
+        '../src/js/libs/react.min.js': 'React',
+        '../src/js/libs/react-dom.min.js': 'ReactDOM',
+        // '../src/js/build/three.js': 'THREE'
+    }
 };

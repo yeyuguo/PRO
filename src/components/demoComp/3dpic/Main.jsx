@@ -2,11 +2,11 @@ import React from 'react'
 
 require('./Main.less')
 window.THREE = require('../../../js/build/three.js')
-// console.log({THREE})
 window.TWEEN = require('tween')
-// window.TWEEN = require('../../../js/libs/tween.min') // 引入会报错，找不到 TWEEN
 require('../../../js/controls/TrackballControls')
 require('../../../js/renderers/CSS3DRenderer')
+
+// window.TWEEN = require('../../../js/libs/tween.min') // 引入会报错，找不到 TWEEN
 
 
 const ImgShow = React.createClass({
