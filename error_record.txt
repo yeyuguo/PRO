@@ -1,0 +1,3 @@
+报错：There is another module with an equal name when case is ignored.
+解决方式：https://github.com/webpack/webpack/issues/382
+
