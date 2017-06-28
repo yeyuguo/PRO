@@ -48,26 +48,6 @@ config.module.loaders.push({
 // 设置 成功的是：.babelrc文件添加以下配置
 // {"plugins": [["import", { "libraryName": "antd-mobile" }]]}
 
-// 添加代理
-// config.devServer = {
-//     proxy: {  
-//         '/test': {  
-//             target: '0.0.0.0',  
-//             secure: false
-//         }  
-//     }
-// }
-
-// config.devServer = {  
-//     contentBase: './src/',
-//     publicPath: '/assets/',
-//     historyApiFallback: true,
-//     hot: true,
-//     inline: true,
-//     port: 8000,
-//     host: '0.0.0.0'
-// } 
-
 
 
 module.exports = config;

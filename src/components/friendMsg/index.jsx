@@ -109,7 +109,7 @@ const FriendMsg = React.createClass({
                     )
                 }.bind(this))
             }
-            aaa  bbb cc ddd
+            aaa 
             </List>
         )
     },
