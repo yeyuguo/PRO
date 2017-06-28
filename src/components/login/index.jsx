@@ -19,16 +19,26 @@ const LineSpace = ()=>{
 }
 var maoboli
 let countNum = 0;
-const LoginPage = React.createClass({
-    getInitialState(){
+// const LoginPage = React.createClass({
+class LoginPage extends React.Component{
+    constructor(props){
+        super()
         maoboli=require('./backaground')(window);
         const imgNum = maoboli.random()
-        // alert(imgNum)
-        return{
+        this.state = {
             imgNum,
             loginState:false
         }
-    },
+    }
+    // getInitialState(){
+    //     maoboli=require('./backaground')(window);
+    //     const imgNum = maoboli.random()
+    //     // alert(imgNum)
+    //     return{
+    //         imgNum,
+    //         loginState:false
+    //     }
+    // }
     loginSubmit(e){
         e.preventDefault();  
         // this.setState({loginState:true})
@@ -38,12 +48,12 @@ const LoginPage = React.createClass({
         //     this.setState({loginState:false})
         // }.bind(this),2000)
 
-    },
+    }
     componentWillMount(){
-    },
+    }
     shouldComponentUpdate(nextProps, nextState) {
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
-    },
+    }
     render(){
         countNum+=1
         console.log('重新渲染第 '+(countNum) +' 次')
@@ -54,8 +64,6 @@ const LoginPage = React.createClass({
         }
         // 从 props 里获取到 action 的内容，react 和 action 没有任何关系，靠对象来建立联系
         const testClickAction = this.props.testClickAction
-
-
         return (
             <div className="login">
                 <Flex>
@@ -67,26 +75,36 @@ const LoginPage = React.createClass({
                 <LoginForm {...this.props} loginState={this.state.loginState} />
             </div>
         )
-    },
+    }
     componentDidMount(){
         // 毛玻璃触发的效果
         // 由于require 有缓存，否则会出现第二次require不加载该文件
         // require('./backaground')(window);
         // window.initWindow(document.getElementById('box'));
         maoboli.initWindow(document.getElementById('box'));
-    },
+    }
     componentDidUpdate(){
         
     }
-})
+}
 
-const LoginComp = React.createClass({
-    getInitialState(){
-        return {
-            loginState:false
+// const LoginComp = React.createClass({
+class LoginComp extends React.Component{
+    constructor(props){
+        super()
+        this.state = {
+            loginState : false
         }
-    },
-    loginSubmit(e){
+    }
+    // getInitialState(){
+    //     return {
+    //         loginState : false
+    //     }
+    // },
+    // 该匿名函数可以把 父级 的作用域传到 函数里
+    // loginSubmit(e){
+    // }
+    loginSubmit = (e) => {
         e.preventDefault();  
         // 注意 getFieldsValue 和 getFieldValue 的区别
         console.log('data of form:',this.props.form.getFieldsValue());  
@@ -99,10 +117,9 @@ const LoginComp = React.createClass({
             this.setState({loginState:true});
             setTimeout(function(){
                 this.setState({loginState:false})
-            }.bind(this),2000)            
-            
+            }.bind(this),2000)
         }
-    },
+    }
     render(){
         // console.log('2--->this.props.context:',this.props)
         const loginState = this.state.loginState;
@@ -152,7 +169,10 @@ const LoginComp = React.createClass({
             </div>
         )
     }
-})
+    componentDidMount(){
+
+    }
+}
 const LoginForm = createForm()(LoginComp)
 
 // connect 里的内容全部都放到了 props 里

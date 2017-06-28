@@ -1,8 +1,8 @@
 import { Router, Route,IndexRoute, browserHistory } from 'react-router';
 
-// require('normalize.css/normalize.css');
-// require('antd-mobile/dist/antd-mobile.min.css')
-// require('../../styles/less/common.less')
+require('normalize.css/normalize.css');
+require('antd-mobile/dist/antd-mobile.min.css')
+require('../../styles/less/common.less')
 require('../../styles/main.less')
 
 
