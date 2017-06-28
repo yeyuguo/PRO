@@ -22,3 +22,5 @@ record_folder
 
 # 人脸魔性太大 忽略上传
 python/faceAuth
+
+dist
