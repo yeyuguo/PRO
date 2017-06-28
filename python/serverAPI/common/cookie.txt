@@ -1,0 +1,7 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.zhenai.com	TRUE	/	FALSE		sid	7NZOfeFZ1Az1at8ryB9D
+profile.zhenai.com	FALSE	/	FALSE		JSESSIONID	abc46D3B6Ufn58HaJ_SUv
+profile.zhenai.com	FALSE	/	FALSE	1524791728	ipCityCode	10101000
