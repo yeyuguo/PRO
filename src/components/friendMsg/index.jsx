@@ -38,7 +38,7 @@ const FriendMsg = React.createClass({
     },
     showLatestTime() {
         return 'test'
-        return data.msgInfo[data.msgInfo.length - 1].latestModify.split(' ').length > 1 ? data.msgInfo[(data.msgInfo.length - 1)].latestModify.split(' ')[1].substr(0, 5) : data.msgInfo[(data.msgInfo.length - 1)].latestModify
+        // return data.msgInfo[data.msgInfo.length - 1].latestModify.split(' ').length > 1 ? data.msgInfo[(data.msgInfo.length - 1)].latestModify.split(' ')[1].substr(0, 5) : data.msgInfo[(data.msgInfo.length - 1)].latestModify
 
     },
     shouldComponentUpdate(nextProps, nextState) {
@@ -103,13 +103,12 @@ const FriendMsg = React.createClass({
                             key = { index }
                             className = 'friendMsg'
                             extra = { showTime } > { data.userName } 
-                            <Brief > { data.msgInfo[data.msgInfo.length - 1].latestMsg } < /Brief> 
+                            <Brief> { data.msgInfo[data.msgInfo.length - 1].latestMsg } </Brief> 
                            
                         </Item>
                     )
                 }.bind(this))
             }
-            aaa 
             </List>
         )
     },

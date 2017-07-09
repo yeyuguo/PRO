@@ -1,17 +1,31 @@
 #coding:utf-8
 # from . import chat
 from flask import jsonify,abort
-from . import chat
+from flask import make_response
+from . import friendMsg
 import time
 
+# from functools import wraps
+# def allow_cross_domain(fun):
+#     @wraps(fun)
+#     def wrapper_fun(*args, **kwargs):
+#         rst = make_response(fun(*args, **kwargs))
+#         rst.headers['Access-Control-Allow-Origin'] = '*'
+#         rst.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
+#         allow_headers = "Referer,Accept,Origin,User-Agent"
+#         rst.headers['Access-Control-Allow-Headers'] = allow_headers
+#         return rst
+#     return wrapper_fun
+
+
 # xxxx:9999/chat/test
-@chat.route('/test',methods=['GET'])
+@friendMsg.route('/test',methods=['GET'])
 def test():
     # return jsonify({'msg':'test error','status':200})
     return 'chat success'
 
 # xxxx:9999/chat/
-@chat.route('/',methods=['GET'])
+@friendMsg.route('/',methods=['GET'])
 def main():
     data = {}
     initTimt = time.mktime(time.strptime('2017-03-20 23:32:00','%Y-%m-%d %H:%M:%S'))

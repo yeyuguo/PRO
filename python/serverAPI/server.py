@@ -1,19 +1,23 @@
 #coding:utf-8
 import sys
 from flask import Flask,g,make_response,Blueprint,jsonify
-from chat.index import chat
+from friendMsg.index import friendMsg
 from friendList.index import friendList
 from friendShow.index import friendShow
 from personal.index import personal
 from test.index import test   # API 测试模块
 
 app = Flask(__name__)
+# 允许跨域
+from flask_cors import CORS
+CORS(app, supports_credentials=True)
 
-app.register_blueprint(chat,url_prefix='/chat')
+app.register_blueprint(friendMsg,url_prefix='/chat')
 app.register_blueprint(friendList,url_prefix='/friendList')
 app.register_blueprint(friendShow,url_prefix='/friendShow')
 app.register_blueprint(personal,url_prefix='/personal')
 app.register_blueprint(test,url_prefix='/test')
+
 
 from functools import wraps
 
@@ -29,16 +33,6 @@ data ={
     return jsonify(data)
 '''
 
-def allow_cross_domain(fun):
-    @wraps(fun)
-    def wrapper_fun(*args, **kwargs):
-        rst = make_response(fun(*args, **kwargs))
-        rst.headers['Access-Control-Allow-Origin'] = '*'
-        rst.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
-        allow_headers = "Referer,Accept,Origin,User-Agent"
-        rst.headers['Access-Control-Allow-Headers'] = allow_headers
-        return rst
-    return wrapper_fun
 
 # def newApp(func):
 #     def innerFuc(*args,**kwargs):
@@ -103,6 +97,8 @@ def main():
     port = 9999;
     # print u'启动 SERVER API 成功 ---> %s:%s'%(host,port);
     app.run(host=host,port=port,debug=True)
+    
 
 if __name__ == "__main__":
     main()
+    
