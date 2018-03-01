@@ -33,37 +33,40 @@ const Temp = (tempObj)=> {
     //     return state
     // },action)(TempComp);
 
-    const TempComp = React.createClass({
-        getDefaultProps(){
-            return {
-                templateProps
-            }
-        },
-        componentWillReceivePorps(nextProps){
-            // 只在接受新的props时更新该函数
-        },
+    class TempComp extends React.Component{
         componentWillMount(){
             // if (this.props.templateProps.path) {
             //     this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
             // }
-        },
-        shouldComponentUpdate(nextProps, nextState) {
-            return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
-        },
+        }
         render(){
-            console.log('templateProps props:',this.props)
-            return <this.props.templateProps.component {...this.props}  rootData={this.props.fetchState}/>
-        },
+            // return  <this.props.templateProps.component {...this.props}  rootData={this.props.fetchState}/>
+            return this.props.templateProps ? <templateProps.component {...this.props} rootData={this.props.fetchState} /> : <templateProps.component {...this.props} rootData={this.props.fetchState} />
+        }
         componentDidMount() {//获取数据
-            if (this.props.templateProps.path) {
-                this.props.fetchAction(this.props.templateProps.path,this.props.templateProps.params);
+            if (templateProps && templateProps.path) {
+                this.props.fetchAction(templateProps.path,templateProps.params);
             }
         }
-    })
+        componentWillReceivePorps(nextProps){
+            // 只在接受新的props时更新该函数
+        }
+        
+        shouldComponentUpdate(nextProps, nextState) {
+            return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+        }
+    }
+    Temp.defaultProps = {
+        templateProps
+    }
     // TempComp.defaultProps = {template}
-
+    /*
+    connect 参数是 state(reduce)       action(action)
+                  mapStateToProps     mapDisptchToProps
+    connect 把 props 数值绑定到 外部的参数 TempComp 上
+    */
     return connect(state=>{
-        console.log('template reducer state:',state)
+        // console.log('template reducer state:',state)
         return state   // 包含所有export的 reducer 的state
     },
     action  //包含所有export的 action 

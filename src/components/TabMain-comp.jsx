@@ -20,12 +20,17 @@ const TabPane = Tabs.TabPane;
 function callback(key) {
   console.log(key);
 }
-const TabMain = React.createClass({
-  getInitialState(){
-    return {
-      tabPosition: 'bottom',
-    };
-  },
+class TabMain extends React.Component{
+  state = {
+    tabPosition: 'bottom'
+  }
+  getSelected(){
+    // console.log('click li tag:',this)
+    // let selectedNode = document.getElementsByClassName('tab_footer')
+    // selectedNode.onClick = function(e){
+    //   this.
+    // }
+  }
   render() {
     var height = document.documentElement.clientHeight - 45
     return (
@@ -62,16 +67,18 @@ const TabMain = React.createClass({
         </div>
         <div className="tab_footer">
           <ul>
-            <li><Link to='/main/friendMsg'>聊天</Link></li>
-            <li><Link to='/main/friendList'>朋友列表</Link></li>
-            <li><Link to='/main/friendShow'>朋友圈</Link></li>
-            <li><Link to='/main/friendSetting'>个人设置</Link></li>
+            <li><Link to='/main/friendMsg'><img src="../images/icon/chat.svg" alt="chat"/><span>聊天</span></Link></li>
+            <li><Link to='/main/friendList'><img src="../images/icon/通讯录.svg" alt="通讯录"/><span>朋友列表</span></Link></li>
+            <li><Link to='/main/friendShow'><img src="../images/icon/朋友圈.svg" alt="朋友圈"/><span>朋友圈</span></Link></li>
+            <li><Link to='/main/friendSetting'><img src="../images/icon/个人设置.svg" alt="个人设置"/><span>个人设置</span></Link></li>
           </ul>
         </div>
       </div>
     );
-  },
-});
+  }
+  // componentDidMount(){
+  // }
+};
 
 // var TabMain = React.createClass({
 //   render:function(){

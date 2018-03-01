@@ -89,6 +89,23 @@ export const ShouldUpdate = {
 }
 
 
+/*
+// 组件装饰器
+function flex2(WrapComponent){
+    return class PP extends React.Component{
+        render(){
+            console.log("--- this.props ---->",this.props);
+            return (
+                <div style={{flex:2}}>
+                    <WrapComponent {...this.props}/>
+                </div>
+            )
+        }
+    }
+}
+*/
+
+
 // export default Ajax;
 
 // 常用函数备注

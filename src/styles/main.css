@@ -22,18 +22,18 @@ html {
 .main-page .tab_body {
   flex: 1;
   overflow: auto;
+  background-color: #fff;
 }
 .main-page .tab_footer ul {
   width: 100%;
 }
 .main-page .tab_footer li {
   font-size: 0.4rem;
+  padding-top: 0.1rem;
   width: 25%;
   float: left;
   height: 1rem;
-  line-height: 1rem;
   text-align: center;
-  border-right: 1px solid #fff;
   color: #161418;
 }
 .main-page .tab_footer li:last-child {
@@ -45,6 +45,11 @@ html {
 .main-page .tab_footer li a {
   display: block;
   color: #161418;
+  font-size: 0.3rem;
+}
+.main-page .tab_footer li a > img {
+  width: 100%;
+  height: 0.5rem;
 }
 .main-page .tab_footer li .on {
   background: #161418;

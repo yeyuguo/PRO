@@ -47,20 +47,7 @@ const FriendShow = React.createClass({
             isFetching:false,
             data:{}
         }
-    },
-    componentWillUpdate(nextProps, nextState){
-        // props 更新时候，才会被调用;
-        // this.dictAppend(nextProps.fetchState.data)
-        // if(!is(fromJS(this.props), fromJS(nextProps))){
-        //     if(nextProps.fetchState.data){
-        //         if(nextProps.fetchState.data){
-        //             this.dictAppend(nextProps.fetchState.data)
-        //         }
-        //     }
-        // }
-        // return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
-    },
-    
+    },    
     dictAppend(arrayData){
         var section_id = `section_${section_num++}`
         sectionData[section_id] = arrayData
@@ -71,18 +58,7 @@ const FriendShow = React.createClass({
         console.log({section_id})
         // return sectionData
     },
-    // routeJumple(rowData){
-    //   console.log('routeJumple rowData',rowData)
-    //   browserHistory.push('personal/'+)
-    // //   alert(rowData.des)
-    // },
     renderSection(rowData,rowId,sectionId){
-        // return (
-        //     <div>
-        //         {`rowID:${rowId},rowData:${rowData},sectionId:${sectionId}`}
-                
-        //     </div>
-        // )
         if(!rowData){
           return <div>数据为空</div>
         }
@@ -162,6 +138,7 @@ const FriendShow = React.createClass({
             }.bind(this)
         })
     },
+    
     render(){
         return (
             <div style={{width:'100%',margin:'0 auto',height:'100%'}}>
@@ -185,7 +162,11 @@ const FriendShow = React.createClass({
                 }
             </div>
         )
+    },
+    componentWillUpdate(nextProps, nextState){
+        //state props 更新时候，才会调用，由 shouldComponentUpdate 来决定;
     }
+    
 })
 
 export default Temp({
@@ -197,48 +178,3 @@ export default Temp({
 
 // export default FriendShow
 
-
-
-
-// const row = (rowData, sectionID, rowID) => {
-//       if(index<0){
-//         index = data.length -1;
-//       }
-//       const obj = data[index--];
-//       if(!obj){
-//         return (<div>数据获取异常</div>)
-//       }
-      
-//       var en2Ch={
-//         'girl':'女',
-//         'boy':'男',
-//         'sex':'中性'
-//       }
-//       return (
-//         <div key={rowID}
-//           onClick={this.descWindow}
-//           style={{
-//             // padding: '0.08rem 0.16rem'
-//           }}
-//         >
-//             <div className='userList-section' style={{ display: '-webkit-box', display: 'flex' }}>
-//               <img className='userList-img' src={obj.img} />
-//               <div className='userList-content' style={{ display: 'inline-block' }}>
-//                 <p className='userList-p'>
-//                   <span className="IDname">{obj.des}</span> 
-//                   <span className='addr'>
-//                     <span className="prov">北京市</span>
-//                     <span className="city">大兴区</span>
-//                   </span>
-//                 </p>
-//                 <p className="userList-sexIsVip">
-//                   <span className={obj.sex ?obj.sex:'sex'}>{obj.sex?en2Ch[obj.sex]:'中性'}</span>
-//                   <span className={obj.isVip?'isVip':'notVip'}>VIP</span>
-//                 </p>
-//                 <p className='userList-desc'>不忘最初的梦想</p>
-//               </div>
-//             </div>
-        
-//         </div>
-//       );
-//     };

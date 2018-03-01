@@ -6,3 +6,13 @@
 3. 添加 GraphQL API;
 
 4. ....
+
+
+
+
+> TODO LIST 
+
+以便在 TempComp 组件中的 props 能区分 action 和 reduce
+> * 每个 action 都添加一个 action 标识
+> * 每个 reduce 都添加一个 reduce 标识
+

@@ -67,8 +67,10 @@ module.exports = {
     //     react: 'React'
     // }]
     externals: {
-        '../src/js/libs/react.min.js': 'React',
-        '../src/js/libs/react-dom.min.js': 'ReactDOM',
+        'React':'react',
+        'ReactDOM':'react-dom'
+        // '../src/js/libs/react.min.js': 'React',
+        // '../src/js/libs/react-dom.min.js': 'ReactDOM',
         // '../src/js/build/three.js': 'THREE'
     }
 };

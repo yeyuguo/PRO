@@ -5,39 +5,37 @@ const Item=List.Item;
 const Brief = Item.Brief;
 require('./friendSetting.less')
 
-const FriendSetting = React.createClass({
-    getInitialState(){
-        return {
-            mySimpleInfo:{
-                userID:'1000',
-                userName:'艾伦',
-                sex:'boy',
-                age:'28岁',
-                isVip:true,
-                avator:'../../images/nn1.jpg'
-            },
-            myFans:[{
-                userName:'小红',
-                userID:'1001',
-                age:'22岁',
-                sex:'girl',
-                avator:'../../images/mn1.jpg'
-            },{
-                userName:'小明',
-                userID:'1002',
-                age:'23岁',
-                sex:'girl',
-                avator:'../../images/mn2.jpg'
-            }],
-            isReceiveMsg:true
-        }
-    },
+class FriendSetting extends React.Component{
+    state = {
+        mySimpleInfo:{
+            userID:'1000',
+            userName:'艾伦',
+            sex:'boy',
+            age:'28岁',
+            isVip:true,
+            avator:'../../images/nn1.jpg'
+        },
+        myFans:[{
+            userName:'小红',
+            userID:'1001',
+            age:'22岁',
+            sex:'girl',
+            avator:'../../images/mn1.jpg'
+        },{
+            userName:'小明',
+            userID:'1002',
+            age:'23岁',
+            sex:'girl',
+            avator:'../../images/mn2.jpg'
+        }],
+        isReceiveMsg:true
+    }
     isReceiveMsg(){
         this.setState({
             isReceiveMsg:!this.state.isReceiveMsg
         })
         alert('是否开启消息通知')
-    },
+    }
     render(props){
         const mySimpleInfo = this.state.mySimpleInfo;
         // const { getFieldProps } = props.form;
@@ -52,28 +50,11 @@ const FriendSetting = React.createClass({
                     >
                         {mySimpleInfo.userName} 
                         <span className={mySimpleInfo.isVip?'isVip':'notVip'}>VIP月</span>
-                            <Brief>
-                                <span className="sex">男</span>
-                                <span className="age">28岁</span>
-                                <span className="address">青岛</span>
-                            </Brief>
-                                
-                                {/*
-                        <div className='mySetting'>
-                            <img src={mySimpleInfo.avator} alt=""/>
-                            <div className="mySimpleInfo">
-                                <p>
-                                    <span className="userName">{mySimpleInfo.userName}</span>
-                                    <span className={mySimpleInfo.isVip?'isVip':'notVip'}>VIP月</span>
-                                </p>
-                                <p>
-                                    <span className="sex">男</span>
-                                    <span className="age">28岁</span>
-                                    <span className="address">青岛</span>
-                                </p>
-                            </div>
-                        </div>
-                                */}
+                        <Brief>
+                            <span className="sex">男</span>
+                            <span className="age">28岁</span>
+                            <span className="address">青岛</span>
+                        </Brief>
                     </Item>
                 </List>
                 <List renderHeader={() => '2'} className="usersWithMe">
@@ -125,6 +106,6 @@ const FriendSetting = React.createClass({
             </div>
         )
     }
-})
+}
 
 export default FriendSetting

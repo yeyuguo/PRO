@@ -11,7 +11,7 @@ require('antd-mobile/dist/antd-mobile.css')
 require('./friendMsg.less')
 let countNum = 0
 
-const AvatorTip = React.createClass({
+class AvatorTip extends React.Component{
     render(){
                 // <Badge text={20} overflowCount={10} corner />
         return(
@@ -20,32 +20,41 @@ const AvatorTip = React.createClass({
             </div>
         )
     }
-})
+}
 
-const FriendMsg = React.createClass({
-    getInitialState() {
-        var exampleTime = (new Date('2017-03-17 14:30:25'))
-        console.log('000--->:',this.props.fetchState)
-        return {
-            userDatas:null
+class FriendMsg extends React.Component{
+    constructor(props,context){
+        super(props,context)
+        this.state = {
+            userDatas:null    
         }
-    },
+    }
+    // state = {
+    //     userDatas:null
+    // }
+    // getInitialState() {
+    //     var exampleTime = (new Date('2017-03-17 14:30:25'))
+    //     console.log('000--->:',this.props.fetchState)
+    //     return {
+    //         userDatas:null
+    //     }
+    // }
     componentWillMount(nextProps, nextState){
         console.log('componentWillMount:',nextProps == this.props)
-    },
-    chatWindow() {
+    }
+    chatWindow(){
         browserHistory.push('/personal/98627548');
-    },
-    showLatestTime() {
+    }
+    showLatestTime(){
         return 'test'
         // return data.msgInfo[data.msgInfo.length - 1].latestModify.split(' ').length > 1 ? data.msgInfo[(data.msgInfo.length - 1)].latestModify.split(' ')[1].substr(0, 5) : data.msgInfo[(data.msgInfo.length - 1)].latestModify
 
-    },
+    }
     shouldComponentUpdate(nextProps, nextState) {
         // countNum +=1
         // console.log('aa count num:',countNum)
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
-    },
+    }
     componentWillUpdate(nextProps, nextState){
         if(this.props == nextProps) return false;
         if(nextProps.fetchState.data){
@@ -53,7 +62,7 @@ const FriendMsg = React.createClass({
                 userDatas:nextProps.fetchState.data
             })
         }
-    },
+    }
     
     
     render() {
@@ -111,7 +120,7 @@ const FriendMsg = React.createClass({
             }
             </List>
         )
-    },
+    }
     componentDidMount(nextProps, nextState){
         // if(this.props == nextProps) return false;
         // console.log({nextProps})
@@ -123,7 +132,7 @@ const FriendMsg = React.createClass({
         //     })
         // }
     }
-})
+}
 
 
 

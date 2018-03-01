@@ -23,8 +23,8 @@ from functools import wraps
 
 
 '''
-demo data:\|||||/
-data ={
+demo data:\|/
+data = {
         'status':200,
         'data':None
     }
